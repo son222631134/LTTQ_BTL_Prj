@@ -235,8 +235,8 @@
             this.Controls.Add(this.TBSOLUONG);
             this.Controls.Add(this.SoHDNTB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Formchitiethoadonnhap";
-            this.Text = "Formchitiethoadonnhap";
+            this.Name = "frmChiTietHDNhap";
+            this.Text = "THÔNG TIN CHI TIẾT HÓA ĐƠN NHẬP";
             this.Load += new System.EventHandler(this.frmChiTietHDNhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgrvFORM2)).EndInit();
             this.ResumeLayout(false);

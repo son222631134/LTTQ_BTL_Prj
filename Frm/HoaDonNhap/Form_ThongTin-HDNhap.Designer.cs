@@ -226,8 +226,8 @@
             this.Controls.Add(this.ClearBT);
             this.Controls.Add(this.TBHDN);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "frmThongTinHDNhap";
+            this.Text = "DANH MỤC HÓA ĐƠN NHẬP";
             this.Load += new System.EventHandler(this.FrmThongTinHDNhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgrvHDN)).EndInit();
             this.ResumeLayout(false);

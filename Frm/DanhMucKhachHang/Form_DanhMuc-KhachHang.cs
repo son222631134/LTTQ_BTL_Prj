@@ -3,28 +3,43 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Reflection;
+using System.Drawing;
 using BTL_Prj.Class.DanhMucKhachHang;
 
 namespace BTL_Prj.Frm.DanhMucKhachHang
 {
-    public partial class DanhMucKhachHang : Form
+    public partial class frmDanhMucKhachHang : Form
     {
         DataProcess dataProcess = new DataProcess();  // Đối tượng xử lý cơ sở dữ liệu
 
-        public DanhMucKhachHang()
+        public frmDanhMucKhachHang()
         {
             InitializeComponent();
         }
 
-        private void DanhMucKhachHang_Load(object sender, EventArgs e)
+        private void frmDanhMucKhachHang_Load(object sender, EventArgs e)
         {
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDataDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf("BTL_Prj")) + "BTL_Prj\\Database\\Database_BTL.mdf"; //get data directory by find Project directory, then combine with Database directory
-            dataProcess = new DataProcess(stringDataDirectory);
+            LoadIcon();
+            LoadDatabase();
 
             dgvKhachHang.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
             LoadData();  
             SetDefaultState();  
+        }
+        private void LoadIcon()
+        {
+            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
+            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
+            string stringDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName+"\\Media\\32x32-LogoUTC.ico";
+            this.Icon = new Icon(stringDirectory);
+        }
+        private void LoadDatabase()
+        {
+            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
+            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
+            string stringDataDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName + "\\Database\\Database_BTL.mdf"; //get data directory by find Project directory, then combine with Database directory
+            dataProcess = new DataProcess(stringDataDirectory);
         }
 
         private void LoadData()

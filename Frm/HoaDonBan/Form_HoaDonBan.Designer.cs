@@ -1,6 +1,6 @@
 ﻿namespace BTL_Prj.Frm.HoaDonBan
 {
-    partial class Frm_HoaDonBan
+    partial class frmHoaDonBan
     {
         /// <summary>
         /// Required designer variable.
@@ -446,8 +446,8 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmHoaDonBan";
-            this.Text = "Hóa Đơn Bán";
-            this.Load += new System.EventHandler(this.FrmHoaDonBan_Load);
+            this.Text = "DANH MỤC HÓA ĐƠN BÁN";
+            this.Load += new System.EventHandler(this.frmHoaDonBan_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
