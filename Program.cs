@@ -16,7 +16,7 @@ namespace BTL_Prj
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm.NhanVien.frmNhanvien());
+            Application.Run(new Frm.Main.frmMain());
         }
     }
 }

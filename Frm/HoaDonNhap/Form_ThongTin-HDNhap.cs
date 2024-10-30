@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,13 +21,26 @@ namespace BTL_Prj.Frm.HoaDonNhap
         }
         private void FrmThongTinHDNhap_Load(object sender, EventArgs e)
         {
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDataDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf("BTL_Prj")) + "BTL_Prj\\Database\\Database_BTL.mdf"; //get data directory by find Project directory, then combine with Database directory
-            dataProcess = new DataProcess(stringDataDirectory);
+            LoadIcon();
+            LoadDatabase();
 
             dtgrvHDN.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
             LoadComboBoxData();
             LoadDataToGridView();
+        }
+        private void LoadIcon()
+        {
+            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
+            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
+            string stringDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName+"\\Media\\32x32-LogoUTC.ico";
+            this.Icon = new Icon(stringDirectory);
+        }
+        private void LoadDatabase()
+        {
+            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
+            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
+            string stringDataDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName + "\\Database\\Database_BTL.mdf"; //get data directory by find Project directory, then combine with Database directory
+            dataProcess = new DataProcess(stringDataDirectory);
         }
         private void LoadComboBoxData()
         {

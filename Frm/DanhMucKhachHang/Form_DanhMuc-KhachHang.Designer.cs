@@ -1,6 +1,6 @@
 ﻿namespace BTL_Prj.Frm.DanhMucKhachHang
 {
-    partial class DanhMucKhachHang
+    partial class frmDanhMucKhachHang
     {
         /// <summary>
         /// Required designer variable.
@@ -259,9 +259,9 @@
             this.Controls.Add(this.txtMaKhach);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "DMKhachHang";
-            this.Text = "Khách hàng";
-            this.Load += new System.EventHandler(this.DanhMucKhachHang_Load);
+            this.Name = "frmDanhMucKhachHang";
+            this.Text = "DANH MỤC KHÁCH HÀNG";
+            this.Load += new System.EventHandler(this.frmDanhMucKhachHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

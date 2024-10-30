@@ -252,8 +252,9 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmChiTietHoaDonBan";
-            this.Text = "Chi tiết hóa đơn";
+            this.Text = "THÔNG TIN CHI TIẾT HÓA ĐƠN BÁN";
             this.Load += new System.EventHandler(this.frmChiTietHoaDonBan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDonBan)).EndInit();
             this.ResumeLayout(false);
