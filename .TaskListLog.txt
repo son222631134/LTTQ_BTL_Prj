@@ -1,0 +1,50 @@
+﻿connect to database :
+
+//class
+
+        public DataProcess() { }
+        public DataProcess(string connectionString)
+        {
+
+            string strConnect = "Data Source=.\\SQLEXPRESS;AttachDbFilename="
+            + connectionString
+            + ";Integrated Security=True;User Instance=True";
+
+            this.connectionString = strConnect;
+            return;
+        }
+
+//form
+			string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;	//get current directory
+			string stringDataDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf("BTL_Prj")) + "BTL_Prj\\Database\\Database_BTL.mdf"; //get data directory by find Project directory, then combine with Database directory
+            dataProcess = new DataProcess(stringDataDirectory);
+
+            
+DanhMucHangHoa:
+	done Create Copy Paste Class
+	done Create Copy Paste Form
+	done Fix Modified Form
+    done add dgv.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
+---
+
+DanhMucKhachHang:
+	done Create Copy Paste Class
+	done Create Copy Paste Form
+	done Fix Modified Form
+    done add dgv.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
+---
+HoaDonBan:
+	done Create Copy Paste Class
+	done Create Copy Paste Form
+	done Fix Modified Form
+    done add dgv.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
+---
+HoaDonNhap:
+	done Create Copy Paste Class
+	done Create Copy Paste Form
+	done Fix Modified Form
+    done add dgv.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
+    
+
+
+	
