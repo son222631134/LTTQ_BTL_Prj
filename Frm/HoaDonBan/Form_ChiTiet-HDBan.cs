@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
 using BTL_Prj.Class.HoaDonBan;
+using BTL_Prj.Class;
 
 namespace BTL_Prj.Frm.HoaDonBan
 {
@@ -26,10 +27,11 @@ namespace BTL_Prj.Frm.HoaDonBan
         }
         private void frmChiTietHoaDonBan_Load(object sender, EventArgs e)
         {
-            LoadIcon();
-            LoadDatabase();
+            Prepare prepare = new Prepare();
+            prepare.setFormProperties(this);
+            prepare.setDgvProperties(dgvChiTietHoaDonBan);
+            dataProcess = new DataProcess(prepare.getDatabaseDirectory());
 
-            dgvChiTietHoaDonBan.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
             LoadDataGridView();
             LoadMaHang();
             cboMaHang.Enabled = false;

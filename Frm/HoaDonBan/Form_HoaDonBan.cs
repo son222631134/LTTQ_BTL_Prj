@@ -17,6 +17,7 @@ using OfficeOpenXml;
 using System.IO;
 using System.Reflection;
 using BTL_Prj.Class.HoaDonBan;
+using BTL_Prj.Class;
 
 namespace BTL_Prj.Frm.HoaDonBan
 {
@@ -30,10 +31,11 @@ namespace BTL_Prj.Frm.HoaDonBan
         }
         private void frmHoaDonBan_Load(object sender, EventArgs e)
         {
-            LoadIcon();
-            LoadDatabase();
+            Prepare prepare = new Prepare();
+            prepare.setFormProperties(this);
+            prepare.setDgvProperties(dgvHDBanHang);
+            dataProcess = new DataProcess(prepare.getDatabaseDirectory());
 
-            dgvHDBanHang.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
             btnChiTiet.Enabled = false;
             btnInHoaDon.Enabled = false;
             DisablePointer();
@@ -614,6 +616,11 @@ namespace BTL_Prj.Frm.HoaDonBan
         }
 
         private void dtpNgayBan_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

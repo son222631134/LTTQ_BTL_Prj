@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include="Class\DanhMucHangHoa\DataProcess.cs" />
     <Compile Include="Class\DanhMucKhachHang\DataProcess.cs" />
+    <Compile Include="Class\Function.cs" />
     <Compile Include="Class\HoaDonBan\DataProcess.cs" />
     <Compile Include="Class\HoaDonBan\Functions.cs" />
     <Compile Include="Class\HoaDonNhap\DataProcess.cs" />
@@ -194,6 +195,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -219,7 +221,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database_BTL.mdf</DependentUpon>
     </Content>
-    <Content Include="Media\icon.bmp" />
+    <None Include="Database\Media\User\Avatar_Admin.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

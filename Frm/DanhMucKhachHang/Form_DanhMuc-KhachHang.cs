@@ -6,40 +6,28 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Drawing;
 using BTL_Prj.Class.DanhMucKhachHang;
+using BTL_Prj.Class;
 
 namespace BTL_Prj.Frm.DanhMucKhachHang
 {
-    public partial class frmDanhMucKhachHang : Form
+    public partial class frmKhachHang : Form
     {
         DataProcess dataProcess = new DataProcess();  // Đối tượng xử lý cơ sở dữ liệu
 
-        public frmDanhMucKhachHang()
+        public frmKhachHang()
         {
             InitializeComponent();
         }
 
         private void frmDanhMucKhachHang_Load(object sender, EventArgs e)
         {
-            LoadIcon();
-            LoadDatabase();
+            Prepare prepare = new Prepare();
+            prepare.setFormProperties(this);
+            prepare.setDgvProperties(dgvKhachHang);
+            dataProcess = new DataProcess(prepare.getDatabaseDirectory());
 
-            dgvKhachHang.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
             LoadData();  
             SetDefaultState();  
-        }
-        private void LoadIcon()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName+"\\Media\\32x32-LogoUTC.ico";
-            this.Icon = new Icon(stringDirectory);
-        }
-        private void LoadDatabase()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDataDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName + "\\Database\\Database_BTL.mdf"; //get data directory by find Project directory, then combine with Database directory
-            dataProcess = new DataProcess(stringDataDirectory);
         }
 
         private void LoadData()

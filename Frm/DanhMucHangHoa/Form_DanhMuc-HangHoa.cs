@@ -7,41 +7,29 @@ using System.Drawing;
 using System.Collections.Generic;
 using BTL_Prj.Class.DanhMucHangHoa;
 using System.Reflection;
+using BTL_Prj.Class;
 
 namespace BTL_Prj.Frm.DanhMucHangHoa
 {
 	public partial class frmDanhMucHangHoa : Form
 	{
-		DataProcess dataProcess = new DataProcess(); 
+			Prepare prepare = new Prepare();
+        DataProcess dataProcess = new DataProcess(); 
 		public frmDanhMucHangHoa()
 		{
 			InitializeComponent();
 		}
 		private void frmDanhMucHangHoa_Load(object sender, EventArgs e)
 		{
-			LoadIcon();
-			LoadDatabase();
-
-			dgvHangHoa.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
+			prepare.setFormProperties(this);
+			prepare.setDgvProperties(dgvHangHoa);
+			dataProcess = new DataProcess(prepare.getDatabaseDirectory());
+			
 			LoadData();
 			LoadComboBoxData();
 			SetDefaultState();
 
-			picHangHoa.SizeMode = PictureBoxSizeMode.CenterImage;
-        }
-        private void LoadIcon()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName + "\\Media\\32x32-LogoUTC.ico";
-            this.Icon = new Icon(stringDirectory);
-        }
-        private void LoadDatabase()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDataDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName + "\\Database\\Database_BTL.mdf"; //get data directory by find Project directory, then combine with Database directory
-            dataProcess = new DataProcess(stringDataDirectory);
+			picHangHoa.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         private void LoadData()
 		{
@@ -82,22 +70,24 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 				// Insert scenario
 				if (int.TryParse(txtSoLuong.Text, out int soLuong) &&
 					decimal.TryParse(txtDonGiaNhap.Text, out decimal donGiaNhap) &&
-					decimal.TryParse(txtDonGiaBan.Text, out decimal donGiaBan))
-				{
-					var columnValues = new Dictionary<string, object>
-			{
-				{ "MaHang", txtMaHang.Text },
-				{ "TenHang", txtTenHang.Text },
-				{ "SoLuong", soLuong },
-				{ "DonGiaNhap", donGiaNhap },
-				{ "DonGiaBan", donGiaBan },
-				{ "MaDonVi", cboMaDonVi.SelectedValue.ToString() },
-				{ "MaNoiSX", cboMaNoiSanXuat.SelectedValue.ToString() },
-				{ "MaCongDung", cboMaCongDung.SelectedValue.ToString() },
-				{ "MaMau", cboMaMau.SelectedValue.ToString() },
-				{ "MaDacDiem", cboMaDacDiem.SelectedValue.ToString() },
-				{ "ImagePath", picHangHoa.ImageLocation }
-			};
+					decimal.TryParse(txtDonGiaBan.Text, out decimal donGiaBan))	{
+					//then
+					string src = picHangHoa.ImageLocation;
+					string dest = prepare.getProjectDirectory() + prepare.getMediaDirectoryInProject() + "\\HangHoa\\" + "ImgHangHoa" + txtMaHang.Text;
+					Function.CopyFile(src, dest);
+					var columnValues = new Dictionary<string, object> {
+						{ "MaHang", txtMaHang.Text },
+						{ "TenHang", txtTenHang.Text },
+						{ "SoLuong", soLuong },
+						{ "DonGiaNhap", donGiaNhap },
+						{ "DonGiaBan", donGiaBan },
+						{ "MaDonVi", cboMaDonVi.SelectedValue.ToString() },
+						{ "MaNoiSX", cboMaNoiSanXuat.SelectedValue.ToString() },
+						{ "MaCongDung", cboMaCongDung.SelectedValue.ToString() },
+						{ "MaMau", cboMaMau.SelectedValue.ToString() },
+						{ "MaDacDiem", cboMaDacDiem.SelectedValue.ToString() },
+						{ "ImagePath", dest }
+					};
 
 					try
 					{
@@ -122,20 +112,24 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 				if (int.TryParse(txtSoLuong.Text, out int soLuong) &&
 					decimal.TryParse(txtDonGiaNhap.Text, out decimal donGiaNhap) &&
 					decimal.TryParse(txtDonGiaBan.Text, out decimal donGiaBan))
-				{
-					var columnValues = new Dictionary<string, object>
-			{
-				{ "TenHang", txtTenHang.Text },
-				{ "SoLuong", soLuong },
-				{ "DonGiaNhap", donGiaNhap },
-				{ "DonGiaBan", donGiaBan },
-				{ "MaDonVi", cboMaDonVi.SelectedValue.ToString() },
-				{ "MaNoiSX", cboMaNoiSanXuat.SelectedValue.ToString() },
-				{ "MaCongDung", cboMaCongDung.SelectedValue.ToString() },
-				{ "MaMau", cboMaMau.SelectedValue.ToString() },
-				{ "MaDacDiem", cboMaDacDiem.SelectedValue.ToString() },
-				{ "ImagePath", picHangHoa.ImageLocation }
-			};
+                { //then
+                    string src = picHangHoa.ImageLocation;
+                    string dest = prepare.getProjectDirectory() + prepare.getMediaDirectoryInProject() + "HangHoa\\" + "ImgHangHoa" + txtMaHang.Text + ".jpg";
+                    Function.CopyFile(src, dest);
+					MessageBox.Show(src + "\r\n" + dest);
+                    var columnValues = new Dictionary<string, object>
+					{
+						{ "TenHang", txtTenHang.Text },
+						{ "SoLuong", soLuong },
+						{ "DonGiaNhap", donGiaNhap },
+						{ "DonGiaBan", donGiaBan },
+						{ "MaDonVi", cboMaDonVi.SelectedValue.ToString() },
+						{ "MaNoiSX", cboMaNoiSanXuat.SelectedValue.ToString() },
+						{ "MaCongDung", cboMaCongDung.SelectedValue.ToString() },
+						{ "MaMau", cboMaMau.SelectedValue.ToString() },
+						{ "MaDacDiem", cboMaDacDiem.SelectedValue.ToString() },
+						{ "ImagePath", dest }
+					};
 
 					try
 					{
@@ -321,5 +315,9 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
             }
         }
 
+		public void Reload()
+		{
+			LoadData();
+		}
     }
 }
