@@ -73,3 +73,4 @@ cơ bản xong, nhưng còn nhiều việc cần làm.
     chuyển Prepare về static hết -> ngon
 
     remove các class riêng thì các form đã hoạt động (có vẻ ổn), còn NhanVien thì chưa fix
+    -> đã fix, chạy ngon
