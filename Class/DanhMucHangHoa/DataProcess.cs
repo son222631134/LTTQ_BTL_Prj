@@ -158,6 +158,5 @@ namespace BTL_Prj.Class.DanhMucHangHoa
 
             return GetData(query, parameters);
         }
-
     }
 }

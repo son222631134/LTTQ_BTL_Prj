@@ -14,28 +14,35 @@ namespace BTL_Prj.Class
     //a de'o vo dung dau :)))
     internal class Prepare
     {
-        private string ProjectName = Assembly.GetExecutingAssembly().GetName().Name; //get project name
-        private string CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-        private string ProjectDirectory;
-        private string MediaDirectoryInProject =    "\\Database\\Media\\";
-        private string DatabaseDirectoryInProject = "\\Database\\Database_BTL.mdf";
-        private string IconFilename = "32x32-LogoUTC.ico";
+        private static readonly string ProjectName = Assembly.GetExecutingAssembly().GetName().Name; //get project name
+        private static readonly string CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
+        private static readonly string ProjectDirectory = getDatabaseDirectory();
+        private static readonly string MediaDirectoryInProject =    "\\Database\\Media\\";
+        private static readonly string DatabaseDirectoryInProject = "\\Database\\Database_BTL.mdf";
+        private static readonly string IconFilename = "32x32-LogoUTC.ico";
 
         public Prepare()
         {
-            getProjectDirectory();
+            MessageBox.Show(
+                ProjectName + "\r\n" + 
+                CurrentDirectory + "\r\n" +
+                ProjectDirectory + "\r\n" +
+                MediaDirectoryInProject + "\r\n" +
+                DatabaseDirectoryInProject + "\r\n" +
+                IconFilename + "\r\n" +
+                "");
+            //getProjectDirectory();
         }
-        public string getProjectDirectory()
+        public static string getProjectDirectory()
         {
-            ProjectDirectory = CurrentDirectory.Substring(0, CurrentDirectory.IndexOf(ProjectName)) + ProjectName;
-            return ProjectDirectory;
+            return CurrentDirectory.Substring(0, CurrentDirectory.IndexOf(ProjectName)) + ProjectName;
         }
-        public string getDatabaseDirectory()
+        public static string getDatabaseDirectory()
         {
-            return ProjectDirectory + DatabaseDirectoryInProject;
+            return getProjectDirectory() + DatabaseDirectoryInProject;
         }
-        public string getMediaDirectoryInProject() { return MediaDirectoryInProject;}
-        public void setFormProperties(Form  frm)
+        public static string getMediaDirectoryInProject() { return MediaDirectoryInProject;}
+        public static void setFormProperties(Form  frm)
         {
             frm.FormBorderStyle = FormBorderStyle.FixedSingle;
             try
@@ -45,11 +52,11 @@ namespace BTL_Prj.Class
             }
             catch (Exception ex)
             {
-                
+                throw new Exception("Error fetching data: " + ex.Message);
             }
         }
 
-        public void setDgvProperties(DataGridView dgv)
+        public static void setDgvProperties(DataGridView dgv)
         {
             dgv.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
             dgv.ReadOnly = true;

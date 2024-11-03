@@ -267,6 +267,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PHẦN MỂM QUẢN LÝ BÁN HÀNG";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel_user.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ptb_user)).EndInit();

@@ -9,28 +9,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-using BTL_Prj.Class.HoaDonBan;
 using BTL_Prj.Class;
 
 namespace BTL_Prj.Frm.HoaDonBan
 {
     public partial class frmChiTietHoaDonBan : Form
     {
-        private DataProcess dataProcess;
         private int soHDB;
 
         public frmChiTietHoaDonBan(int soHDB)
         {
             InitializeComponent();
             this.soHDB = soHDB;
-            dataProcess = new DataProcess();
         }
         private void frmChiTietHoaDonBan_Load(object sender, EventArgs e)
         {
-            Prepare prepare = new Prepare();
-            prepare.setFormProperties(this);
-            prepare.setDgvProperties(dgvChiTietHoaDonBan);
-            dataProcess = new DataProcess(prepare.getDatabaseDirectory());
+            Prepare.setFormProperties(this);
+            Prepare.setDgvProperties(dgvChiTietHoaDonBan);
 
             LoadDataGridView();
             LoadMaHang();
@@ -45,21 +40,6 @@ namespace BTL_Prj.Frm.HoaDonBan
             dgvChiTietHoaDonBan.CellDoubleClick += dgvChiTietHoaDonBan_CellDoubleClick;
             dgvChiTietHoaDonBan.CellClick += dgvChiTietHoaDonBan_CellClick;
         }
-        private void LoadIcon()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName+"\\Media\\32x32-LogoUTC.ico";
-            this.Icon = new Icon(stringDirectory);
-        }
-        private void LoadDatabase()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDataDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName + "\\Database\\Database_BTL.mdf"; //get data directory by find Project directory, then combine with Database directory
-            dataProcess = new DataProcess(stringDataDirectory);
-        }
-
         private void SetFieldsState(bool enabled)
         {
             btnClearCT.Enabled = enabled;
@@ -75,7 +55,7 @@ namespace BTL_Prj.Frm.HoaDonBan
             {
                 string query = "SELECT * FROM ChiTietHoaDonBan WHERE SoHDB = @SoHDB";
                 var parameters = new Dictionary<string, object> { { "@SoHDB", soHDB } };
-                DataTable dt = dataProcess.GetData(query, parameters);
+                DataTable dt = ProcessingData.GetData(query, parameters);
                 dgvChiTietHoaDonBan.DataSource = dt;
             }
             catch (Exception ex)
@@ -97,7 +77,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                 };
 
                 // Lấy dữ liệu từ cơ sở dữ liệu
-                DataTable dt = dataProcess.GetData(checkQuery, checkParams);
+                DataTable dt = ProcessingData.GetData(checkQuery, checkParams);
                 if (dt.Rows.Count > 0)
                 {
                     MessageBox.Show("Mã hàng đã tồn tại trong hóa đơn. Vui lòng chọn mã hàng khác.", "Thông báo");
@@ -114,7 +94,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                     { "@GiamGia", decimal.Parse(txtGiamGia.Text) },
                     { "@ThanhTien", decimal.Parse(txtThanhTien.Text) }
                 };
-                dataProcess.ExecuteQuery(query, parameters);
+                ProcessingData.ExecuteQuery(query, parameters);
                 MessageBox.Show("Thêm thành công");
             }
             catch (Exception e)
@@ -148,7 +128,7 @@ namespace BTL_Prj.Frm.HoaDonBan
             try
             {
                 string query = "SELECT MaHang FROM DMHangHoa";
-                DataTable dt = dataProcess.GetData(query);
+                DataTable dt = ProcessingData.GetData(query);
                 foreach (DataRow row in dt.Rows)
                 {
                     cboMaHang.Items.Add(row["MaHang"].ToString());
@@ -166,7 +146,7 @@ namespace BTL_Prj.Frm.HoaDonBan
             {
                 string query = "SELECT TenHang, DonGiaBan FROM DMHangHoa WHERE MaHang = @MaHang";
                 var parameters = new Dictionary<string, object> { { "@MaHang", maHang } };
-                DataTable dt = dataProcess.GetData(query, parameters);
+                DataTable dt = ProcessingData.GetData(query, parameters);
                 if (dt.Rows.Count > 0)
                 {
                     txtTenHang.Text = dt.Rows[0]["TenHang"].ToString();
@@ -186,6 +166,8 @@ namespace BTL_Prj.Frm.HoaDonBan
 
         private void button3_Click(object sender, EventArgs e)
         {
+                this.Close();
+			return;
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn đóng?", "Xác nhận đóng", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
@@ -252,7 +234,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                     { "@SoHDB", soHDB },
                     { "@MaHang", int.Parse(maHang) }
                 };
-                dataProcess.ExecuteQuery(query, parameters);
+                ProcessingData.ExecuteQuery(query, parameters);
                 MessageBox.Show("Xóa mặt hàng thành công.");
             }
             catch (Exception ex)
@@ -289,7 +271,7 @@ namespace BTL_Prj.Frm.HoaDonBan
             {
                 string query = "SELECT TenHang FROM DMHangHoa WHERE MaHang = @MaHang";
                 var parameters = new Dictionary<string, object> { { "@MaHang", maHang } };
-                DataTable dt = dataProcess.GetData(query, parameters);
+                DataTable dt = ProcessingData.GetData(query, parameters);
 
                 if (dt.Rows.Count > 0)
                 {
@@ -308,7 +290,7 @@ namespace BTL_Prj.Frm.HoaDonBan
             {
                 string query = "SELECT DonGiaBan FROM DMHangHoa WHERE MaHang = @MaHang";
                 var parameters = new Dictionary<string, object> { { "@MaHang", maHang } };
-                DataTable dt = dataProcess.GetData(query, parameters);
+                DataTable dt = ProcessingData.GetData(query, parameters);
 
                 if (dt.Rows.Count > 0)
                 {
@@ -392,7 +374,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                     { "@GiamGia", decimal.Parse(txtGiamGia.Text) },
                     { "@ThanhTien", decimal.Parse(txtThanhTien.Text) }
                 };
-                dataProcess.ExecuteQuery(query, parameters);
+                ProcessingData.ExecuteQuery(query, parameters);
                 MessageBox.Show("Chỉnh sửa thành công.");
             }
             catch (Exception ex)

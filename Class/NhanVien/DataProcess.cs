@@ -11,8 +11,11 @@ namespace BTL_Prj.Class.NhanVien
 {
     public class DataProcess
     {
-        private string connectionString;
+        private string connectionString = "Data Source=.\\SQLEXPRESS;AttachDbFilename="
+                                            + Prepare.getDatabaseDirectory()
+                                            + ";Integrated Security=True;User Instance=True";
 
+        public DataProcess() { }
         public DataProcess(string connectionString)
         {
             string strConnect = "Data Source=.\\SQLEXPRESS;AttachDbFilename="
