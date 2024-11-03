@@ -1,4 +1,5 @@
-﻿using BTL_Prj.Frm.DanhMucHangHoa;
+﻿using BTL_Prj.Class;
+using BTL_Prj.Frm.DanhMucHangHoa;
 using BTL_Prj.Frm.DanhMucKhachHang;
 using BTL_Prj.Frm.HoaDonBan;
 using BTL_Prj.Frm.HoaDonNhap;
@@ -24,69 +25,124 @@ namespace BTL_Prj.Frm.Main
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            LoadIcon();
-        }
-        private void LoadIcon()
-        {
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf("BTL_Prj")) + "BTL_Prj\\Media\\32x32-LogoUTC.ico";
-            this.Icon = new Icon(stringDirectory);
+            //Backend
+            ProcessingData.OpenConnection();
+
+            //Frontend
+            txt_warning.Hide();
+            Prepare.setFormProperties(this);
+            //prepare.setDgvProperties(dgvNhanVien);
+            //dataProcess = new DataProcess(prepare.getDatabaseDirectory());
+
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            lb_username.Text = "Hello, Admin";
+            lb_username.TextAlign = ContentAlignment.MiddleCenter;
+
+            //openChildForm(new frmHoaDonNhap());
         }
 
-        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
+        // xử lí mở form con
+        private Form activeform = null;
+        private void openChildForm(Form childForm)
+        {
+            if (activeform != null)
+                activeform.Close();
+            activeform = childForm;
+            childForm.TopLevel = false;
+            childForm.Dock = DockStyle.Fill;
+            panel_childForm.Controls.Add(childForm);
+            panel_childForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            //childForm.BringToFront();
+            //childForm.Show();
+            childForm.FormBorderStyle = FormBorderStyle.None;
+        }
+
+        // xử lí chuyển màu khi click vào button
+        //maybe ko cần
+        private Button currentButton;
+        private void ActivateButton(object btnSender)
+        {
+            if (btnSender != null)
+            {
+                if (currentButton != (Button)btnSender)
+                {
+                    DisableButton();
+                    Color color = ColorTranslator.FromHtml("#4169E1");
+                    currentButton = (Button)btnSender;
+                    currentButton.BackColor = color;
+                    currentButton.ForeColor = Color.White;
+                }
+            }
+        }
+        private void DisableButton()
+        {
+            foreach (Control previousBtn in panel_LeftBar.Controls)
+            {
+                if (previousBtn.GetType() == typeof(Button))
+                {
+                    previousBtn.BackColor = Color.FromArgb(0, 0, 64);
+                    previousBtn.ForeColor = Color.Gainsboro;
+                }
+            }
+        }
+
+        private void btn_menu_HangHoa_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+            openChildForm(new frmDanhMucHangHoa());
+        }
+
+        private void btn_menu_HDBan_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+            openChildForm(new frmHoaDonBan());
+        }
+
+        private void btn_menu_HDNhap_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+            openChildForm(new frmHoaDonNhap());
+        }
+
+        private void btn_menu_KhachHang_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+            openChildForm(new frmKhachHang());
+        }
+
+        private void btn_menu_NhanVien_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+            openChildForm(new frmNhanVien());
+        }
+
+        private void btn_menu_Thoat_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 Dispose();
-            }
+            }  
         }
 
-        private void nhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_Dashboard_Click(object sender, EventArgs e)
         {
-            if ((Application.OpenForms["frmNhanVien"] as frmNhanVien) == null)
-            {
-                frmNhanVien frm = new frmNhanVien();
-                frm.Show();
-            }
-        }
-
-        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if ((Application.OpenForms["frmDanhMucKhachHang"] as frmDanhMucKhachHang) == null)
-            {
-                frmDanhMucKhachHang frm = new frmDanhMucKhachHang();
-                frm.Show();
-            }
-        }
-
-        private void hàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if ((Application.OpenForms["frmDanhMucHangHoa"] as frmDanhMucHangHoa) == null)
-            {
-                frmDanhMucHangHoa frm = new frmDanhMucHangHoa();
-                frm.Show();
-            }
-        }
-
-        private void hóaĐơnNhậpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if ((Application.OpenForms["frmThongTinHDNhap"] as frmThongTinHDNhap) == null)
-            {
-                frmThongTinHDNhap frm = new frmThongTinHDNhap();
-                frm.Show();
-            }
+            ActivateButton(sender);
+            if (activeform != null)
+                activeform.Close();
 
         }
 
-        private void hóaĐơnBánToolStripMenuItem_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if ((Application.OpenForms["frmHoaDonBan"] as frmHoaDonBan) == null)
-            {
-            }
-            frmHoaDonBan frm = new frmHoaDonBan();
-            frm.Show();
 
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ProcessingData.CloseConnection();
         }
     }
 }

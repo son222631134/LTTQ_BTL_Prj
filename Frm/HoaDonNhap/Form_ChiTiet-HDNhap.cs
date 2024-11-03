@@ -9,13 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-using BTL_Prj.Class.HoaDonNhap;
+using BTL_Prj.Class;
 
 namespace BTL_Prj.Frm.HoaDonNhap
 {
     public partial class frmChiTietHDNhap : Form
     {
-        private DataProcess dataProcess = new DataProcess();
         private string selectedSoHDN; // Biến lưu số hóa đơn được chọn từ Form
         public frmChiTietHDNhap()
         {
@@ -29,39 +28,24 @@ namespace BTL_Prj.Frm.HoaDonNhap
 
         private void frmChiTietHDNhap_Load(object sender, EventArgs e)
         {
-            LoadIcon();
-            LoadDatabase();
-
-            dtgrvFORM2.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
+            Prepare.setFormProperties(this);
+            Prepare.setDgvProperties(dgvChiTietHoaDonNhap);
 
             LoadDataToGridView();
             LoadComboBoxData(); // Tải dữ liệu vào ComboBox
         }
-        private void LoadIcon()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName+"\\Media\\32x32-LogoUTC.ico";
-            this.Icon = new Icon(stringDirectory);
-        }
-        private void LoadDatabase()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDataDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName + "\\Database\\Database_BTL.mdf"; //get data directory by find Project directory, then combine with Database directory
-            dataProcess = new DataProcess(stringDataDirectory);
-        }
+
         private void LoadDataToGridView()
         {
             // Hiển thị dữ liệu chi tiết hóa đơn nhập vào DataGridView
             string query = $"SELECT * FROM ChiTietHoaDonNhap WHERE SOHDN = '{selectedSoHDN}'"; // Chọn dữ liệu theo số hóa đơn
-            DataTable dt = dataProcess.GetData(query);
-            dtgrvFORM2.DataSource = dt;
+            DataTable dt = ProcessingData.GetData(query);
+            dgvChiTietHoaDonNhap.DataSource = dt;
         }
         private void LoadComboBoxData()
         {
             // Load mã hàng vào ComboBox CBBMAHANG
-            DataTable dtMaHang = dataProcess.GetComboBoxData("DMHangHoa", "MaHang", "MaHang"); // Lấy dữ liệu từ bảng DMHangHoa
+            DataTable dtMaHang = ProcessingData.GetComboBoxData("DMHangHoa", "MaHang", "MaHang"); // Lấy dữ liệu từ bảng DMHangHoa
             CBBMAHANG.DataSource = dtMaHang;
             CBBMAHANG.DisplayMember = "MaHang"; // Hiển thị mã hàng trong ComboBox
             CBBMAHANG.ValueMember = "MaHang"; // Giá trị tương ứng với mã hàng
@@ -76,36 +60,6 @@ namespace BTL_Prj.Frm.HoaDonNhap
             TBSOLUONG.Clear();
             TBDONGIA.Clear();
             TBGIAMGIA.Clear();
-        }
-
-        private void SoHDNTB_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TBMAHANG_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TBSOLUONG_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TBDONGIA_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TBGIAMGIA_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Clear_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void BTADDCTHDN_Click(object sender, EventArgs e)
@@ -129,7 +83,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
 
                 columnValues.Add("ThanhTien", thanhTien);
 
-                dataProcess.Insert("ChiTietHoaDonNhap", columnValues);
+                ProcessingData.Insert("ChiTietHoaDonNhap", columnValues);
                 MessageBox.Show("Thêm chi tiết hóa đơn nhập thành công!");
                 LoadDataToGridView(); // Cập nhật lại dữ liệu trên DataGridView
                 ClearFields(); // Xóa các trường sau khi thêm
@@ -142,10 +96,10 @@ namespace BTL_Prj.Frm.HoaDonNhap
 
         private void BTSUA_Click(object sender, EventArgs e)
         {
-            if (dtgrvFORM2.CurrentRow != null)
+            if (dgvChiTietHoaDonNhap.CurrentRow != null)
             {
                 // Lấy dữ liệu từ hàng được chọn
-                string maHang = dtgrvFORM2.CurrentRow.Cells["MaHang"].Value.ToString();
+                string maHang = dgvChiTietHoaDonNhap.CurrentRow.Cells["MaHang"].Value.ToString();
 
                 // Kiểm tra xem mã hàng có được chọn không
                 if (CBBMAHANG.SelectedValue == null)
@@ -181,7 +135,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
             };
 
                     // Cập nhật dữ liệu vào bảng ChiTietHoaDonNhap
-                    dataProcess.Update("ChiTietHoaDonNhap", columnValues, "MaHang", maHang); // Sử dụng mã hàng cũ làm điều kiện
+                    ProcessingData.Update("ChiTietHoaDonNhap", columnValues, "MaHang", maHang); // Sử dụng mã hàng cũ làm điều kiện
 
                     MessageBox.Show("Cập nhật chi tiết hóa đơn nhập thành công!");
                     LoadDataToGridView(); // Cập nhật lại dữ liệu trên DataGridView
@@ -208,7 +162,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
                     return;
                 }
 
-                dataProcess.Delete("ChiTietHoaDonNhap", "MaHang", CBBMAHANG.Text);
+                ProcessingData.Delete("ChiTietHoaDonNhap", "MaHang", CBBMAHANG.Text);
                 MessageBox.Show("Xóa chi tiết hóa đơn nhập thành công!");
                 LoadDataToGridView(); // Cập nhật lại dữ liệu trên DataGridView
                 ClearFields(); // Xóa các trường sau khi xóa
@@ -222,6 +176,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
         private void ExitForm2_Click(object sender, EventArgs e)
         {
             this.Close(); // Đóng form
+			return;
         }
 
         private void dtgrvFORM2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -234,7 +189,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
             // Hiển thị dữ liệu từ hàng đã chọn lên các TextBox
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dtgrvFORM2.Rows[e.RowIndex];
+                DataGridViewRow row = dgvChiTietHoaDonNhap.Rows[e.RowIndex];
 
                 // Hiển thị số hóa đơn
                 SoHDNTB.Text = row.Cells["SOHDN"].Value.ToString();
@@ -250,6 +205,56 @@ namespace BTL_Prj.Frm.HoaDonNhap
         }
 
         private void CBBMAHANG_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TBGIAMGIA_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TBDONGIA_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TBSOLUONG_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SoHDNTB_TextChanged(object sender, EventArgs e)
         {
 
         }

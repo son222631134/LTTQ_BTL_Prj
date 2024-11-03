@@ -10,13 +10,12 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BTL_Prj.Class.NhanVien;
+using BTL_Prj.Class;
 
 namespace BTL_Prj.Frm.NhanVien
 {
     public partial class frmNhanVien : Form
     {
-        DataProcess dataProcess;
         private bool isAdding = false;
         private bool isEditing = false;
 
@@ -26,36 +25,22 @@ namespace BTL_Prj.Frm.NhanVien
         }
         private void frmNhanvien_Load(object sender, EventArgs e)
         {
-            dgvNhanVien.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
+            Prepare.setFormProperties(this);
+            Prepare.setDgvProperties(dgvNhanVien);
 
-            LoadIcon();
-            LoadDatabase();
             LoadData();
             LoadMaCV();
             SetFieldsState(false);
         }
-        private void LoadIcon()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName+"\\Media\\32x32-LogoUTC.ico";
-            this.Icon = new Icon(stringDirectory);
-        }
-        private void LoadDatabase()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDataDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName + "\\Database\\Database_BTL.mdf"; //get data directory by find Project directory, then combine with Database directory
-            dataProcess = new DataProcess(stringDataDirectory);
-        }
         private void LoadData()
         {
-            dgvNhanVien.DataSource = dataProcess.GetAllNhanVien();
+            //dgvNhanVien.DataSource = ProcessingData.GetAllNhanVien();
+            dgvNhanVien.DataSource = ProcessingData.NhanVien_GetAllNhanVien();
         }
         private void LoadMaCV()
         {
             cbMaCV.Items.Clear();
-            DataTable dtMaCV = dataProcess.GetMaCVList();
+            DataTable dtMaCV = ProcessingData.NhanVien_GetMaCVList();
             foreach (DataRow row in dtMaCV.Rows)
             {
                 cbMaCV.Items.Add(row["MaCV"].ToString());
@@ -135,7 +120,7 @@ namespace BTL_Prj.Frm.NhanVien
 
             if (result == DialogResult.Yes)
             {
-                dataProcess.DeleteNhanVien(txtMaNV.Text);
+                ProcessingData.NhanVien_DeleteNhanVien(txtMaNV.Text);
                 MessageBox.Show("Xóa nhân viên thành công!");
                 ClearTextBoxes();
                 LoadData();
@@ -147,7 +132,7 @@ namespace BTL_Prj.Frm.NhanVien
             {
                 if (ValidateFields())
                 {
-                    dataProcess.AddNhanVien(
+                    ProcessingData.NhanVien_AddNhanVien(
                         txtMaNV.Text,
                         txtTenNV.Text,
                         txtDiaChi.Text,
@@ -165,7 +150,7 @@ namespace BTL_Prj.Frm.NhanVien
             {
                 if (ValidateFields())
                 {
-                    dataProcess.UpdateNhanVien(
+                    ProcessingData.NhanVien_UpdateNhanVien(
                         txtMaNV.Text,
                         txtTenNV.Text,
                         txtDiaChi.Text,
@@ -224,7 +209,7 @@ namespace BTL_Prj.Frm.NhanVien
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string searchValue = txtTimKiem.Text.Trim();
-            dgvNhanVien.DataSource = dataProcess.SearchNhanVien(searchValue);
+            dgvNhanVien.DataSource = ProcessingData.NhanVien_SearchNhanVien(searchValue);
             if (string.IsNullOrWhiteSpace(searchValue))
             {
                 MessageBox.Show("Vui lòng nhập mã hoặc tên nhân viên để tìm kiếm.", "Thông báo");
@@ -261,6 +246,8 @@ namespace BTL_Prj.Frm.NhanVien
         }
         private void button8_Click(object sender, EventArgs e)
         {
+                Dispose();
+			return;
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {

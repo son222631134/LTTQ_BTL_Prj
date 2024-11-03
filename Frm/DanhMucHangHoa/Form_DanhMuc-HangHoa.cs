@@ -5,48 +5,32 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
-using BTL_Prj.Class.DanhMucHangHoa;
 using System.Reflection;
+using BTL_Prj.Class;
 
 namespace BTL_Prj.Frm.DanhMucHangHoa
 {
 	public partial class frmDanhMucHangHoa : Form
 	{
-		DataProcess dataProcess = new DataProcess(); 
 		public frmDanhMucHangHoa()
 		{
 			InitializeComponent();
 		}
 		private void frmDanhMucHangHoa_Load(object sender, EventArgs e)
 		{
-			LoadIcon();
-			LoadDatabase();
-
-			dgvHangHoa.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;
+			Prepare.setFormProperties(this);
+			Prepare.setDgvProperties(dgvHangHoa);
+			
 			LoadData();
 			LoadComboBoxData();
 			SetDefaultState();
 
-			picHangHoa.SizeMode = PictureBoxSizeMode.CenterImage;
-        }
-        private void LoadIcon()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName + "\\Media\\32x32-LogoUTC.ico";
-            this.Icon = new Icon(stringDirectory);
-        }
-        private void LoadDatabase()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDataDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName + "\\Database\\Database_BTL.mdf"; //get data directory by find Project directory, then combine with Database directory
-            dataProcess = new DataProcess(stringDataDirectory);
+			picHangHoa.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         private void LoadData()
 		{
 			string query = "SELECT * FROM DMHangHoa";
-			dgvHangHoa.DataSource = dataProcess.GetData(query);
+			dgvHangHoa.DataSource = ProcessingData.GetData(query);
             if (dgvHangHoa.Columns["ImagePath"] != null)
             {
                 dgvHangHoa.Columns["ImagePath"].Visible = false;
@@ -55,23 +39,23 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 
 		private void LoadComboBoxData()
 		{
-			cboMaDonVi.DataSource = dataProcess.GetComboBoxData("DonViTinh", "MaDonVi", "TenDonVi");
+			cboMaDonVi.DataSource = ProcessingData.GetComboBoxData("DonViTinh", "MaDonVi", "TenDonVi");
 			cboMaDonVi.DisplayMember = "TenDonVi";
 			cboMaDonVi.ValueMember = "MaDonVi";
 
-			cboMaNoiSanXuat.DataSource = dataProcess.GetComboBoxData("NoiSanXuat", "MaNoiSX", "TenNoiSX");
+			cboMaNoiSanXuat.DataSource = ProcessingData.GetComboBoxData("NoiSanXuat", "MaNoiSX", "TenNoiSX");
 			cboMaNoiSanXuat.DisplayMember = "TenNoiSX";
 			cboMaNoiSanXuat.ValueMember = "MaNoiSX";
 
-			cboMaCongDung.DataSource = dataProcess.GetComboBoxData("CongDung", "MaCongDung", "TenCongDung");
+			cboMaCongDung.DataSource = ProcessingData.GetComboBoxData("CongDung", "MaCongDung", "TenCongDung");
 			cboMaCongDung.DisplayMember = "TenCongDung";
 			cboMaCongDung.ValueMember = "MaCongDung";
 
-			cboMaMau.DataSource = dataProcess.GetComboBoxData("MauSac", "MaMau", "TenMau");
+			cboMaMau.DataSource = ProcessingData.GetComboBoxData("MauSac", "MaMau", "TenMau");
 			cboMaMau.DisplayMember = "TenMau";
 			cboMaMau.ValueMember = "MaMau";
 
-			cboMaDacDiem.DataSource = dataProcess.GetComboBoxData("DacDiem", "MaDacDiem", "TenDacDiem");
+			cboMaDacDiem.DataSource = ProcessingData.GetComboBoxData("DacDiem", "MaDacDiem", "TenDacDiem");
 			cboMaDacDiem.DisplayMember = "TenDacDiem";
 			cboMaDacDiem.ValueMember = "MaDacDiem";
 		}
@@ -82,26 +66,28 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 				// Insert scenario
 				if (int.TryParse(txtSoLuong.Text, out int soLuong) &&
 					decimal.TryParse(txtDonGiaNhap.Text, out decimal donGiaNhap) &&
-					decimal.TryParse(txtDonGiaBan.Text, out decimal donGiaBan))
-				{
-					var columnValues = new Dictionary<string, object>
-			{
-				{ "MaHang", txtMaHang.Text },
-				{ "TenHang", txtTenHang.Text },
-				{ "SoLuong", soLuong },
-				{ "DonGiaNhap", donGiaNhap },
-				{ "DonGiaBan", donGiaBan },
-				{ "MaDonVi", cboMaDonVi.SelectedValue.ToString() },
-				{ "MaNoiSX", cboMaNoiSanXuat.SelectedValue.ToString() },
-				{ "MaCongDung", cboMaCongDung.SelectedValue.ToString() },
-				{ "MaMau", cboMaMau.SelectedValue.ToString() },
-				{ "MaDacDiem", cboMaDacDiem.SelectedValue.ToString() },
-				{ "ImagePath", picHangHoa.ImageLocation }
-			};
+					decimal.TryParse(txtDonGiaBan.Text, out decimal donGiaBan))	{
+					//then
+					string src = picHangHoa.ImageLocation;
+					string dest = Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + "\\HangHoa\\" + "ImgHangHoa" + txtMaHang.Text;
+					Function.CopyFile(src, dest);
+					var columnValues = new Dictionary<string, object> {
+						{ "MaHang", txtMaHang.Text },
+						{ "TenHang", txtTenHang.Text },
+						{ "SoLuong", soLuong },
+						{ "DonGiaNhap", donGiaNhap },
+						{ "DonGiaBan", donGiaBan },
+						{ "MaDonVi", cboMaDonVi.SelectedValue.ToString() },
+						{ "MaNoiSX", cboMaNoiSanXuat.SelectedValue.ToString() },
+						{ "MaCongDung", cboMaCongDung.SelectedValue.ToString() },
+						{ "MaMau", cboMaMau.SelectedValue.ToString() },
+						{ "MaDacDiem", cboMaDacDiem.SelectedValue.ToString() },
+						{ "ImagePath", dest }
+					};
 
 					try
 					{
-						dataProcess.Insert("DMHangHoa", columnValues);
+						ProcessingData.Insert("DMHangHoa", columnValues);
 						MessageBox.Show("Dữ liệu đã được thêm thành công!");
 						LoadData();
 						SetDefaultState();
@@ -122,24 +108,28 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 				if (int.TryParse(txtSoLuong.Text, out int soLuong) &&
 					decimal.TryParse(txtDonGiaNhap.Text, out decimal donGiaNhap) &&
 					decimal.TryParse(txtDonGiaBan.Text, out decimal donGiaBan))
-				{
-					var columnValues = new Dictionary<string, object>
-			{
-				{ "TenHang", txtTenHang.Text },
-				{ "SoLuong", soLuong },
-				{ "DonGiaNhap", donGiaNhap },
-				{ "DonGiaBan", donGiaBan },
-				{ "MaDonVi", cboMaDonVi.SelectedValue.ToString() },
-				{ "MaNoiSX", cboMaNoiSanXuat.SelectedValue.ToString() },
-				{ "MaCongDung", cboMaCongDung.SelectedValue.ToString() },
-				{ "MaMau", cboMaMau.SelectedValue.ToString() },
-				{ "MaDacDiem", cboMaDacDiem.SelectedValue.ToString() },
-				{ "ImagePath", picHangHoa.ImageLocation }
-			};
+                { //then
+                    string src = picHangHoa.ImageLocation;
+                    string dest = Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + "HangHoa\\" + "ImgHangHoa" + txtMaHang.Text + ".jpg";
+                    Function.CopyFile(src, dest);
+					MessageBox.Show(src + "\r\n" + dest);
+                    var columnValues = new Dictionary<string, object>
+					{
+						{ "TenHang", txtTenHang.Text },
+						{ "SoLuong", soLuong },
+						{ "DonGiaNhap", donGiaNhap },
+						{ "DonGiaBan", donGiaBan },
+						{ "MaDonVi", cboMaDonVi.SelectedValue.ToString() },
+						{ "MaNoiSX", cboMaNoiSanXuat.SelectedValue.ToString() },
+						{ "MaCongDung", cboMaCongDung.SelectedValue.ToString() },
+						{ "MaMau", cboMaMau.SelectedValue.ToString() },
+						{ "MaDacDiem", cboMaDacDiem.SelectedValue.ToString() },
+						{ "ImagePath", dest }
+					};
 
 					try
 					{
-						dataProcess.Update("DMHangHoa", columnValues, "MaHang", txtMaHang.Text);
+						ProcessingData.Update("DMHangHoa", columnValues, "MaHang", txtMaHang.Text);
 						MessageBox.Show("Dữ liệu đã được cập nhật!");
 						LoadData();
 						SetDefaultState();
@@ -182,7 +172,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
                 {
                     try
                     {
-                        dataProcess.Delete("DMHangHoa", "MaHang", txtMaHang.Text);
+                        ProcessingData.Delete("DMHangHoa", "MaHang", txtMaHang.Text);
                         MessageBox.Show("Dữ liệu đã được xóa!");
                         LoadData();
                         SetDefaultState();
@@ -211,7 +201,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 			}
 
 			string[] searchColumns = { "MaHang", "TenHang" }; 
-			dgvHangHoa.DataSource = dataProcess.Search("DMHangHoa", searchColumns, searchValue);
+			dgvHangHoa.DataSource = ProcessingData.Search("DMHangHoa", searchColumns, searchValue);
 		}
 
 		
@@ -261,6 +251,8 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 		
 		private void btnDong_Click(object sender, EventArgs e)
 		{
+            this.Close();
+			return;
             DialogResult result = MessageBox.Show("Thoát?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
@@ -321,5 +313,9 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
             }
         }
 
+		public void Reload()
+		{
+			LoadData();
+		}
     }
 }
