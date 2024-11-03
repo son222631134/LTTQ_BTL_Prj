@@ -99,14 +99,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\DanhMucHangHoa\DataProcess.cs" />
-    <Compile Include="Class\DanhMucKhachHang\DataProcess.cs" />
     <Compile Include="Class\Function.cs" />
-    <Compile Include="Class\HoaDonBan\DataProcess.cs" />
-    <Compile Include="Class\HoaDonBan\Functions.cs" />
-    <Compile Include="Class\HoaDonNhap\DataProcess.cs" />
-    <Compile Include="Class\NhanVien\DataProcess.cs" />
     <Compile Include="Class\Prepare.cs" />
+    <Compile Include="Class\ProcessingData.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

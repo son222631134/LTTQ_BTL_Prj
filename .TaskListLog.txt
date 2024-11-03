@@ -59,3 +59,18 @@ form nhân viên:
 	btn clear, hủy cùng vị trí, đang ưu tiên clear hơn
 
 cơ bản xong, nhưng còn nhiều việc cần làm.
+
+------------
+03.11.2024
+- ý tưởng: gộp hết các class dataprocess lại, cho main->connect DTB, các form-> executing query
+    -> đỡ tốn thời gian open->close connection.
+    (DMHH / DMKH / HDB)
+    _GetData is the same.
+    _ExecuteQuery is the same
+    -> đcm giống nhau hết, diff file trong sublime nó báo thế
+    
+    DataProcess của NhanVien thì khác, cần sửa lại
+    chuyển Prepare về static hết -> ngon
+
+    remove các class riêng thì các form đã hoạt động (có vẻ ổn), còn NhanVien thì chưa fix
+    -> đã fix, chạy ngon

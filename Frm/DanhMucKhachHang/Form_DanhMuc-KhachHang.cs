@@ -5,14 +5,12 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Drawing;
-using BTL_Prj.Class.DanhMucKhachHang;
 using BTL_Prj.Class;
 
 namespace BTL_Prj.Frm.DanhMucKhachHang
 {
     public partial class frmKhachHang : Form
     {
-        DataProcess dataProcess = new DataProcess();  // Đối tượng xử lý cơ sở dữ liệu
 
         public frmKhachHang()
         {
@@ -21,10 +19,8 @@ namespace BTL_Prj.Frm.DanhMucKhachHang
 
         private void frmDanhMucKhachHang_Load(object sender, EventArgs e)
         {
-            Prepare prepare = new Prepare();
-            prepare.setFormProperties(this);
-            prepare.setDgvProperties(dgvKhachHang);
-            dataProcess = new DataProcess(prepare.getDatabaseDirectory());
+            Prepare.setFormProperties(this);
+            Prepare.setDgvProperties(dgvKhachHang);
 
             LoadData();  
             SetDefaultState();  
@@ -33,7 +29,7 @@ namespace BTL_Prj.Frm.DanhMucKhachHang
         private void LoadData()
         {
             string query = "SELECT * FROM KhachHang";
-            dgvKhachHang.DataSource = dataProcess.GetData(query);
+            dgvKhachHang.DataSource = ProcessingData.GetData(query);
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -68,7 +64,7 @@ namespace BTL_Prj.Frm.DanhMucKhachHang
                 {
                     try
                     {
-                        dataProcess.Delete("KhachHang", "MaKhach", txtMaKhach.Text);
+                        ProcessingData.Delete("KhachHang", "MaKhach", txtMaKhach.Text);
                         MessageBox.Show("Dữ liệu đã được xóa!");
                         LoadData();  
                         SetDefaultState();  
@@ -99,7 +95,7 @@ namespace BTL_Prj.Frm.DanhMucKhachHang
 
                 try
                 {
-                    dataProcess.Insert("KhachHang", columnValues);
+                    ProcessingData.Insert("KhachHang", columnValues);
                     MessageBox.Show("Thêm khách hàng thành công!");
                     LoadData();
                     SetDefaultState();
@@ -120,7 +116,7 @@ namespace BTL_Prj.Frm.DanhMucKhachHang
 
                 try
                 {
-                    dataProcess.Update("KhachHang", columnValues, "MaKhach", txtMaKhach.Text);
+                    ProcessingData.Update("KhachHang", columnValues, "MaKhach", txtMaKhach.Text);
                     MessageBox.Show("Cập nhật khách hàng thành công!");
                     LoadData();
                     SetDefaultState();
@@ -142,7 +138,7 @@ namespace BTL_Prj.Frm.DanhMucKhachHang
             }
 
             string[] searchColumns = { "MaKhach", "TenKhach" };  
-            dgvKhachHang.DataSource = dataProcess.Search("KhachHang", searchColumns, searchValue);
+            dgvKhachHang.DataSource = ProcessingData.Search("KhachHang", searchColumns, searchValue);
         }
 
         private void dgvKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -188,6 +184,8 @@ namespace BTL_Prj.Frm.DanhMucKhachHang
 
         private void btnDong_Click_1(object sender, EventArgs e)
         {
+                this.Close();
+			return;
             DialogResult result = MessageBox.Show("Thoát?","Thông báo",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {

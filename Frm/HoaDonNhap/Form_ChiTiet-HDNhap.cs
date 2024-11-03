@@ -9,14 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-using BTL_Prj.Class.HoaDonNhap;
 using BTL_Prj.Class;
 
 namespace BTL_Prj.Frm.HoaDonNhap
 {
     public partial class frmChiTietHDNhap : Form
     {
-        private DataProcess dataProcess = new DataProcess();
         private string selectedSoHDN; // Biến lưu số hóa đơn được chọn từ Form
         public frmChiTietHDNhap()
         {
@@ -30,10 +28,8 @@ namespace BTL_Prj.Frm.HoaDonNhap
 
         private void frmChiTietHDNhap_Load(object sender, EventArgs e)
         {
-            Prepare prepare = new Prepare();
-            prepare.setFormProperties(this);
-            prepare.setDgvProperties(dgvChiTietHoaDonNhap);
-            dataProcess = new DataProcess(prepare.getDatabaseDirectory());
+            Prepare.setFormProperties(this);
+            Prepare.setDgvProperties(dgvChiTietHoaDonNhap);
 
             LoadDataToGridView();
             LoadComboBoxData(); // Tải dữ liệu vào ComboBox
@@ -43,13 +39,13 @@ namespace BTL_Prj.Frm.HoaDonNhap
         {
             // Hiển thị dữ liệu chi tiết hóa đơn nhập vào DataGridView
             string query = $"SELECT * FROM ChiTietHoaDonNhap WHERE SOHDN = '{selectedSoHDN}'"; // Chọn dữ liệu theo số hóa đơn
-            DataTable dt = dataProcess.GetData(query);
+            DataTable dt = ProcessingData.GetData(query);
             dgvChiTietHoaDonNhap.DataSource = dt;
         }
         private void LoadComboBoxData()
         {
             // Load mã hàng vào ComboBox CBBMAHANG
-            DataTable dtMaHang = dataProcess.GetComboBoxData("DMHangHoa", "MaHang", "MaHang"); // Lấy dữ liệu từ bảng DMHangHoa
+            DataTable dtMaHang = ProcessingData.GetComboBoxData("DMHangHoa", "MaHang", "MaHang"); // Lấy dữ liệu từ bảng DMHangHoa
             CBBMAHANG.DataSource = dtMaHang;
             CBBMAHANG.DisplayMember = "MaHang"; // Hiển thị mã hàng trong ComboBox
             CBBMAHANG.ValueMember = "MaHang"; // Giá trị tương ứng với mã hàng
@@ -87,7 +83,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
 
                 columnValues.Add("ThanhTien", thanhTien);
 
-                dataProcess.Insert("ChiTietHoaDonNhap", columnValues);
+                ProcessingData.Insert("ChiTietHoaDonNhap", columnValues);
                 MessageBox.Show("Thêm chi tiết hóa đơn nhập thành công!");
                 LoadDataToGridView(); // Cập nhật lại dữ liệu trên DataGridView
                 ClearFields(); // Xóa các trường sau khi thêm
@@ -139,7 +135,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
             };
 
                     // Cập nhật dữ liệu vào bảng ChiTietHoaDonNhap
-                    dataProcess.Update("ChiTietHoaDonNhap", columnValues, "MaHang", maHang); // Sử dụng mã hàng cũ làm điều kiện
+                    ProcessingData.Update("ChiTietHoaDonNhap", columnValues, "MaHang", maHang); // Sử dụng mã hàng cũ làm điều kiện
 
                     MessageBox.Show("Cập nhật chi tiết hóa đơn nhập thành công!");
                     LoadDataToGridView(); // Cập nhật lại dữ liệu trên DataGridView
@@ -166,7 +162,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
                     return;
                 }
 
-                dataProcess.Delete("ChiTietHoaDonNhap", "MaHang", CBBMAHANG.Text);
+                ProcessingData.Delete("ChiTietHoaDonNhap", "MaHang", CBBMAHANG.Text);
                 MessageBox.Show("Xóa chi tiết hóa đơn nhập thành công!");
                 LoadDataToGridView(); // Cập nhật lại dữ liệu trên DataGridView
                 ClearFields(); // Xóa các trường sau khi xóa
@@ -180,6 +176,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
         private void ExitForm2_Click(object sender, EventArgs e)
         {
             this.Close(); // Đóng form
+			return;
         }
 
         private void dtgrvFORM2_CellContentClick(object sender, DataGridViewCellEventArgs e)
