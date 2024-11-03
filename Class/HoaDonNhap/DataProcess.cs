@@ -17,7 +17,6 @@ namespace BTL_Prj.Class.HoaDonNhap
         public DataProcess() { }
         public DataProcess(string connectionString)
         {
-
             string strConnect = "Data Source=.\\SQLEXPRESS;AttachDbFilename="
             + connectionString
             + ";Integrated Security=True;User Instance=True";
@@ -25,6 +24,7 @@ namespace BTL_Prj.Class.HoaDonNhap
             this.connectionString = strConnect;
             return;
         }
+        
         // Mở kết nối cơ sở dữ liệu
         private void OpenConnection()
         {
@@ -97,8 +97,6 @@ namespace BTL_Prj.Class.HoaDonNhap
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
-
             }
             finally
             {

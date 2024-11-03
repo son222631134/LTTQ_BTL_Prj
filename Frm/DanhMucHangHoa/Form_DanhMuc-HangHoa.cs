@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
 using System.Collections.Generic;
-using BTL_Prj.Class.DanhMucHangHoa;
 using System.Reflection;
 using BTL_Prj.Class;
 
@@ -13,17 +12,14 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 {
 	public partial class frmDanhMucHangHoa : Form
 	{
-			Prepare prepare = new Prepare();
-        DataProcess dataProcess = new DataProcess(); 
 		public frmDanhMucHangHoa()
 		{
 			InitializeComponent();
 		}
 		private void frmDanhMucHangHoa_Load(object sender, EventArgs e)
 		{
-			prepare.setFormProperties(this);
-			prepare.setDgvProperties(dgvHangHoa);
-			dataProcess = new DataProcess(prepare.getDatabaseDirectory());
+			Prepare.setFormProperties(this);
+			Prepare.setDgvProperties(dgvHangHoa);
 			
 			LoadData();
 			LoadComboBoxData();
@@ -34,7 +30,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
         private void LoadData()
 		{
 			string query = "SELECT * FROM DMHangHoa";
-			dgvHangHoa.DataSource = dataProcess.GetData(query);
+			dgvHangHoa.DataSource = ProcessingData.GetData(query);
             if (dgvHangHoa.Columns["ImagePath"] != null)
             {
                 dgvHangHoa.Columns["ImagePath"].Visible = false;
@@ -43,23 +39,23 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 
 		private void LoadComboBoxData()
 		{
-			cboMaDonVi.DataSource = dataProcess.GetComboBoxData("DonViTinh", "MaDonVi", "TenDonVi");
+			cboMaDonVi.DataSource = ProcessingData.GetComboBoxData("DonViTinh", "MaDonVi", "TenDonVi");
 			cboMaDonVi.DisplayMember = "TenDonVi";
 			cboMaDonVi.ValueMember = "MaDonVi";
 
-			cboMaNoiSanXuat.DataSource = dataProcess.GetComboBoxData("NoiSanXuat", "MaNoiSX", "TenNoiSX");
+			cboMaNoiSanXuat.DataSource = ProcessingData.GetComboBoxData("NoiSanXuat", "MaNoiSX", "TenNoiSX");
 			cboMaNoiSanXuat.DisplayMember = "TenNoiSX";
 			cboMaNoiSanXuat.ValueMember = "MaNoiSX";
 
-			cboMaCongDung.DataSource = dataProcess.GetComboBoxData("CongDung", "MaCongDung", "TenCongDung");
+			cboMaCongDung.DataSource = ProcessingData.GetComboBoxData("CongDung", "MaCongDung", "TenCongDung");
 			cboMaCongDung.DisplayMember = "TenCongDung";
 			cboMaCongDung.ValueMember = "MaCongDung";
 
-			cboMaMau.DataSource = dataProcess.GetComboBoxData("MauSac", "MaMau", "TenMau");
+			cboMaMau.DataSource = ProcessingData.GetComboBoxData("MauSac", "MaMau", "TenMau");
 			cboMaMau.DisplayMember = "TenMau";
 			cboMaMau.ValueMember = "MaMau";
 
-			cboMaDacDiem.DataSource = dataProcess.GetComboBoxData("DacDiem", "MaDacDiem", "TenDacDiem");
+			cboMaDacDiem.DataSource = ProcessingData.GetComboBoxData("DacDiem", "MaDacDiem", "TenDacDiem");
 			cboMaDacDiem.DisplayMember = "TenDacDiem";
 			cboMaDacDiem.ValueMember = "MaDacDiem";
 		}
@@ -73,7 +69,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 					decimal.TryParse(txtDonGiaBan.Text, out decimal donGiaBan))	{
 					//then
 					string src = picHangHoa.ImageLocation;
-					string dest = prepare.getProjectDirectory() + prepare.getMediaDirectoryInProject() + "\\HangHoa\\" + "ImgHangHoa" + txtMaHang.Text;
+					string dest = Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + "\\HangHoa\\" + "ImgHangHoa" + txtMaHang.Text;
 					Function.CopyFile(src, dest);
 					var columnValues = new Dictionary<string, object> {
 						{ "MaHang", txtMaHang.Text },
@@ -91,7 +87,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 
 					try
 					{
-						dataProcess.Insert("DMHangHoa", columnValues);
+						ProcessingData.Insert("DMHangHoa", columnValues);
 						MessageBox.Show("Dữ liệu đã được thêm thành công!");
 						LoadData();
 						SetDefaultState();
@@ -114,7 +110,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 					decimal.TryParse(txtDonGiaBan.Text, out decimal donGiaBan))
                 { //then
                     string src = picHangHoa.ImageLocation;
-                    string dest = prepare.getProjectDirectory() + prepare.getMediaDirectoryInProject() + "HangHoa\\" + "ImgHangHoa" + txtMaHang.Text + ".jpg";
+                    string dest = Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + "HangHoa\\" + "ImgHangHoa" + txtMaHang.Text + ".jpg";
                     Function.CopyFile(src, dest);
 					MessageBox.Show(src + "\r\n" + dest);
                     var columnValues = new Dictionary<string, object>
@@ -133,7 +129,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 
 					try
 					{
-						dataProcess.Update("DMHangHoa", columnValues, "MaHang", txtMaHang.Text);
+						ProcessingData.Update("DMHangHoa", columnValues, "MaHang", txtMaHang.Text);
 						MessageBox.Show("Dữ liệu đã được cập nhật!");
 						LoadData();
 						SetDefaultState();
@@ -176,7 +172,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
                 {
                     try
                     {
-                        dataProcess.Delete("DMHangHoa", "MaHang", txtMaHang.Text);
+                        ProcessingData.Delete("DMHangHoa", "MaHang", txtMaHang.Text);
                         MessageBox.Show("Dữ liệu đã được xóa!");
                         LoadData();
                         SetDefaultState();
@@ -205,7 +201,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 			}
 
 			string[] searchColumns = { "MaHang", "TenHang" }; 
-			dgvHangHoa.DataSource = dataProcess.Search("DMHangHoa", searchColumns, searchValue);
+			dgvHangHoa.DataSource = ProcessingData.Search("DMHangHoa", searchColumns, searchValue);
 		}
 
 		
@@ -255,6 +251,8 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 		
 		private void btnDong_Click(object sender, EventArgs e)
 		{
+            this.Close();
+			return;
             DialogResult result = MessageBox.Show("Thoát?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {

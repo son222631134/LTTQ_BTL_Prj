@@ -18,7 +18,6 @@ namespace BTL_Prj.Frm.Main
 {
     public partial class frmMain : Form
     {
-        Prepare prepare = new Prepare();
         public frmMain()
         {
             InitializeComponent();
@@ -26,8 +25,12 @@ namespace BTL_Prj.Frm.Main
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            //Backend
+            ProcessingData.OpenConnection();
+
+            //Frontend
             txt_warning.Hide();
-            prepare.setFormProperties(this);
+            Prepare.setFormProperties(this);
             //prepare.setDgvProperties(dgvNhanVien);
             //dataProcess = new DataProcess(prepare.getDatabaseDirectory());
 
@@ -135,6 +138,11 @@ namespace BTL_Prj.Frm.Main
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ProcessingData.CloseConnection();
         }
     }
 }

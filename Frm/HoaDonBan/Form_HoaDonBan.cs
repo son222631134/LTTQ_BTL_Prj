@@ -11,19 +11,17 @@ using System.Data.SqlClient;
 using System.Collections;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using COMExcel = Microsoft.Office.Interop.Excel;
-using HoaDonBan.Class;
+//using HoaDonBan.Class;
 using System.Runtime.InteropServices;
 using OfficeOpenXml;
 using System.IO;
 using System.Reflection;
-using BTL_Prj.Class.HoaDonBan;
 using BTL_Prj.Class;
 
 namespace BTL_Prj.Frm.HoaDonBan
 {
     public partial class frmHoaDonBan : Form
     {
-        private DataProcess dataProcess = new DataProcess();
 
         public frmHoaDonBan()
         {
@@ -31,10 +29,8 @@ namespace BTL_Prj.Frm.HoaDonBan
         }
         private void frmHoaDonBan_Load(object sender, EventArgs e)
         {
-            Prepare prepare = new Prepare();
-            prepare.setFormProperties(this);
-            prepare.setDgvProperties(dgvHDBanHang);
-            dataProcess = new DataProcess(prepare.getDatabaseDirectory());
+            Prepare.setFormProperties(this);
+            Prepare.setDgvProperties(dgvHDBanHang);
 
             btnChiTiet.Enabled = false;
             btnInHoaDon.Enabled = false;
@@ -46,20 +42,7 @@ namespace BTL_Prj.Frm.HoaDonBan
             dgvHDBanHang.CellClick += dgvHDBanHang_CellClick;
             dgvHDBanHang.CellDoubleClick += dgvHDBanHang_CellDoubleClick;
         }
-        private void LoadIcon()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName+"\\Media\\32x32-LogoUTC.ico";
-            this.Icon = new Icon(stringDirectory);
-        }
-        private void LoadDatabase()
-        {
-            string stringProjectName = Assembly.GetExecutingAssembly().GetName().Name;
-            string stringCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;  //get current directory
-            string stringDataDirectory = stringCurrentDirectory.Substring(0, stringCurrentDirectory.IndexOf(stringProjectName)) + stringProjectName + "\\Database\\Database_BTL.mdf"; //get data directory by find Project directory, then combine with Database directory
-            dataProcess = new DataProcess(stringDataDirectory);
-        }
+
 
         private void SetFieldsState(bool enabled)
         {
@@ -90,7 +73,7 @@ namespace BTL_Prj.Frm.HoaDonBan
 
         private void LoadDataGridView()
         {
-            DataTable dt = dataProcess.GetData("SELECT * FROM HoaDonBan");
+            DataTable dt = ProcessingData.GetData("SELECT * FROM HoaDonBan");
             dgvHDBanHang.DataSource = dt;
         }
 
@@ -120,7 +103,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                     {"MaKhach", int.Parse(cboMaKhach.Text)},
                     {"NgayBan", dtpNgayBan.Value}
                 };
-                dataProcess.Insert("HoaDonBan", columnValues);
+                ProcessingData.Insert("HoaDonBan", columnValues);
                 MessageBox.Show("Thêm thành công");
             }
             catch (Exception e)
@@ -159,7 +142,7 @@ namespace BTL_Prj.Frm.HoaDonBan
         {
             try
             {
-                DataTable dt = dataProcess.GetData("SELECT MaNV FROM NhanVien");
+                DataTable dt = ProcessingData.GetData("SELECT MaNV FROM NhanVien");
                 foreach (DataRow row in dt.Rows)
                 {
                     cboMaNhanVien.Items.Add(row["MaNV"].ToString());
@@ -180,7 +163,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                 {
                     { "@MaNV", maNV }
                 };
-                DataTable dt = dataProcess.GetData("SELECT TenNV FROM NhanVien WHERE MaNV = @MaNV", parameters);
+                DataTable dt = ProcessingData.GetData("SELECT TenNV FROM NhanVien WHERE MaNV = @MaNV", parameters);
                 if (dt.Rows.Count > 0)
                 {
                     txtTenNhanVien.Text = dt.Rows[0]["TenNV"].ToString();
@@ -205,7 +188,7 @@ namespace BTL_Prj.Frm.HoaDonBan
         {
             try
             {
-                DataTable dt = dataProcess.GetData("SELECT MaKhach FROM KhachHang");
+                DataTable dt = ProcessingData.GetData("SELECT MaKhach FROM KhachHang");
                 foreach (DataRow row in dt.Rows)
                 {
                     cboMaKhach.Items.Add(row["MaKhach"].ToString());
@@ -226,7 +209,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                 {
                     { "@MaKH", maKH }
                 };
-                DataTable dt = dataProcess.GetData("SELECT TenKhach, DiaChi, DienThoai FROM KhachHang WHERE MaKhach = @MaKH", parameters);
+                DataTable dt = ProcessingData.GetData("SELECT TenKhach, DiaChi, DienThoai FROM KhachHang WHERE MaKhach = @MaKH", parameters);
                 if (dt.Rows.Count > 0)
                 {
                     txtTenKhach.Text = dt.Rows[0]["TenKhach"].ToString();
@@ -248,7 +231,7 @@ namespace BTL_Prj.Frm.HoaDonBan
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa hóa đơn này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                dataProcess.Delete("HoaDonBan", "SoHDB", soHDB);
+                ProcessingData.Delete("HoaDonBan", "SoHDB", soHDB);
                 LoadDataGridView();
             }
         }
@@ -321,7 +304,7 @@ namespace BTL_Prj.Frm.HoaDonBan
             {
                 { "@SoHDB", soHDB }
             };
-                    DataTable dtChiTiet = dataProcess.GetData(query, parameters);
+                    DataTable dtChiTiet = ProcessingData.GetData(query, parameters);
 
                     // Ghi dữ liệu vào Excel
                     int rowStart = 8; // Bắt đầu ghi từ hàng thứ 8
@@ -460,7 +443,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                 };
 
                 // Cập nhật hóa đơn trong cơ sở dữ liệu
-                dataProcess.Update("HoaDonBan", columnValues, "SoHDB", soHDB);
+                ProcessingData.Update("HoaDonBan", columnValues, "SoHDB", soHDB);
                 MessageBox.Show("Cập nhật hóa đơn thành công.");
 
                 // Cập nhật tổng tiền nếu cần
@@ -510,6 +493,8 @@ namespace BTL_Prj.Frm.HoaDonBan
 
         private void btnDong_Click(object sender, EventArgs e)
         {
+                this.Close();
+			return;
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn đóng?", "Xác nhận đóng", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
@@ -533,7 +518,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                     { "@SoHDB", soHDB }
                 };
 
-                DataTable dt = dataProcess.GetData(query, parameters);
+                DataTable dt = ProcessingData.GetData(query, parameters);
 
                 if (dt.Rows.Count > 0)
                 {
@@ -546,7 +531,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                     };
 
                     // Gọi phương thức Update tổng quát
-                    dataProcess.Update("HoaDonBan", updateValues, "SoHDB", soHDB);
+                    ProcessingData.Update("HoaDonBan", updateValues, "SoHDB", soHDB);
 
                 }
                 else
@@ -589,7 +574,7 @@ namespace BTL_Prj.Frm.HoaDonBan
 
             try
             {
-                DataTable dt = dataProcess.GetData(query, parameters);
+                DataTable dt = ProcessingData.GetData(query, parameters);
                 dgvHDBanHang.DataSource = dt;
             }
             catch (Exception ex)

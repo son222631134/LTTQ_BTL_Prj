@@ -12,10 +12,10 @@ namespace BTL_Prj.Class.HoaDonBan
     {
         private string connectionString;
         private SqlConnection sqlConnection;
+        
         public DataProcess() { }
         public DataProcess(string connectionString)
         {
-
             string strConnect = "Data Source=.\\SQLEXPRESS;AttachDbFilename="
             + connectionString
             + ";Integrated Security=True;User Instance=True";

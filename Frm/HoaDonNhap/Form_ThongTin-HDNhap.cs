@@ -9,23 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BTL_Prj.Class;
-using BTL_Prj.Class.HoaDonNhap;
 
 namespace BTL_Prj.Frm.HoaDonNhap
 {
     public partial class frmHoaDonNhap : Form
     {
-        private  DataProcess dataProcess = new DataProcess();
         public frmHoaDonNhap()
         {
             InitializeComponent();
         }
         private void FrmThongTinHDNhap_Load(object sender, EventArgs e)
         {
-            Prepare prepare = new Prepare();
-            prepare.setFormProperties(this);
-            prepare.setDgvProperties(dgvHoaDonNhap);
-            dataProcess = new DataProcess(prepare.getDatabaseDirectory());
+            Prepare.setFormProperties(this);
+            Prepare.setDgvProperties(dgvHoaDonNhap);
 
             LoadComboBoxData();
             LoadDataToGridView();
@@ -33,14 +29,14 @@ namespace BTL_Prj.Frm.HoaDonNhap
         private void LoadComboBoxData()
         {
             // Load MaNV vào ComboBox CBBMNV
-            DataTable dtMaNV = dataProcess.GetComboBoxData("NhanVien", "MaNV", "MaNV");
+            DataTable dtMaNV = ProcessingData.GetComboBoxData("NhanVien", "MaNV", "MaNV");
             CBBMNV.DataSource = dtMaNV;
             CBBMNV.DisplayMember = "TenNV";
             CBBMNV.ValueMember = "MaNV";
             CBBMNV.SelectedIndex = -1; // Không chọn giá trị mặc định
 
             // Load MaNCC vào ComboBox CBBNCC
-            DataTable dtMaNCC = dataProcess.GetComboBoxData("NhaCungCap", "MaNCC", "MaNCC");
+            DataTable dtMaNCC = ProcessingData.GetComboBoxData("NhaCungCap", "MaNCC", "MaNCC");
             CBBNCC.DataSource = dtMaNCC;
             CBBNCC.DisplayMember = "TenNCC";
             CBBNCC.ValueMember = "MaNCC";
@@ -50,7 +46,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
         {
             // Hiển thị dữ liệu bảng HoaDonNhap vào DataGridView
             string query = "SELECT * FROM HoaDonNhap";
-            DataTable dt = dataProcess.GetData(query);
+            DataTable dt = ProcessingData.GetData(query);
             dgvHoaDonNhap.DataSource = dt;
         }
         private void TBHDN_TextChanged(object sender, EventArgs e)
@@ -118,7 +114,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
 
                 };
 
-                dataProcess.Insert("HoaDonNhap", columnValues);
+                ProcessingData.Insert("HoaDonNhap", columnValues);
                 MessageBox.Show("Thêm hóa đơn nhập thành công!");
                 LoadDataToGridView(); // Cập nhật lại dữ liệu trên DataGridView
             }
@@ -151,7 +147,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
                     { "NgayNhap", DatetimeNC.Value },
                 };
 
-                dataProcess.Update("HoaDonNhap", columnValues, "SoHDN", TBHDN.Text);
+                ProcessingData.Update("HoaDonNhap", columnValues, "SoHDN", TBHDN.Text);
                 MessageBox.Show("Cập nhật hóa đơn nhập thành công!");
                 LoadDataToGridView(); // Cập nhật lại dữ liệu trên DataGridView
             }
@@ -166,7 +162,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
         {
             try
             {
-                dataProcess.Delete("HoaDonNhap", "SoHDN", TBHDN.Text);
+                ProcessingData.Delete("HoaDonNhap", "SoHDN", TBHDN.Text);
                 MessageBox.Show("Xóa hóa đơn nhập thành công!");
                 LoadDataToGridView(); // Cập nhật lại dữ liệu trên DataGridView
             }
@@ -179,6 +175,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
         private void THoat_Click(object sender, EventArgs e)
         {
             this.Close();
+			return;
         }
 
         private void dtgrvHDN_Click(object sender, EventArgs e)
