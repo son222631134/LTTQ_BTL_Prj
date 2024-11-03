@@ -5,13 +5,7 @@ using BTL_Prj.Frm.HoaDonBan;
 using BTL_Prj.Frm.HoaDonNhap;
 using BTL_Prj.Frm.NhanVien;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BTL_Prj.Frm.Main
@@ -124,7 +118,7 @@ namespace BTL_Prj.Frm.Main
             if (result == DialogResult.Yes)
             {
                 Dispose();
-            }  
+            }
         }
 
         private void btn_Dashboard_Click(object sender, EventArgs e)
@@ -134,12 +128,6 @@ namespace BTL_Prj.Frm.Main
                 activeform.Close();
 
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             ProcessingData.CloseConnection();

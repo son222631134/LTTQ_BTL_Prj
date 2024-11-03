@@ -214,7 +214,6 @@
             this.txt_warning.Size = new System.Drawing.Size(428, 199);
             this.txt_warning.TabIndex = 0;
             this.txt_warning.Text = "ĐỪNG ĐỤNG VÀO PANEL NHÉ SỢ LẮM RỒI";
-            this.txt_warning.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // panel_LeftBar
             // 

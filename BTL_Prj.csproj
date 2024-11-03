@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -209,13 +209,15 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include=".TaskListLog.txt" />
+    <Content Include="Database\CreateDatabase.sql" />
     <Content Include="Database\Database_BTL.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Database\Database_BTL_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Database_BTL.mdf</DependentUpon>
-    </Content>
+    <Content Include="Database\Media\Media\Logo\32x32-LogoUTC.ico" />
+    <Content Include="Database\Media\Media\Logo\640px-LogoUTC.ico" />
+    <Content Include="Database\Media\Media\Logo\64x64-LogoUTC.ico" />
+    <Content Include="Database\Media\Media\Logo\icon.ico" />
+    <Content Include="Database\Media\Media\User\Avatar_Admin.jpg" />
     <None Include="Database\Media\User\Avatar_Admin.jpg" />
   </ItemGroup>
   <ItemGroup>
