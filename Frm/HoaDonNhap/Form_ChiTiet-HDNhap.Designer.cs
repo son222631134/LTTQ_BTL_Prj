@@ -30,7 +30,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label_title = new System.Windows.Forms.Label();
             this.dgvChiTietHoaDonNhap = new System.Windows.Forms.DataGridView();
             this.BTSUA = new System.Windows.Forms.Button();
             this.BTDELETE = new System.Windows.Forms.Button();
@@ -47,25 +47,25 @@
             this.TBSOLUONG = new System.Windows.Forms.TextBox();
             this.SoHDNTB = new System.Windows.Forms.TextBox();
             this.CBBMAHANG = new System.Windows.Forms.ComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel_button = new System.Windows.Forms.Panel();
+            this.panel_title = new System.Windows.Forms.Panel();
+            this.panel_input = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDonNhap)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panel_button.SuspendLayout();
+            this.panel_title.SuspendLayout();
+            this.panel_input.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label7
+            // label_title
             // 
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(0, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(954, 80);
-            this.label7.TabIndex = 52;
-            this.label7.Text = "CHI TIẾT HOÁ ĐƠN NHẬP";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_title.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_title.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_title.Location = new System.Drawing.Point(0, 0);
+            this.label_title.Name = "label_title";
+            this.label_title.Size = new System.Drawing.Size(954, 80);
+            this.label_title.TabIndex = 52;
+            this.label_title.Text = "CHI TIẾT HOÁ ĐƠN NHẬP";
+            this.label_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dgvChiTietHoaDonNhap
             // 
@@ -241,74 +241,74 @@
             this.CBBMAHANG.TabIndex = 53;
             this.CBBMAHANG.SelectedIndexChanged += new System.EventHandler(this.CBBMAHANG_SelectedIndexChanged);
             // 
-            // panel1
+            // panel_button
             // 
-            this.panel1.Controls.Add(this.BTADDCTHDN);
-            this.panel1.Controls.Add(this.Clear);
-            this.panel1.Controls.Add(this.ExitForm2);
-            this.panel1.Controls.Add(this.BTSUA);
-            this.panel1.Controls.Add(this.BTDELETE);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 640);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(954, 60);
-            this.panel1.TabIndex = 54;
+            this.panel_button.Controls.Add(this.BTADDCTHDN);
+            this.panel_button.Controls.Add(this.Clear);
+            this.panel_button.Controls.Add(this.ExitForm2);
+            this.panel_button.Controls.Add(this.BTSUA);
+            this.panel_button.Controls.Add(this.BTDELETE);
+            this.panel_button.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel_button.Location = new System.Drawing.Point(0, 640);
+            this.panel_button.Name = "panel_button";
+            this.panel_button.Size = new System.Drawing.Size(954, 60);
+            this.panel_button.TabIndex = 54;
             // 
-            // panel2
+            // panel_title
             // 
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(954, 80);
-            this.panel2.TabIndex = 55;
+            this.panel_title.Controls.Add(this.label_title);
+            this.panel_title.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_title.Location = new System.Drawing.Point(0, 0);
+            this.panel_title.Name = "panel_title";
+            this.panel_title.Size = new System.Drawing.Size(954, 80);
+            this.panel_title.TabIndex = 55;
             // 
-            // panel3
+            // panel_input
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel_input.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.SoHDNTB);
-            this.panel3.Controls.Add(this.TBSOLUONG);
-            this.panel3.Controls.Add(this.TBDONGIA);
-            this.panel3.Controls.Add(this.CBBMAHANG);
-            this.panel3.Controls.Add(this.TBGIAMGIA);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(0, 83);
-            this.panel3.Margin = new System.Windows.Forms.Padding(0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(954, 168);
-            this.panel3.TabIndex = 56;
+            this.panel_input.Controls.Add(this.SoHDNTB);
+            this.panel_input.Controls.Add(this.TBSOLUONG);
+            this.panel_input.Controls.Add(this.TBDONGIA);
+            this.panel_input.Controls.Add(this.CBBMAHANG);
+            this.panel_input.Controls.Add(this.TBGIAMGIA);
+            this.panel_input.Controls.Add(this.label1);
+            this.panel_input.Controls.Add(this.label5);
+            this.panel_input.Controls.Add(this.label2);
+            this.panel_input.Controls.Add(this.label4);
+            this.panel_input.Controls.Add(this.label3);
+            this.panel_input.Location = new System.Drawing.Point(0, 83);
+            this.panel_input.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_input.Name = "panel_input";
+            this.panel_input.Size = new System.Drawing.Size(954, 168);
+            this.panel_input.TabIndex = 56;
             // 
             // frmChiTietHDNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 700);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel_input);
+            this.Controls.Add(this.panel_title);
+            this.Controls.Add(this.panel_button);
             this.Controls.Add(this.dgvChiTietHoaDonNhap);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmChiTietHDNhap";
             this.Text = "THÔNG TIN CHI TIẾT HÓA ĐƠN NHẬP";
             this.Load += new System.EventHandler(this.frmChiTietHDNhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDonNhap)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.panel_button.ResumeLayout(false);
+            this.panel_title.ResumeLayout(false);
+            this.panel_input.ResumeLayout(false);
+            this.panel_input.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label_title;
         private System.Windows.Forms.DataGridView dgvChiTietHoaDonNhap;
         private System.Windows.Forms.Button BTSUA;
         private System.Windows.Forms.Button BTDELETE;
@@ -325,8 +325,8 @@
         private System.Windows.Forms.TextBox TBSOLUONG;
         private System.Windows.Forms.TextBox SoHDNTB;
         private System.Windows.Forms.ComboBox CBBMAHANG;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel_button;
+        private System.Windows.Forms.Panel panel_title;
+        private System.Windows.Forms.Panel panel_input;
     }
 }

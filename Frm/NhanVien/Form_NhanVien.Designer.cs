@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.mtbSoDienThoai = new System.Windows.Forms.MaskedTextBox();
             this.chkGioiTinh = new System.Windows.Forms.CheckBox();
@@ -44,25 +44,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvNhanVien = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnQuayLai = new System.Windows.Forms.Button();
+            this.btnTimKiem = new System.Windows.Forms.Button();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThemMoi = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.btnQuayLai = new System.Windows.Forms.Button();
-            this.btnTimKiem = new System.Windows.Forms.Button();
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnThoat = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_button = new System.Windows.Forms.Panel();
             this.panel_title = new System.Windows.Forms.Panel();
             this.label_title = new System.Windows.Forms.Label();
-            this.panel_Info = new System.Windows.Forms.Panel();
+            this.panel_input = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panel_button.SuspendLayout();
             this.panel_title.SuspendLayout();
-            this.panel_Info.SuspendLayout();
+            this.panel_input.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtNgaySinh
@@ -211,8 +211,8 @@
             // 
             // dgvNhanVien
             // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvNhanVien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvNhanVien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvNhanVien.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -243,6 +243,38 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chức năng";
+            // 
+            // btnQuayLai
+            // 
+            this.btnQuayLai.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnQuayLai.Location = new System.Drawing.Point(133, 75);
+            this.btnQuayLai.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuayLai.Name = "btnQuayLai";
+            this.btnQuayLai.Size = new System.Drawing.Size(93, 40);
+            this.btnQuayLai.TabIndex = 2;
+            this.btnQuayLai.Text = "Quay lại";
+            this.btnQuayLai.UseVisualStyleBackColor = true;
+            this.btnQuayLai.Click += new System.EventHandler(this.btnQuayLai_Click);
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnTimKiem.Location = new System.Drawing.Point(17, 75);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(93, 40);
+            this.btnTimKiem.TabIndex = 1;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // txtTimKiem
+            // 
+            this.txtTimKiem.Location = new System.Drawing.Point(22, 29);
+            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(199, 26);
+            this.txtTimKiem.TabIndex = 0;
             // 
             // btnHuy
             // 
@@ -316,38 +348,6 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // btnQuayLai
-            // 
-            this.btnQuayLai.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnQuayLai.Location = new System.Drawing.Point(133, 75);
-            this.btnQuayLai.Margin = new System.Windows.Forms.Padding(2);
-            this.btnQuayLai.Name = "btnQuayLai";
-            this.btnQuayLai.Size = new System.Drawing.Size(93, 40);
-            this.btnQuayLai.TabIndex = 2;
-            this.btnQuayLai.Text = "Quay lại";
-            this.btnQuayLai.UseVisualStyleBackColor = true;
-            this.btnQuayLai.Click += new System.EventHandler(this.btnQuayLai_Click);
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnTimKiem.Location = new System.Drawing.Point(17, 75);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(93, 40);
-            this.btnTimKiem.TabIndex = 1;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // txtTimKiem
-            // 
-            this.txtTimKiem.Location = new System.Drawing.Point(22, 29);
-            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(199, 26);
-            this.txtTimKiem.TabIndex = 0;
-            // 
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 12F);
@@ -360,20 +360,20 @@
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.button8_Click);
             // 
-            // panel1
+            // panel_button
             // 
-            this.panel1.Controls.Add(this.btnClear);
-            this.panel1.Controls.Add(this.btnThoat);
-            this.panel1.Controls.Add(this.btnLuu);
-            this.panel1.Controls.Add(this.btnHuy);
-            this.panel1.Controls.Add(this.btnThemMoi);
-            this.panel1.Controls.Add(this.btnSua);
-            this.panel1.Controls.Add(this.btnXoa);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 640);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(954, 60);
-            this.panel1.TabIndex = 14;
+            this.panel_button.Controls.Add(this.btnClear);
+            this.panel_button.Controls.Add(this.btnThoat);
+            this.panel_button.Controls.Add(this.btnLuu);
+            this.panel_button.Controls.Add(this.btnHuy);
+            this.panel_button.Controls.Add(this.btnThemMoi);
+            this.panel_button.Controls.Add(this.btnSua);
+            this.panel_button.Controls.Add(this.btnXoa);
+            this.panel_button.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel_button.Location = new System.Drawing.Point(0, 640);
+            this.panel_button.Name = "panel_button";
+            this.panel_button.Size = new System.Drawing.Size(954, 60);
+            this.panel_button.TabIndex = 14;
             // 
             // panel_title
             // 
@@ -395,30 +395,30 @@
             this.label_title.Text = "DANH MỤC NHÂN VIÊN";
             this.label_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel_Info
+            // panel_input
             // 
-            this.panel_Info.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel_input.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_Info.Controls.Add(this.label1);
-            this.panel_Info.Controls.Add(this.label6);
-            this.panel_Info.Controls.Add(this.dtNgaySinh);
-            this.panel_Info.Controls.Add(this.label5);
-            this.panel_Info.Controls.Add(this.txtMaNV);
-            this.panel_Info.Controls.Add(this.groupBox2);
-            this.panel_Info.Controls.Add(this.label4);
-            this.panel_Info.Controls.Add(this.txtTenNV);
-            this.panel_Info.Controls.Add(this.mtbSoDienThoai);
-            this.panel_Info.Controls.Add(this.label3);
-            this.panel_Info.Controls.Add(this.chkGioiTinh);
-            this.panel_Info.Controls.Add(this.txtDiaChi);
-            this.panel_Info.Controls.Add(this.label2);
-            this.panel_Info.Controls.Add(this.cbMaCV);
-            this.panel_Info.Location = new System.Drawing.Point(2, 86);
-            this.panel_Info.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_Info.Name = "panel_Info";
-            this.panel_Info.Size = new System.Drawing.Size(950, 161);
-            this.panel_Info.TabIndex = 17;
+            this.panel_input.Controls.Add(this.label1);
+            this.panel_input.Controls.Add(this.label6);
+            this.panel_input.Controls.Add(this.dtNgaySinh);
+            this.panel_input.Controls.Add(this.label5);
+            this.panel_input.Controls.Add(this.txtMaNV);
+            this.panel_input.Controls.Add(this.groupBox2);
+            this.panel_input.Controls.Add(this.label4);
+            this.panel_input.Controls.Add(this.txtTenNV);
+            this.panel_input.Controls.Add(this.mtbSoDienThoai);
+            this.panel_input.Controls.Add(this.label3);
+            this.panel_input.Controls.Add(this.chkGioiTinh);
+            this.panel_input.Controls.Add(this.txtDiaChi);
+            this.panel_input.Controls.Add(this.label2);
+            this.panel_input.Controls.Add(this.cbMaCV);
+            this.panel_input.Location = new System.Drawing.Point(2, 86);
+            this.panel_input.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_input.Name = "panel_input";
+            this.panel_input.Size = new System.Drawing.Size(950, 161);
+            this.panel_input.TabIndex = 17;
             // 
             // frmNhanVien
             // 
@@ -426,9 +426,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 700);
             this.Controls.Add(this.dgvNhanVien);
-            this.Controls.Add(this.panel_Info);
+            this.Controls.Add(this.panel_input);
             this.Controls.Add(this.panel_title);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel_button);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmNhanVien";
@@ -437,10 +437,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.panel_button.ResumeLayout(false);
             this.panel_title.ResumeLayout(false);
-            this.panel_Info.ResumeLayout(false);
-            this.panel_Info.PerformLayout();
+            this.panel_input.ResumeLayout(false);
+            this.panel_input.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -471,10 +471,10 @@
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.DateTimePicker dtNgaySinh;
         private System.Windows.Forms.Button btnHuy;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_button;
         private System.Windows.Forms.Panel panel_title;
         private System.Windows.Forms.Label label_title;
-        private System.Windows.Forms.Panel panel_Info;
+        private System.Windows.Forms.Panel panel_input;
     }
 }
 

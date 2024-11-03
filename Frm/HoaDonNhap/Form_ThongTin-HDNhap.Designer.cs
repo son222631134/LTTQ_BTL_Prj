@@ -44,16 +44,16 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_button = new System.Windows.Forms.Panel();
+            this.panel_input = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage_ChiTietHoaDon = new System.Windows.Forms.TabPage();
             this.label_title = new System.Windows.Forms.Label();
             this.panel_title = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDonNhap)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panel_button.SuspendLayout();
+            this.panel_input.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel_title.SuspendLayout();
@@ -236,42 +236,42 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.XOA_Click);
             // 
-            // panel2
+            // panel_button
             // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.button6);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 531);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(940, 60);
-            this.panel2.TabIndex = 41;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.panel_button.BackColor = System.Drawing.Color.Transparent;
+            this.panel_button.Controls.Add(this.button1);
+            this.panel_button.Controls.Add(this.button2);
+            this.panel_button.Controls.Add(this.button3);
+            this.panel_button.Controls.Add(this.button4);
+            this.panel_button.Controls.Add(this.button5);
+            this.panel_button.Controls.Add(this.button6);
+            this.panel_button.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel_button.Location = new System.Drawing.Point(3, 531);
+            this.panel_button.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.panel_button.Name = "panel_button";
+            this.panel_button.Size = new System.Drawing.Size(940, 60);
+            this.panel_button.TabIndex = 41;
+            this.panel_button.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // panel1
+            // panel_input
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel_input.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.TBHDN);
-            this.panel1.Controls.Add(this.CBBNCC);
-            this.panel1.Controls.Add(this.DatetimeNC);
-            this.panel1.Controls.Add(this.CBBMNV);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(940, 100);
-            this.panel1.TabIndex = 42;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel_input.BackColor = System.Drawing.Color.Transparent;
+            this.panel_input.Controls.Add(this.label1);
+            this.panel_input.Controls.Add(this.TBHDN);
+            this.panel_input.Controls.Add(this.CBBNCC);
+            this.panel_input.Controls.Add(this.DatetimeNC);
+            this.panel_input.Controls.Add(this.CBBMNV);
+            this.panel_input.Controls.Add(this.label2);
+            this.panel_input.Controls.Add(this.label3);
+            this.panel_input.Controls.Add(this.label4);
+            this.panel_input.Location = new System.Drawing.Point(3, 3);
+            this.panel_input.Name = "panel_input";
+            this.panel_input.Size = new System.Drawing.Size(940, 100);
+            this.panel_input.TabIndex = 42;
+            this.panel_input.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // tabControl1
             // 
@@ -294,8 +294,8 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
             this.tabPage1.Controls.Add(this.dgvHoaDonNhap);
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Controls.Add(this.panel2);
+            this.tabPage1.Controls.Add(this.panel_input);
+            this.tabPage1.Controls.Add(this.panel_button);
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -351,10 +351,10 @@
             this.Text = "DANH MỤC HÓA ĐƠN NHẬP";
             this.Load += new System.EventHandler(this.FrmThongTinHDNhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDonNhap)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panel_button.ResumeLayout(false);
+            this.panel_button.PerformLayout();
+            this.panel_input.ResumeLayout(false);
+            this.panel_input.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel_title.ResumeLayout(false);
@@ -379,8 +379,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_button;
+        private System.Windows.Forms.Panel panel_input;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage_ChiTietHoaDon;
