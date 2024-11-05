@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnDong = new System.Windows.Forms.Button();
@@ -67,7 +68,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1_ThongTinChung = new System.Windows.Forms.TabPage();
             this.tabPage_TimKiem = new System.Windows.Forms.TabPage();
+            this.dgvHangHoa_TimKiem = new System.Windows.Forms.DataGridView();
             this.panel_title = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label_tabpageTimKiem_dgvGuide = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa)).BeginInit();
             this.panel_input.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).BeginInit();
@@ -75,6 +79,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1_ThongTinChung.SuspendLayout();
             this.tabPage_TimKiem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa_TimKiem)).BeginInit();
             this.panel_title.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -405,10 +410,11 @@
             // 
             // btnQuayLai
             // 
-            this.btnQuayLai.Location = new System.Drawing.Point(788, 201);
+            this.btnQuayLai.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnQuayLai.Location = new System.Drawing.Point(740, 88);
             this.btnQuayLai.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuayLai.Name = "btnQuayLai";
-            this.btnQuayLai.Size = new System.Drawing.Size(67, 20);
+            this.btnQuayLai.Size = new System.Drawing.Size(120, 30);
             this.btnQuayLai.TabIndex = 5;
             this.btnQuayLai.Text = "Quay lại";
             this.btnQuayLai.UseVisualStyleBackColor = true;
@@ -416,10 +422,11 @@
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(676, 201);
+            this.btnTimKiem.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnTimKiem.Location = new System.Drawing.Point(569, 88);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(67, 20);
+            this.btnTimKiem.Size = new System.Drawing.Size(120, 30);
             this.btnTimKiem.TabIndex = 5;
             this.btnTimKiem.Text = "Tìm Kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
@@ -427,11 +434,13 @@
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Location = new System.Drawing.Point(701, 178);
+            this.txtTimKiem.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.txtTimKiem.Location = new System.Drawing.Point(313, 90);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(122, 20);
+            this.txtTimKiem.Size = new System.Drawing.Size(205, 26);
             this.txtTimKiem.TabIndex = 4;
+            this.txtTimKiem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimKiem_KeyPress);
             // 
             // label_title
             // 
@@ -516,6 +525,9 @@
             // 
             // tabPage_TimKiem
             // 
+            this.tabPage_TimKiem.Controls.Add(this.label_tabpageTimKiem_dgvGuide);
+            this.tabPage_TimKiem.Controls.Add(this.label1);
+            this.tabPage_TimKiem.Controls.Add(this.dgvHangHoa_TimKiem);
             this.tabPage_TimKiem.Controls.Add(this.txtTimKiem);
             this.tabPage_TimKiem.Controls.Add(this.btnTimKiem);
             this.tabPage_TimKiem.Controls.Add(this.btnQuayLai);
@@ -527,6 +539,23 @@
             this.tabPage_TimKiem.Text = "Tìm Kiếm";
             this.tabPage_TimKiem.UseVisualStyleBackColor = true;
             // 
+            // dgvHangHoa_TimKiem
+            // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvHangHoa_TimKiem.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvHangHoa_TimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvHangHoa_TimKiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHangHoa_TimKiem.Location = new System.Drawing.Point(3, 205);
+            this.dgvHangHoa_TimKiem.Margin = new System.Windows.Forms.Padding(0);
+            this.dgvHangHoa_TimKiem.Name = "dgvHangHoa_TimKiem";
+            this.dgvHangHoa_TimKiem.RowHeadersWidth = 51;
+            this.dgvHangHoa_TimKiem.RowTemplate.Height = 24;
+            this.dgvHangHoa_TimKiem.Size = new System.Drawing.Size(940, 322);
+            this.dgvHangHoa_TimKiem.TabIndex = 6;
+            this.dgvHangHoa_TimKiem.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHangHoa_TimKiem_CellClick);
+            // 
             // panel_title
             // 
             this.panel_title.Controls.Add(this.label_title);
@@ -535,6 +564,28 @@
             this.panel_title.Name = "panel_title";
             this.panel_title.Size = new System.Drawing.Size(954, 80);
             this.panel_title.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.label1.Location = new System.Drawing.Point(87, 94);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(175, 19);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Mã hàng, Tên hàng cần tìm:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_tabpageTimKiem_dgvGuide
+            // 
+            this.label_tabpageTimKiem_dgvGuide.AutoSize = true;
+            this.label_tabpageTimKiem_dgvGuide.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.label_tabpageTimKiem_dgvGuide.ForeColor = System.Drawing.Color.Red;
+            this.label_tabpageTimKiem_dgvGuide.Location = new System.Drawing.Point(8, 535);
+            this.label_tabpageTimKiem_dgvGuide.Name = "label_tabpageTimKiem_dgvGuide";
+            this.label_tabpageTimKiem_dgvGuide.Size = new System.Drawing.Size(281, 19);
+            this.label_tabpageTimKiem_dgvGuide.TabIndex = 8;
+            this.label_tabpageTimKiem_dgvGuide.Text = "Nháy đúp chuột vào dòng mục cần chỉnh sửa";
             // 
             // frmDanhMucHangHoa
             // 
@@ -557,6 +608,7 @@
             this.tabPage1_ThongTinChung.ResumeLayout(false);
             this.tabPage_TimKiem.ResumeLayout(false);
             this.tabPage_TimKiem.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa_TimKiem)).EndInit();
             this.panel_title.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -603,6 +655,9 @@
         private System.Windows.Forms.TabPage tabPage1_ThongTinChung;
         private System.Windows.Forms.TabPage tabPage_TimKiem;
         private System.Windows.Forms.Panel panel_title;
+        private System.Windows.Forms.DataGridView dgvHangHoa_TimKiem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_tabpageTimKiem_dgvGuide;
     }
 }
 

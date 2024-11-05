@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label_title = new System.Windows.Forms.Label();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
@@ -90,7 +90,6 @@
             this.label_title.TabIndex = 0;
             this.label_title.Text = "HÓA ĐƠN BÁN HÀNG";
             this.label_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_title.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnHuy
             // 
@@ -123,7 +122,6 @@
             this.dtpNgayBan.Name = "dtpNgayBan";
             this.dtpNgayBan.Size = new System.Drawing.Size(245, 26);
             this.dtpNgayBan.TabIndex = 5;
-            this.dtpNgayBan.ValueChanged += new System.EventHandler(this.dtpNgayBan_ValueChanged);
             // 
             // cboMaKhach
             // 
@@ -282,7 +280,6 @@
             this.label18.Size = new System.Drawing.Size(98, 19);
             this.label18.TabIndex = 3;
             this.label18.Text = "Mã Nhân Viên";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // btnLoc
             // 
@@ -365,6 +362,7 @@
             // 
             // tabPage_ThongTinChung
             // 
+            this.tabPage_ThongTinChung.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_ThongTinChung.Controls.Add(this.panel_button);
             this.tabPage_ThongTinChung.Controls.Add(this.label17);
             this.tabPage_ThongTinChung.Controls.Add(this.panel_Input);
@@ -378,7 +376,6 @@
             this.tabPage_ThongTinChung.Size = new System.Drawing.Size(946, 589);
             this.tabPage_ThongTinChung.TabIndex = 0;
             this.tabPage_ThongTinChung.Text = "Thông Tin Chung";
-            this.tabPage_ThongTinChung.UseVisualStyleBackColor = true;
             // 
             // panel_button
             // 
@@ -510,8 +507,8 @@
             // 
             // dgvHDBanHang
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvHDBanHang.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvHDBanHang.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHDBanHang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -521,17 +518,17 @@
             this.dgvHDBanHang.Name = "dgvHDBanHang";
             this.dgvHDBanHang.Size = new System.Drawing.Size(937, 275);
             this.dgvHDBanHang.TabIndex = 3;
-            this.dgvHDBanHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDBanHang_CellContentClick);
             // 
             // tabPage_ChiTietHoaDon
             // 
+            this.tabPage_ChiTietHoaDon.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_ChiTietHoaDon.Location = new System.Drawing.Point(4, 4);
+            this.tabPage_ChiTietHoaDon.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage_ChiTietHoaDon.Name = "tabPage_ChiTietHoaDon";
-            this.tabPage_ChiTietHoaDon.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage_ChiTietHoaDon.Size = new System.Drawing.Size(946, 589);
             this.tabPage_ChiTietHoaDon.TabIndex = 2;
             this.tabPage_ChiTietHoaDon.Text = "Chi Tiết Hóa Đơn";
-            this.tabPage_ChiTietHoaDon.UseVisualStyleBackColor = true;
+            this.tabPage_ChiTietHoaDon.Click += new System.EventHandler(this.tabPage_ChiTietHoaDon_Click);
             // 
             // tabPage_TimKiem
             // 

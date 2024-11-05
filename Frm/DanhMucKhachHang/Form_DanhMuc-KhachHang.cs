@@ -154,11 +154,6 @@ namespace BTL_Prj.Frm.DanhMucKhachHang
                 btnLuu.Enabled = false;  
             }
         }
-
-
-   
-
-
         private void ClearForm()
         {
             txtMaKhach.Clear();
