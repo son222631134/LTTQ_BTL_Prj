@@ -68,10 +68,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1_ThongTinChung = new System.Windows.Forms.TabPage();
             this.tabPage_TimKiem = new System.Windows.Forms.TabPage();
+            this.label_tabpageTimKiem_dgvGuide = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.dgvHangHoa_TimKiem = new System.Windows.Forms.DataGridView();
             this.panel_title = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label_tabpageTimKiem_dgvGuide = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa)).BeginInit();
             this.panel_input.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).BeginInit();
@@ -210,7 +210,7 @@
             this.cboMaDacDiem.Location = new System.Drawing.Point(487, 155);
             this.cboMaDacDiem.Margin = new System.Windows.Forms.Padding(2);
             this.cboMaDacDiem.Name = "cboMaDacDiem";
-            this.cboMaDacDiem.Size = new System.Drawing.Size(119, 27);
+            this.cboMaDacDiem.Size = new System.Drawing.Size(180, 27);
             this.cboMaDacDiem.TabIndex = 3;
             // 
             // cboMaMau
@@ -220,7 +220,7 @@
             this.cboMaMau.Location = new System.Drawing.Point(487, 122);
             this.cboMaMau.Margin = new System.Windows.Forms.Padding(2);
             this.cboMaMau.Name = "cboMaMau";
-            this.cboMaMau.Size = new System.Drawing.Size(119, 27);
+            this.cboMaMau.Size = new System.Drawing.Size(180, 27);
             this.cboMaMau.TabIndex = 3;
             // 
             // cboMaCongDung
@@ -230,7 +230,7 @@
             this.cboMaCongDung.Location = new System.Drawing.Point(487, 90);
             this.cboMaCongDung.Margin = new System.Windows.Forms.Padding(2);
             this.cboMaCongDung.Name = "cboMaCongDung";
-            this.cboMaCongDung.Size = new System.Drawing.Size(119, 27);
+            this.cboMaCongDung.Size = new System.Drawing.Size(180, 27);
             this.cboMaCongDung.TabIndex = 3;
             // 
             // cboMaNoiSanXuat
@@ -240,7 +240,7 @@
             this.cboMaNoiSanXuat.Location = new System.Drawing.Point(487, 57);
             this.cboMaNoiSanXuat.Margin = new System.Windows.Forms.Padding(2);
             this.cboMaNoiSanXuat.Name = "cboMaNoiSanXuat";
-            this.cboMaNoiSanXuat.Size = new System.Drawing.Size(119, 27);
+            this.cboMaNoiSanXuat.Size = new System.Drawing.Size(180, 27);
             this.cboMaNoiSanXuat.TabIndex = 3;
             // 
             // cboMaDonVi
@@ -250,7 +250,7 @@
             this.cboMaDonVi.Location = new System.Drawing.Point(487, 25);
             this.cboMaDonVi.Margin = new System.Windows.Forms.Padding(2);
             this.cboMaDonVi.Name = "cboMaDonVi";
-            this.cboMaDonVi.Size = new System.Drawing.Size(119, 27);
+            this.cboMaDonVi.Size = new System.Drawing.Size(180, 27);
             this.cboMaDonVi.TabIndex = 3;
             // 
             // txtDonGiaBan
@@ -259,7 +259,7 @@
             this.txtDonGiaBan.Location = new System.Drawing.Point(139, 151);
             this.txtDonGiaBan.Margin = new System.Windows.Forms.Padding(2);
             this.txtDonGiaBan.Name = "txtDonGiaBan";
-            this.txtDonGiaBan.Size = new System.Drawing.Size(115, 26);
+            this.txtDonGiaBan.Size = new System.Drawing.Size(176, 26);
             this.txtDonGiaBan.TabIndex = 2;
             // 
             // txtDonGiaNhap
@@ -268,7 +268,7 @@
             this.txtDonGiaNhap.Location = new System.Drawing.Point(139, 119);
             this.txtDonGiaNhap.Margin = new System.Windows.Forms.Padding(2);
             this.txtDonGiaNhap.Name = "txtDonGiaNhap";
-            this.txtDonGiaNhap.Size = new System.Drawing.Size(115, 26);
+            this.txtDonGiaNhap.Size = new System.Drawing.Size(176, 26);
             this.txtDonGiaNhap.TabIndex = 2;
             // 
             // txtSoLuong
@@ -277,7 +277,7 @@
             this.txtSoLuong.Location = new System.Drawing.Point(139, 86);
             this.txtSoLuong.Margin = new System.Windows.Forms.Padding(2);
             this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(115, 26);
+            this.txtSoLuong.Size = new System.Drawing.Size(176, 26);
             this.txtSoLuong.TabIndex = 2;
             // 
             // txtTenHang
@@ -286,7 +286,7 @@
             this.txtTenHang.Location = new System.Drawing.Point(139, 54);
             this.txtTenHang.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenHang.Name = "txtTenHang";
-            this.txtTenHang.Size = new System.Drawing.Size(115, 26);
+            this.txtTenHang.Size = new System.Drawing.Size(176, 26);
             this.txtTenHang.TabIndex = 2;
             // 
             // txtMaHang
@@ -295,7 +295,7 @@
             this.txtMaHang.Location = new System.Drawing.Point(139, 21);
             this.txtMaHang.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaHang.Name = "txtMaHang";
-            this.txtMaHang.Size = new System.Drawing.Size(115, 26);
+            this.txtMaHang.Size = new System.Drawing.Size(176, 26);
             this.txtMaHang.TabIndex = 2;
             // 
             // label11
@@ -539,6 +539,28 @@
             this.tabPage_TimKiem.Text = "Tìm Kiếm";
             this.tabPage_TimKiem.UseVisualStyleBackColor = true;
             // 
+            // label_tabpageTimKiem_dgvGuide
+            // 
+            this.label_tabpageTimKiem_dgvGuide.AutoSize = true;
+            this.label_tabpageTimKiem_dgvGuide.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.label_tabpageTimKiem_dgvGuide.ForeColor = System.Drawing.Color.Red;
+            this.label_tabpageTimKiem_dgvGuide.Location = new System.Drawing.Point(8, 535);
+            this.label_tabpageTimKiem_dgvGuide.Name = "label_tabpageTimKiem_dgvGuide";
+            this.label_tabpageTimKiem_dgvGuide.Size = new System.Drawing.Size(281, 19);
+            this.label_tabpageTimKiem_dgvGuide.TabIndex = 8;
+            this.label_tabpageTimKiem_dgvGuide.Text = "Nháy đúp chuột vào dòng mục cần chỉnh sửa";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.label1.Location = new System.Drawing.Point(87, 94);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(175, 19);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Mã hàng, Tên hàng cần tìm:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // dgvHangHoa_TimKiem
             // 
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
@@ -564,28 +586,6 @@
             this.panel_title.Name = "panel_title";
             this.panel_title.Size = new System.Drawing.Size(954, 80);
             this.panel_title.TabIndex = 12;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label1.Location = new System.Drawing.Point(87, 94);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 19);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Mã hàng, Tên hàng cần tìm:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label_tabpageTimKiem_dgvGuide
-            // 
-            this.label_tabpageTimKiem_dgvGuide.AutoSize = true;
-            this.label_tabpageTimKiem_dgvGuide.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label_tabpageTimKiem_dgvGuide.ForeColor = System.Drawing.Color.Red;
-            this.label_tabpageTimKiem_dgvGuide.Location = new System.Drawing.Point(8, 535);
-            this.label_tabpageTimKiem_dgvGuide.Name = "label_tabpageTimKiem_dgvGuide";
-            this.label_tabpageTimKiem_dgvGuide.Size = new System.Drawing.Size(281, 19);
-            this.label_tabpageTimKiem_dgvGuide.TabIndex = 8;
-            this.label_tabpageTimKiem_dgvGuide.Text = "Nháy đúp chuột vào dòng mục cần chỉnh sửa";
             // 
             // frmDanhMucHangHoa
             // 

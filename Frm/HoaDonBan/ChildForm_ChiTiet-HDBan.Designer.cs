@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvChiTietHoaDonBan = new System.Windows.Forms.DataGridView();
             this.cboMaHang = new System.Windows.Forms.ComboBox();
             this.txtThanhTien = new System.Windows.Forms.TextBox();
@@ -50,6 +50,10 @@
             this.btnHuy = new System.Windows.Forms.Button();
             this.panel_button = new System.Windows.Forms.Panel();
             this.panel_input = new System.Windows.Forms.Panel();
+            this.label_MaHoaDon = new System.Windows.Forms.Label();
+            this.txt_MaHoaDon = new System.Windows.Forms.TextBox();
+            this.txtTongTien = new System.Windows.Forms.TextBox();
+            this.labelTongTien = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDonBan)).BeginInit();
             this.panel_button.SuspendLayout();
             this.panel_input.SuspendLayout();
@@ -57,8 +61,8 @@
             // 
             // dgvChiTietHoaDonBan
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvChiTietHoaDonBan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvChiTietHoaDonBan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvChiTietHoaDonBan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -73,7 +77,7 @@
             // 
             this.cboMaHang.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.cboMaHang.FormattingEnabled = true;
-            this.cboMaHang.Location = new System.Drawing.Point(124, 37);
+            this.cboMaHang.Location = new System.Drawing.Point(124, 63);
             this.cboMaHang.Name = "cboMaHang";
             this.cboMaHang.Size = new System.Drawing.Size(119, 27);
             this.cboMaHang.TabIndex = 35;
@@ -81,7 +85,7 @@
             // txtThanhTien
             // 
             this.txtThanhTien.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.txtThanhTien.Location = new System.Drawing.Point(638, 95);
+            this.txtThanhTien.Location = new System.Drawing.Point(638, 115);
             this.txtThanhTien.Name = "txtThanhTien";
             this.txtThanhTien.Size = new System.Drawing.Size(119, 26);
             this.txtThanhTien.TabIndex = 30;
@@ -89,7 +93,7 @@
             // txtDonGiaBan
             // 
             this.txtDonGiaBan.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.txtDonGiaBan.Location = new System.Drawing.Point(638, 37);
+            this.txtDonGiaBan.Location = new System.Drawing.Point(638, 63);
             this.txtDonGiaBan.Name = "txtDonGiaBan";
             this.txtDonGiaBan.Size = new System.Drawing.Size(119, 26);
             this.txtDonGiaBan.TabIndex = 31;
@@ -97,7 +101,7 @@
             // txtTenHang
             // 
             this.txtTenHang.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.txtTenHang.Location = new System.Drawing.Point(381, 37);
+            this.txtTenHang.Location = new System.Drawing.Point(381, 63);
             this.txtTenHang.Name = "txtTenHang";
             this.txtTenHang.Size = new System.Drawing.Size(119, 26);
             this.txtTenHang.TabIndex = 32;
@@ -105,7 +109,7 @@
             // txtGiamGia
             // 
             this.txtGiamGia.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.txtGiamGia.Location = new System.Drawing.Point(381, 95);
+            this.txtGiamGia.Location = new System.Drawing.Point(381, 115);
             this.txtGiamGia.Name = "txtGiamGia";
             this.txtGiamGia.Size = new System.Drawing.Size(119, 26);
             this.txtGiamGia.TabIndex = 33;
@@ -113,7 +117,7 @@
             // txtSoLuong
             // 
             this.txtSoLuong.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.txtSoLuong.Location = new System.Drawing.Point(124, 95);
+            this.txtSoLuong.Location = new System.Drawing.Point(124, 115);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(119, 26);
             this.txtSoLuong.TabIndex = 34;
@@ -122,7 +126,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label15.Location = new System.Drawing.Point(526, 98);
+            this.label15.Location = new System.Drawing.Point(526, 118);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(71, 19);
             this.label15.TabIndex = 24;
@@ -132,7 +136,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label13.Location = new System.Drawing.Point(284, 98);
+            this.label13.Location = new System.Drawing.Point(284, 118);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(79, 19);
             this.label13.TabIndex = 25;
@@ -142,7 +146,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label11.Location = new System.Drawing.Point(37, 98);
+            this.label11.Location = new System.Drawing.Point(37, 118);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(64, 19);
             this.label11.TabIndex = 26;
@@ -152,7 +156,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label14.Location = new System.Drawing.Point(526, 40);
+            this.label14.Location = new System.Drawing.Point(526, 66);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(56, 19);
             this.label14.TabIndex = 27;
@@ -162,7 +166,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label12.Location = new System.Drawing.Point(284, 40);
+            this.label12.Location = new System.Drawing.Point(284, 66);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(64, 19);
             this.label12.TabIndex = 28;
@@ -172,7 +176,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label10.Location = new System.Drawing.Point(37, 40);
+            this.label10.Location = new System.Drawing.Point(37, 66);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 19);
             this.label10.TabIndex = 29;
@@ -187,7 +191,7 @@
             this.btnClearCT.TabIndex = 37;
             this.btnClearCT.Text = "Lưu";
             this.btnClearCT.UseVisualStyleBackColor = true;
-            this.btnClearCT.Click += new System.EventHandler(this.btnClearCT_Click);
+            this.btnClearCT.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnThem
             // 
@@ -220,7 +224,7 @@
             this.btnDong.TabIndex = 38;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
-            this.btnDong.Click += new System.EventHandler(this.button3_Click);
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // label2
             // 
@@ -265,6 +269,7 @@
             this.panel_input.Controls.Add(this.cboMaHang);
             this.panel_input.Controls.Add(this.label10);
             this.panel_input.Controls.Add(this.btnHuy);
+            this.panel_input.Controls.Add(this.label_MaHoaDon);
             this.panel_input.Controls.Add(this.label12);
             this.panel_input.Controls.Add(this.label14);
             this.panel_input.Controls.Add(this.btnClearCT);
@@ -275,6 +280,7 @@
             this.panel_input.Controls.Add(this.txtSoLuong);
             this.panel_input.Controls.Add(this.txtDonGiaBan);
             this.panel_input.Controls.Add(this.txtGiamGia);
+            this.panel_input.Controls.Add(this.txt_MaHoaDon);
             this.panel_input.Controls.Add(this.txtTenHang);
             this.panel_input.Location = new System.Drawing.Point(2, 2);
             this.panel_input.Margin = new System.Windows.Forms.Padding(0);
@@ -282,11 +288,52 @@
             this.panel_input.Size = new System.Drawing.Size(950, 156);
             this.panel_input.TabIndex = 42;
             // 
+            // label_MaHoaDon
+            // 
+            this.label_MaHoaDon.AutoSize = true;
+            this.label_MaHoaDon.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.label_MaHoaDon.Location = new System.Drawing.Point(284, 22);
+            this.label_MaHoaDon.Name = "label_MaHoaDon";
+            this.label_MaHoaDon.Size = new System.Drawing.Size(56, 19);
+            this.label_MaHoaDon.TabIndex = 28;
+            this.label_MaHoaDon.Text = "Mã HĐ";
+            // 
+            // txt_MaHoaDon
+            // 
+            this.txt_MaHoaDon.Enabled = false;
+            this.txt_MaHoaDon.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.txt_MaHoaDon.Location = new System.Drawing.Point(381, 19);
+            this.txt_MaHoaDon.Name = "txt_MaHoaDon";
+            this.txt_MaHoaDon.Size = new System.Drawing.Size(119, 26);
+            this.txt_MaHoaDon.TabIndex = 32;
+            // 
+            // txtTongTien
+            // 
+            this.txtTongTien.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTongTien.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.txtTongTien.Location = new System.Drawing.Point(742, 528);
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.Size = new System.Drawing.Size(173, 26);
+            this.txtTongTien.TabIndex = 44;
+            // 
+            // labelTongTien
+            // 
+            this.labelTongTien.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelTongTien.AutoSize = true;
+            this.labelTongTien.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.labelTongTien.Location = new System.Drawing.Point(667, 532);
+            this.labelTongTien.Name = "labelTongTien";
+            this.labelTongTien.Size = new System.Drawing.Size(65, 19);
+            this.labelTongTien.TabIndex = 43;
+            this.labelTongTien.Text = "Tổng tiền";
+            // 
             // ChildfrmChiTietHoaDonBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 620);
+            this.Controls.Add(this.txtTongTien);
+            this.Controls.Add(this.labelTongTien);
             this.Controls.Add(this.panel_input);
             this.Controls.Add(this.panel_button);
             this.Controls.Add(this.label2);
@@ -327,5 +374,9 @@
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Panel panel_button;
         private System.Windows.Forms.Panel panel_input;
+        private System.Windows.Forms.Label label_MaHoaDon;
+        private System.Windows.Forms.TextBox txt_MaHoaDon;
+        private System.Windows.Forms.TextBox txtTongTien;
+        private System.Windows.Forms.Label labelTongTien;
     }
 }

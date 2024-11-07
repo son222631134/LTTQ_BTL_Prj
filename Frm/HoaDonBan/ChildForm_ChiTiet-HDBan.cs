@@ -39,7 +39,11 @@ namespace BTL_Prj.Frm.HoaDonBan
             txtGiamGia.Leave += txtGiamGia_Leave;
             dgvChiTietHoaDonBan.CellDoubleClick += dgvChiTietHoaDonBan_CellDoubleClick;
             dgvChiTietHoaDonBan.CellClick += dgvChiTietHoaDonBan_CellClick;
+
+            txt_MaHoaDon.Text = soHDB.ToString();
+            CapNhatTongTien();
         }
+
         private void SetFieldsState(bool enabled)
         {
             btnClearCT.Enabled = enabled;
@@ -47,8 +51,6 @@ namespace BTL_Prj.Frm.HoaDonBan
             txtSoLuong.Enabled = enabled;
             txtGiamGia.Enabled = enabled;
         }
-
-
         private void LoadDataGridView()
         {
             try
@@ -63,7 +65,6 @@ namespace BTL_Prj.Frm.HoaDonBan
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void ThemThongTinHDVaoCDSL()
         {
             try
@@ -102,7 +103,6 @@ namespace BTL_Prj.Frm.HoaDonBan
                 MessageBox.Show("Lỗi khi thêm: " + e.Message);
             }
         }
-
         private void ResetValues()
         {
             cboMaHang.Text = "";
@@ -112,17 +112,6 @@ namespace BTL_Prj.Frm.HoaDonBan
             txtDonGiaBan.Text = "";
             txtThanhTien.Text = "0";
         }
-
-        private void cboMaHang_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboMaHang.SelectedItem != null)
-            {
-                string selectedMaHang = cboMaHang.SelectedItem.ToString();
-                GetHangHoa(selectedMaHang);
-                CalculateThanhTien();
-            }
-        }
-
         private void LoadMaHang()
         {
             try
@@ -139,91 +128,6 @@ namespace BTL_Prj.Frm.HoaDonBan
                 MessageBox.Show("Lỗi khi tải mã hàng: " + ex.Message);
             }
         }
-
-        private void GetHangHoa(string maHang)
-        {
-            try
-            {
-                string query = "SELECT TenHang, DonGiaBan FROM DMHangHoa WHERE MaHang = @MaHang";
-                var parameters = new Dictionary<string, object> { { "@MaHang", maHang } };
-                DataTable dt = ProcessingData.GetData(query, parameters);
-                if (dt.Rows.Count > 0)
-                {
-                    txtTenHang.Text = dt.Rows[0]["TenHang"].ToString();
-                    txtDonGiaBan.Text = dt.Rows[0]["DonGiaBan"].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi lấy hàng: " + ex.Message);
-            }
-        }
-
-        private void txtSoLuong_Leave(object sender, EventArgs e)
-        {
-            CalculateThanhTien();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-                this.Close();
-			return;
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn đóng?", "Xác nhận đóng", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.Close();
-            }
-        }
-
-        private void btnClearCT_Click(object sender, EventArgs e)
-        {
-            cboMaHang.Enabled = false;
-            if (btnThem.Enabled == false)
-            {
-                ThemThongTinHDVaoCDSL();
-                ResetValues();
-                SetFieldsState(false);
-                LoadDataGridView();
-                btnThem.Enabled = true;
-            }
-            if (btnChinhSua.Enabled == false)
-            {
-                ChinhSuaThongTinHang();
-                ResetValues();
-                SetFieldsState(false);
-                LoadDataGridView();
-                btnChinhSua.Enabled = true;
-            }
-        }
-
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            cboMaHang.Enabled = true;
-            btnThem.Enabled = false;
-            btnChinhSua.Enabled = true;
-            
-            ResetValues();
-            SetFieldsState(true);
-        }
-
-        private void dgvChiTietHoaDonBan_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                string maHang = dgvChiTietHoaDonBan.Rows[e.RowIndex].Cells["MaHang"].Value.ToString();
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa mặt hàng này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    DeleteMatHang(maHang);
-                    LoadDataGridView();
-                    ResetValues();
-                    SetFieldsState(false);
-                    btnThem.Enabled = true;
-                    btnChinhSua.Enabled = true;
-                }
-            }
-        }
-
         private void DeleteMatHang(string maHang)
         {
             try
@@ -242,29 +146,6 @@ namespace BTL_Prj.Frm.HoaDonBan
                 MessageBox.Show("Lỗi khi xóa mặt hàng: " + ex.Message);
             }
         }
-
-        private void dgvChiTietHoaDonBan_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgvChiTietHoaDonBan.Rows[e.RowIndex];
-
-                cboMaHang.Text = row.Cells["MaHang"].Value.ToString();
-                txtSoLuong.Text = row.Cells["SoLuong"].Value.ToString();
-                txtThanhTien.Text = row.Cells["ThanhTien"].Value.ToString();
-                txtGiamGia.Text = row.Cells["GiamGia"].Value.ToString();
-
-                cboMaHang.Enabled = false;
-                SetFieldsState(false);
-                btnThem.Enabled = true;
-                btnChinhSua.Enabled = true;
-
-                GetTenHang(cboMaHang.Text);
-                GetDonGiaBan(cboMaHang.Text);
-            }
-        }
-
         private void GetTenHang(string maHang)
         {
             try
@@ -283,7 +164,24 @@ namespace BTL_Prj.Frm.HoaDonBan
                 MessageBox.Show("Lỗi khi lấy tên hàng: " + ex.Message);
             }
         }
-
+        private void GetHangHoa(string maHang)
+        {
+            try
+            {
+                string query = "SELECT TenHang, DonGiaBan FROM DMHangHoa WHERE MaHang = @MaHang";
+                var parameters = new Dictionary<string, object> { { "@MaHang", maHang } };
+                DataTable dt = ProcessingData.GetData(query, parameters);
+                if (dt.Rows.Count > 0)
+                {
+                    txtTenHang.Text = dt.Rows[0]["TenHang"].ToString();
+                    txtDonGiaBan.Text = dt.Rows[0]["DonGiaBan"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy hàng: " + ex.Message);
+            }
+        }
         private void GetDonGiaBan(string maHang)
         {
             try
@@ -300,6 +198,27 @@ namespace BTL_Prj.Frm.HoaDonBan
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi lấy đơn giá bán: " + ex.Message);
+            }
+        }
+        private void ChinhSuaThongTinHang()
+        {
+            try
+            {
+                string query = "UPDATE ChiTietHoaDonBan SET SoLuong = @SoLuong, GiamGia = @GiamGia, ThanhTien = @ThanhTien WHERE SoHDB = @SoHDB AND MaHang = @MaHang";
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@SoHDB", soHDB },
+                    { "@MaHang", int.Parse(cboMaHang.Text) },
+                    { "@SoLuong", int.Parse(txtSoLuong.Text) },
+                    { "@GiamGia", decimal.Parse(txtGiamGia.Text) },
+                    { "@ThanhTien", decimal.Parse(txtThanhTien.Text) }
+                };
+                ProcessingData.ExecuteQuery(query, parameters);
+                MessageBox.Show("Chỉnh sửa thành công.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi chỉnh sửa mặt hàng: " + ex.Message);
             }
         }
 
@@ -328,12 +247,32 @@ namespace BTL_Prj.Frm.HoaDonBan
                 txtThanhTien.Text = "0";
             }
         }
+        private void CapNhatTongTien()
+        {
+            frmHoaDonBan.CapNhatTongTien(soHDB);
 
+            DataTable dt = ProcessingData.GetData("select TongTien from HoaDonBan where SoHDB = @SoHDB", new Dictionary<string, object> { { "@SoHDB", soHDB } });
+            decimal tongTien = decimal.Parse(dt.Rows[0]["TongTien"].ToString());
+            txtTongTien.Text = tongTien.ToString();
+        }
         private void txtGiamGia_Leave(object sender, EventArgs e)
         {
             CalculateThanhTien();
         }
 
+        private void txtSoLuong_Leave(object sender, EventArgs e)
+        {
+            CalculateThanhTien();
+        }
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            cboMaHang.Enabled = true;
+            btnThem.Enabled = false;
+            btnChinhSua.Enabled = true;
+            
+            ResetValues();
+            SetFieldsState(true);
+        }
         private void btnChinhSua_Click(object sender, EventArgs e)
         {
             if (btnThem.Enabled == false)
@@ -360,29 +299,38 @@ namespace BTL_Prj.Frm.HoaDonBan
                 btnChinhSua.Enabled = false;
             }
         }
-
-        private void ChinhSuaThongTinHang()
+        private void btnDong_Click(object sender, EventArgs e)
         {
-            try
+            this.Close();
+            return;
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn đóng?", "Xác nhận đóng", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                string query = "UPDATE ChiTietHoaDonBan SET SoLuong = @SoLuong, GiamGia = @GiamGia, ThanhTien = @ThanhTien WHERE SoHDB = @SoHDB AND MaHang = @MaHang";
-                var parameters = new Dictionary<string, object>
-                {
-                    { "@SoHDB", soHDB },
-                    { "@MaHang", int.Parse(cboMaHang.Text) },
-                    { "@SoLuong", int.Parse(txtSoLuong.Text) },
-                    { "@GiamGia", decimal.Parse(txtGiamGia.Text) },
-                    { "@ThanhTien", decimal.Parse(txtThanhTien.Text) }
-                };
-                ProcessingData.ExecuteQuery(query, parameters);
-                MessageBox.Show("Chỉnh sửa thành công.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi chỉnh sửa mặt hàng: " + ex.Message);
+                this.Close();
             }
         }
-
+        
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            cboMaHang.Enabled = false;
+            if (btnThem.Enabled == false)
+            {
+                ThemThongTinHDVaoCDSL();
+                ResetValues();
+                SetFieldsState(false);
+                LoadDataGridView();
+                btnThem.Enabled = true;
+            }
+            if (btnChinhSua.Enabled == false)
+            {
+                ChinhSuaThongTinHang();
+                ResetValues();
+                SetFieldsState(false);
+                LoadDataGridView();
+                btnChinhSua.Enabled = true;
+            }
+            CapNhatTongTien();
+        }
         private void btnHuy_Click(object sender, EventArgs e)
         {
             ResetValues();
@@ -390,6 +338,55 @@ namespace BTL_Prj.Frm.HoaDonBan
             SetFieldsState(false);
             btnThem.Enabled = true;
             btnChinhSua.Enabled = true;
+        }
+
+        private void cboMaHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboMaHang.SelectedItem != null)
+            {
+                string selectedMaHang = cboMaHang.SelectedItem.ToString();
+                GetHangHoa(selectedMaHang);
+                CalculateThanhTien();
+            }
+        }
+        private void dgvChiTietHoaDonBan_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex >= dgvChiTietHoaDonBan.RowCount - 1) return;
+
+            {
+                string maHang = dgvChiTietHoaDonBan.Rows[e.RowIndex].Cells["MaHang"].Value.ToString();
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa mặt hàng này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    DeleteMatHang(maHang);
+                    LoadDataGridView();
+                    ResetValues();
+                    SetFieldsState(false);
+                    btnThem.Enabled = true;
+                    btnChinhSua.Enabled = true;
+                }
+            }
+        }
+        private void dgvChiTietHoaDonBan_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex >= dgvChiTietHoaDonBan.RowCount - 1) return;
+            
+            {
+                DataGridViewRow row = dgvChiTietHoaDonBan.Rows[e.RowIndex];
+
+                cboMaHang.Text = row.Cells["MaHang"].Value.ToString();
+                txtSoLuong.Text = row.Cells["SoLuong"].Value.ToString();
+                txtThanhTien.Text = row.Cells["ThanhTien"].Value.ToString();
+                txtGiamGia.Text = row.Cells["GiamGia"].Value.ToString();
+
+                cboMaHang.Enabled = false;
+                SetFieldsState(false);
+                btnThem.Enabled = true;
+                btnChinhSua.Enabled = true;
+
+                GetTenHang(cboMaHang.Text);
+                GetDonGiaBan(cboMaHang.Text);
+            }
         }
     }
 }

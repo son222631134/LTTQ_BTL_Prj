@@ -41,7 +41,9 @@ namespace BTL_Prj.Frm.HoaDonBan
             LoadMaKhachHang();
             dgvHDBanHang.CellClick += dgvHDBanHang_CellClick;
             dgvHDBanHang.CellDoubleClick += dgvHDBanHang_CellDoubleClick;
+            tabControl1.TabPages.Remove(tabPage_ChiTietHoaDon);
         }
+
         private void ThemHoaDonVaoCDSL()
         {
             if (string.IsNullOrEmpty(txtMaHDBan.Text) ||
@@ -282,7 +284,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                 MessageBox.Show("Lỗi khi cập nhật hóa đơn: " + ex.Message);
             }
         }
-        private void CapNhatTongTien(int soHDB)
+        public static void CapNhatTongTien(int soHDB)
         {
             try
             {
@@ -307,7 +309,7 @@ namespace BTL_Prj.Frm.HoaDonBan
 
                     // Gọi phương thức Update tổng quát
                     ProcessingData.Update("HoaDonBan", updateValues, "SoHDB", soHDB);
-
+                    //MessageBox.Show(tongTien.ToString());
                 }
                 else
                 {
@@ -375,6 +377,29 @@ namespace BTL_Prj.Frm.HoaDonBan
 
             this.ActiveControl = null;
         }
+        private void SwitchToChiTiet(int soHDB)
+        {
+            if (tabControl1.TabPages.Contains(tabPage_ChiTietHoaDon))
+            {
+                tabControl1.TabPages.Remove(tabPage_ChiTietHoaDon);
+            }
+            tabControl1.TabPages.Add(tabPage_ChiTietHoaDon);
+
+            //frmChiTietHoaDonBan chiTietForm = new frmChiTietHoaDonBan(soHDB);
+            ChildfrmChiTietHoaDonBan chiTietForm = new ChildfrmChiTietHoaDonBan(soHDB);
+            chiTietForm.FormClosed += (s, args) => CapNhatTongTien(soHDB);
+            chiTietForm.FormClosed += (s, args) => LoadDataGridView();
+            //chiTietForm.ShowDialog();
+            tabControl1.SelectedTab = tabPage_ChiTietHoaDon;
+            chiTietForm.TopLevel = false;
+            chiTietForm.Dock = DockStyle.Fill;
+            tabPage_ChiTietHoaDon.Controls.Clear();
+            tabPage_ChiTietHoaDon.Controls.Add(chiTietForm);
+            tabPage_ChiTietHoaDon.Tag = chiTietForm;
+            chiTietForm.BringToFront();
+            chiTietForm.Show();
+            chiTietForm.FormBorderStyle = FormBorderStyle.None;
+        }
         
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -408,6 +433,7 @@ namespace BTL_Prj.Frm.HoaDonBan
 
             btnCapNhat.Enabled = false;
             SetFieldsState(true);
+            txtMaHDBan.Enabled = false;
         }
         private void btnChiTiet_Click(object sender, EventArgs e)
         {
@@ -432,20 +458,7 @@ namespace BTL_Prj.Frm.HoaDonBan
             if (dgvHDBanHang.CurrentRow != null)
             {
                 int soHDB = Convert.ToInt32(dgvHDBanHang.CurrentRow.Cells["SoHDB"].Value);
-                //frmChiTietHoaDonBan chiTietForm = new frmChiTietHoaDonBan(soHDB);
-                ChildfrmChiTietHoaDonBan chiTietForm = new ChildfrmChiTietHoaDonBan(soHDB);
-                chiTietForm.FormClosed += (s, args) => CapNhatTongTien(soHDB);
-                chiTietForm.FormClosed += (s, args) => LoadDataGridView();
-                //chiTietForm.ShowDialog();
-                tabControl1.SelectedTab = tabPage_ChiTietHoaDon;
-                chiTietForm.TopLevel = false;
-                chiTietForm.Dock = DockStyle.Fill;
-                tabPage_ChiTietHoaDon.Controls.Clear();
-                tabPage_ChiTietHoaDon.Controls.Add(chiTietForm);
-                tabPage_ChiTietHoaDon.Tag = chiTietForm;
-                chiTietForm.BringToFront();
-                chiTietForm.Show();
-                chiTietForm.FormBorderStyle = FormBorderStyle.None;
+                SwitchToChiTiet(soHDB);
             }
             else
             {
@@ -480,10 +493,11 @@ namespace BTL_Prj.Frm.HoaDonBan
             }
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void btnLuu_Click(object sender, EventArgs e)
         {
             if (btnThem.Enabled == false)
             {
+                int lastMaHDBan = int.Parse(txtMaHDBan.Text);
                 ThemHoaDonVaoCDSL();
                 ResetValues();
                 SetFieldsState(false);
@@ -492,6 +506,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                 btnCapNhat.Enabled = true;
                 btnChiTiet.Enabled = false;
                 btnInHoaDon.Enabled = false;
+                SwitchToChiTiet(lastMaHDBan);
             }
             if (btnCapNhat.Enabled == false)
             {
@@ -545,7 +560,7 @@ namespace BTL_Prj.Frm.HoaDonBan
 
         private void dgvHDBanHang_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            if (e.RowIndex < 0 || e.RowIndex >= dgvHDBanHang.RowCount - 1) return;
 
             int soHDB = Convert.ToInt32(dgvHDBanHang.Rows[e.RowIndex].Cells["SoHDB"].Value);
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa hóa đơn này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
@@ -560,7 +575,7 @@ namespace BTL_Prj.Frm.HoaDonBan
             SetFieldsState(false);
             btnThem.Enabled = true;
             btnCapNhat.Enabled = true;
-            if (e.RowIndex < 0) return;
+            if (e.RowIndex < 0 || e.RowIndex >= dgvHDBanHang.RowCount -1) return;
 
             btnChiTiet.Enabled = true;
             btnInHoaDon.Enabled = true;
@@ -575,10 +590,6 @@ namespace BTL_Prj.Frm.HoaDonBan
             GetTenNhanVien(cboMaNhanVien.Text);
             GetThongTinKhachHang(cboMaKhach.Text);
         }
-
-        private void tabPage_ChiTietHoaDon_Click(object sender, EventArgs e)
-        {
-            //chua biet lam j, vi chitiet HDB can co soDB
-        }
     }
 }
+    

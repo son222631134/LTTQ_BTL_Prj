@@ -81,3 +81,8 @@ DanhMucHangHoa:
 
 HoaDonBanHang:
 	cập nhật tabpage_ThongTinChung:btnChiTiet -> tabpage_ChiTiet
+
+--------------
+07.11.2024
+    Add, chinh sua tabpage ChiTietHoaDon Of HDB, HDN
+    Add action Them HD -> SwitchToChiTiet(soHD)

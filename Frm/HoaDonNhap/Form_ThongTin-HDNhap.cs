@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BTL_Prj.Class;
+using BTL_Prj.Frm.HoaDonBan;
 
 namespace BTL_Prj.Frm.HoaDonNhap
 {
@@ -25,6 +26,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
 
             LoadComboBoxData();
             LoadDataToGridView();
+            tabControl1.TabPages.Remove(tabPage_ChiTietHoaDon);
         }
         private void LoadComboBoxData()
         {
@@ -49,6 +51,26 @@ namespace BTL_Prj.Frm.HoaDonNhap
             DataTable dt = ProcessingData.GetData(query);
             dgvHoaDonNhap.DataSource = dt;
         }
+        private void SwitchToChiTiet(string soHDN)
+        {
+            // Hiển thị tab Chi tiết hóa đơn nhập
+            if (tabControl1.TabPages.Contains(tabPage_ChiTietHoaDon))
+            {
+                tabControl1.TabPages.Remove(tabPage_ChiTietHoaDon);
+            }
+            tabControl1.TabPages.Add(tabPage_ChiTietHoaDon);
+            ChildfrmChiTietHDNhap chiTietForm = new ChildfrmChiTietHDNhap(soHDN);
+            tabControl1.SelectedTab = tabPage_ChiTietHoaDon;
+            chiTietForm.TopLevel = false;
+            chiTietForm.Dock = DockStyle.Fill;
+            tabPage_ChiTietHoaDon.Controls.Clear();
+            tabPage_ChiTietHoaDon.Controls.Add(chiTietForm);
+            tabPage_ChiTietHoaDon.Tag = chiTietForm;
+            chiTietForm.BringToFront();
+            chiTietForm.Show();
+            chiTietForm.FormBorderStyle = FormBorderStyle.None;
+        }
+
         private void TBHDN_TextChanged(object sender, EventArgs e)
         {
 
@@ -92,8 +114,9 @@ namespace BTL_Prj.Frm.HoaDonNhap
                 string soHDN = dgvHoaDonNhap.CurrentRow.Cells["SoHDN"].Value.ToString();
 
                 // Mở Formchitiethoadonnhap và truyền SoHDN
-                frmChiTietHDNhap formCTHDN = new frmChiTietHDNhap(soHDN);
-                formCTHDN.Show(); // Hiển thị form chi tiết hóa đơn nhập
+                //frmChiTietHDNhap formCTHDN = new frmChiTietHDNhap(soHDN);
+                //formCTHDN.Show(); // Hiển thị form chi tiết hóa đơn nhập
+                SwitchToChiTiet(soHDN);
             }
             else
             {
@@ -117,6 +140,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
                 ProcessingData.Insert("HoaDonNhap", columnValues);
                 MessageBox.Show("Thêm hóa đơn nhập thành công!");
                 LoadDataToGridView(); // Cập nhật lại dữ liệu trên DataGridView
+                SwitchToChiTiet(TBHDN.Text); // Chuyển sang tab Chi tiết hóa đơn nhập
             }
             catch (Exception ex)
             {
@@ -185,8 +209,9 @@ namespace BTL_Prj.Frm.HoaDonNhap
 
         private void dtgrvHDN_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0 || e.RowIndex >= dgvHoaDonNhap.RowCount - 1) return;
             // Hiển thị dữ liệu từ hàng đã chọn lên các TextBox và ComboBox
-            if (e.RowIndex >= 0)
+            //if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvHoaDonNhap.Rows[e.RowIndex];
                 TBHDN.Text = row.Cells["SoHDN"].Value.ToString();

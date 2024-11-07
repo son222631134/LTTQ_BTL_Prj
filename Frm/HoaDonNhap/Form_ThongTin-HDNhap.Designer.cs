@@ -47,7 +47,7 @@
             this.panel_button = new System.Windows.Forms.Panel();
             this.panel_input = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage_ThongTinChung = new System.Windows.Forms.TabPage();
             this.tabPage_ChiTietHoaDon = new System.Windows.Forms.TabPage();
             this.label_title = new System.Windows.Forms.Label();
             this.panel_title = new System.Windows.Forms.Panel();
@@ -55,7 +55,7 @@
             this.panel_button.SuspendLayout();
             this.panel_input.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabPage_ThongTinChung.SuspendLayout();
             this.panel_title.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -279,7 +279,7 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage_ThongTinChung);
             this.tabControl1.Controls.Add(this.tabPage_ChiTietHoaDon);
             this.tabControl1.Location = new System.Drawing.Point(0, 80);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
@@ -290,23 +290,23 @@
             this.tabControl1.TabIndex = 43;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // tabPage1
+            // tabPage_ThongTinChung
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage1.Controls.Add(this.dgvHoaDonNhap);
-            this.tabPage1.Controls.Add(this.panel_input);
-            this.tabPage1.Controls.Add(this.panel_button);
-            this.tabPage1.Location = new System.Drawing.Point(4, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(946, 594);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Thông tin chung";
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            this.tabPage_ThongTinChung.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage_ThongTinChung.Controls.Add(this.dgvHoaDonNhap);
+            this.tabPage_ThongTinChung.Controls.Add(this.panel_input);
+            this.tabPage_ThongTinChung.Controls.Add(this.panel_button);
+            this.tabPage_ThongTinChung.Location = new System.Drawing.Point(4, 4);
+            this.tabPage_ThongTinChung.Name = "tabPage_ThongTinChung";
+            this.tabPage_ThongTinChung.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_ThongTinChung.Size = new System.Drawing.Size(946, 594);
+            this.tabPage_ThongTinChung.TabIndex = 0;
+            this.tabPage_ThongTinChung.Text = "Thông tin chung";
+            this.tabPage_ThongTinChung.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // tabPage_ChiTietHoaDon
             // 
-            this.tabPage_ChiTietHoaDon.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabPage_ChiTietHoaDon.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_ChiTietHoaDon.Location = new System.Drawing.Point(4, 4);
             this.tabPage_ChiTietHoaDon.Name = "tabPage_ChiTietHoaDon";
             this.tabPage_ChiTietHoaDon.Padding = new System.Windows.Forms.Padding(3);
@@ -356,7 +356,7 @@
             this.panel_input.ResumeLayout(false);
             this.panel_input.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tabPage_ThongTinChung.ResumeLayout(false);
             this.panel_title.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -382,7 +382,7 @@
         private System.Windows.Forms.Panel panel_button;
         private System.Windows.Forms.Panel panel_input;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage_ThongTinChung;
         private System.Windows.Forms.TabPage tabPage_ChiTietHoaDon;
         private System.Windows.Forms.Label label_title;
         private System.Windows.Forms.Panel panel_title;
