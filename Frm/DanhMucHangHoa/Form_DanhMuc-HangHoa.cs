@@ -61,7 +61,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 			cboMaDacDiem.DisplayMember = "TenDacDiem";
 			cboMaDacDiem.ValueMember = "MaDacDiem";
         }
-				private void ClearForm()
+		private void ClearForm()
 		{
 			txtMaHang.Clear();
 			txtTenHang.Clear();
@@ -316,10 +316,6 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
             dgvHangHoa_CellClick(sender, new DataGridViewCellEventArgs(/*dgvHangHoa_TimKiem.CurrentCell.ColumnIndex*/0, /*dgvHangHoa_TimKiem.CurrentRow.Index*/ Row_in_dgvHangHoa));
             tabControl1.SelectedTab = tabControl1.TabPages[0];
 
-        }
-
-        private void frmDanhMucHangHoa_StyleChanged(object sender, EventArgs e)
-        {
         }
     }
 }

@@ -19,12 +19,14 @@ namespace BTL_Prj.Frm.Dashboard
         {
             InitializeComponent();
         }
-
-        private void chart1_Click(object sender, EventArgs e)
+        private void FrmDashboard_Load(object sender, EventArgs e)
         {
-
+            LoadChart1Data();
+            LoadChart2Data();
+            DisplayProfitOrLoss();
+            chart_chitieu.Font = new Font("Times New Roman", 12, FontStyle.Bold); // Change the font here
+            chart_doanhthu.Font = new Font("Times New Roman", 12, FontStyle.Bold); // Change the font here
         }
-
         private void LoadChart1Data()
         {
             //string connectionString = "Data Source=MAN4KA\\DATABASE_LEARN;Initial Catalog=MoreQLBanHoaQua;Persist Security Info=True;User ID=sa;Password=manaka;Encrypt=True;TrustServerCertificate=True";
@@ -49,7 +51,6 @@ namespace BTL_Prj.Frm.Dashboard
                 chart_doanhthu.DataBind();
             }
         }
-
         private void LoadChart2Data()
         {
             //string connectionString = "Data Source=MAN4KA\\DATABASE_LEARN;Initial Catalog=MoreQLBanHoaQua;Persist Security Info=True;User ID=sa;Password=manaka;Encrypt=True;TrustServerCertificate=True";
@@ -114,22 +115,6 @@ namespace BTL_Prj.Frm.Dashboard
             lblProfitOrLoss.Text = ketQua >= 0 ? "Lãi: " + ketQua : "Lỗ: " + ketQua;
             lblProfitOrLoss.ForeColor = ketQua >= 0 ? Color.Green : Color.Red;
         }
-
-
-        private void FrmDashboard_Load(object sender, EventArgs e)
-        {
-            LoadChart1Data();
-            LoadChart2Data();
-            DisplayProfitOrLoss();
-            chart_chitieu.Font = new Font("Times New Roman", 12, FontStyle.Bold); // Change the font here
-            chart_doanhthu.Font = new Font("Times New Roman", 12, FontStyle.Bold); // Change the font here
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FrmDashboard_SizeChanged(object sender, EventArgs e)
         {
             panel_ChiTieu.Width = panel_DoanhThu.Width = this.Width / 2;

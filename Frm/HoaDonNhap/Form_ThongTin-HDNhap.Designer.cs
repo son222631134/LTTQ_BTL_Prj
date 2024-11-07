@@ -93,8 +93,6 @@
             this.dgvHoaDonNhap.Size = new System.Drawing.Size(940, 419);
             this.dgvHoaDonNhap.TabIndex = 36;
             this.dgvHoaDonNhap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrvHDN_CellClick);
-            this.dgvHoaDonNhap.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDonNhap_CellContentClick);
-            this.dgvHoaDonNhap.Click += new System.EventHandler(this.dtgrvHDN_Click);
             // 
             // label4
             // 
@@ -105,7 +103,6 @@
             this.label4.Size = new System.Drawing.Size(68, 19);
             this.label4.TabIndex = 34;
             this.label4.Text = "Ngày cấp";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -116,7 +113,6 @@
             this.label3.Size = new System.Drawing.Size(113, 19);
             this.label3.TabIndex = 33;
             this.label3.Text = "Mã nhà cung cấp";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -127,7 +123,6 @@
             this.label2.Size = new System.Drawing.Size(90, 19);
             this.label2.TabIndex = 32;
             this.label2.Text = "Mã nhân viên";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -138,7 +133,6 @@
             this.label1.Size = new System.Drawing.Size(112, 19);
             this.label1.TabIndex = 31;
             this.label1.Text = "Số hoá đơn nhập";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // DatetimeNC
             // 
@@ -251,7 +245,6 @@
             this.panel_button.Name = "panel_button";
             this.panel_button.Size = new System.Drawing.Size(940, 60);
             this.panel_button.TabIndex = 41;
-            this.panel_button.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel_input
             // 
@@ -269,7 +262,6 @@
             this.panel_input.Name = "panel_input";
             this.panel_input.Size = new System.Drawing.Size(940, 100);
             this.panel_input.TabIndex = 42;
-            this.panel_input.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // tabControl1
             // 
@@ -286,7 +278,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(954, 620);
             this.tabControl1.TabIndex = 43;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage_ThongTinChung
             // 
@@ -300,7 +291,6 @@
             this.tabPage_ThongTinChung.Size = new System.Drawing.Size(946, 594);
             this.tabPage_ThongTinChung.TabIndex = 0;
             this.tabPage_ThongTinChung.Text = "Thông tin chung";
-            this.tabPage_ThongTinChung.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // tabPage_ChiTietHoaDon
             // 
@@ -322,7 +312,6 @@
             this.label_title.TabIndex = 38;
             this.label_title.Text = "THÔNG TIN HOÁ ĐƠN NHẬP";
             this.label_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_title.Click += new System.EventHandler(this.label_title_Click);
             // 
             // panel_title
             // 
@@ -334,7 +323,6 @@
             this.panel_title.Name = "panel_title";
             this.panel_title.Size = new System.Drawing.Size(954, 80);
             this.panel_title.TabIndex = 44;
-            this.panel_title.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_title_Paint);
             // 
             // frmHoaDonNhap
             // 

@@ -69,7 +69,6 @@
             this.dgvChiTietHoaDonNhap.Size = new System.Drawing.Size(939, 389);
             this.dgvChiTietHoaDonNhap.TabIndex = 51;
             this.dgvChiTietHoaDonNhap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrvFORM2_CellClick);
-            this.dgvChiTietHoaDonNhap.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrvFORM2_CellContentClick);
             // 
             // BTSUA
             // 
@@ -113,7 +112,6 @@
             this.Clear.TabIndex = 47;
             this.Clear.Text = "Hủy";
             this.Clear.UseVisualStyleBackColor = true;
-            this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
             // ExitForm2
             // 
@@ -135,7 +133,6 @@
             this.label5.Size = new System.Drawing.Size(62, 19);
             this.label5.TabIndex = 44;
             this.label5.Text = "Giảm giá";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -146,7 +143,6 @@
             this.label4.Size = new System.Drawing.Size(60, 19);
             this.label4.TabIndex = 43;
             this.label4.Text = "Đơn giá ";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -157,7 +153,6 @@
             this.label3.Size = new System.Drawing.Size(64, 19);
             this.label3.TabIndex = 42;
             this.label3.Text = "Số lượng";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -168,7 +163,6 @@
             this.label2.Size = new System.Drawing.Size(62, 19);
             this.label2.TabIndex = 41;
             this.label2.Text = "Mã hàng";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -179,7 +173,6 @@
             this.label1.Size = new System.Drawing.Size(112, 19);
             this.label1.TabIndex = 40;
             this.label1.Text = "Số hoá đơn nhập";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // TBGIAMGIA
             // 
@@ -188,7 +181,6 @@
             this.TBGIAMGIA.Name = "TBGIAMGIA";
             this.TBGIAMGIA.Size = new System.Drawing.Size(121, 26);
             this.TBGIAMGIA.TabIndex = 38;
-            this.TBGIAMGIA.TextChanged += new System.EventHandler(this.TBGIAMGIA_TextChanged);
             // 
             // TBDONGIA
             // 
@@ -197,7 +189,6 @@
             this.TBDONGIA.Name = "TBDONGIA";
             this.TBDONGIA.Size = new System.Drawing.Size(122, 26);
             this.TBDONGIA.TabIndex = 37;
-            this.TBDONGIA.TextChanged += new System.EventHandler(this.TBDONGIA_TextChanged);
             // 
             // TBSOLUONG
             // 
@@ -206,7 +197,6 @@
             this.TBSOLUONG.Name = "TBSOLUONG";
             this.TBSOLUONG.Size = new System.Drawing.Size(121, 26);
             this.TBSOLUONG.TabIndex = 36;
-            this.TBSOLUONG.TextChanged += new System.EventHandler(this.TBSOLUONG_TextChanged);
             // 
             // SoHDNTB
             // 
@@ -216,7 +206,6 @@
             this.SoHDNTB.Name = "SoHDNTB";
             this.SoHDNTB.Size = new System.Drawing.Size(122, 26);
             this.SoHDNTB.TabIndex = 34;
-            this.SoHDNTB.TextChanged += new System.EventHandler(this.SoHDNTB_TextChanged);
             // 
             // CBBMAHANG
             // 
@@ -226,7 +215,6 @@
             this.CBBMAHANG.Name = "CBBMAHANG";
             this.CBBMAHANG.Size = new System.Drawing.Size(122, 27);
             this.CBBMAHANG.TabIndex = 53;
-            this.CBBMAHANG.SelectedIndexChanged += new System.EventHandler(this.CBBMAHANG_SelectedIndexChanged);
             // 
             // panel_button
             // 

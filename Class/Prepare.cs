@@ -10,8 +10,6 @@ using System.Windows.Forms;
 
 namespace BTL_Prj.Class
 {
-    //vo dung vcl
-    //a de'o vo dung dau :)))
     internal class Prepare
     {
         private static readonly string ProjectName = Assembly.GetExecutingAssembly().GetName().Name; //get project name
@@ -23,14 +21,6 @@ namespace BTL_Prj.Class
 
         public Prepare()
         {
-            MessageBox.Show(
-                ProjectName + "\r\n" + 
-                CurrentDirectory + "\r\n" +
-                ProjectDirectory + "\r\n" +
-                MediaDirectoryInProject + "\r\n" +
-                DatabaseDirectoryInProject + "\r\n" +
-                IconFilename + "\r\n" +
-                "");
             //getProjectDirectory();
         }
         public static string getProjectDirectory()
@@ -55,7 +45,6 @@ namespace BTL_Prj.Class
                 throw new Exception("Error fetching data: " + ex.Message);
             }
         }
-
         public static void setDgvProperties(DataGridView dgv)
         {
             dgv.AutoSizeColumnsMode = (DataGridViewAutoSizeColumnsMode)DataGridViewAutoSizeColumnMode.Fill;

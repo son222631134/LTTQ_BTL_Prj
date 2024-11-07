@@ -26,7 +26,6 @@ namespace BTL_Prj.Frm.HoaDonNhap
             selectedSoHDN = soHDN; // Nhận số hóa đơn từ Form1
             SoHDNTB.Text = soHDN.ToString();
         }
-
         private void ChildfrmChiTietHDNhap_Load(object sender, EventArgs e)
         {
             Prepare.setFormProperties(this);
@@ -35,7 +34,6 @@ namespace BTL_Prj.Frm.HoaDonNhap
             LoadDataToGridView();
             LoadComboBoxData(); // Tải dữ liệu vào ComboBox
         }
-
         private void LoadDataToGridView()
         {
             // Hiển thị dữ liệu chi tiết hóa đơn nhập vào DataGridView
@@ -52,7 +50,6 @@ namespace BTL_Prj.Frm.HoaDonNhap
             CBBMAHANG.ValueMember = "MaHang"; // Giá trị tương ứng với mã hàng
             CBBMAHANG.SelectedIndex = -1; // Không chọn giá trị mặc định
         }
-
         private void ClearFields()
         {
             // Xóa các trường đầu vào
@@ -62,7 +59,6 @@ namespace BTL_Prj.Frm.HoaDonNhap
             TBDONGIA.Clear();
             TBGIAMGIA.Clear();
         }
-
         private void BTADDCTHDN_Click(object sender, EventArgs e)
         {
             try
@@ -88,13 +84,13 @@ namespace BTL_Prj.Frm.HoaDonNhap
                 MessageBox.Show("Thêm chi tiết hóa đơn nhập thành công!");
                 LoadDataToGridView(); // Cập nhật lại dữ liệu trên DataGridView
                 ClearFields(); // Xóa các trường sau khi thêm
+                CapNhatTongTien(selectedSoHDN); // Cập nhật tổng tiền
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi thêm chi tiết hóa đơn nhập: " + ex.Message);
             }
         }
-
         private void BTSUA_Click(object sender, EventArgs e)
         {
             if (dgvChiTietHoaDonNhap.CurrentRow != null)
@@ -140,6 +136,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
 
                     MessageBox.Show("Cập nhật chi tiết hóa đơn nhập thành công!");
                     LoadDataToGridView(); // Cập nhật lại dữ liệu trên DataGridView
+                    CapNhatTongTien(selectedSoHDN); // Cập nhật tổng tiền
                 }
                 catch (Exception ex)
                 {
@@ -151,7 +148,6 @@ namespace BTL_Prj.Frm.HoaDonNhap
                 MessageBox.Show("Vui lòng chọn một chi tiết để sửa.");
             }
         }
-
         private void BTDELETE_Click(object sender, EventArgs e)
         {
             try
@@ -173,18 +169,11 @@ namespace BTL_Prj.Frm.HoaDonNhap
                 MessageBox.Show("Lỗi khi xóa chi tiết hóa đơn nhập: " + ex.Message);
             }
         }
-
         private void ExitForm2_Click(object sender, EventArgs e)
         {
             this.Close(); // Đóng form
 			return;
         }
-
-        private void dtgrvFORM2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dtgrvFORM2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.RowIndex >= dgvChiTietHoaDonNhap.RowCount - 1) return;
@@ -205,60 +194,42 @@ namespace BTL_Prj.Frm.HoaDonNhap
                 TBGIAMGIA.Text = row.Cells["GiamGia"].Value.ToString();
             }
         }
-
-        private void CBBMAHANG_SelectedIndexChanged(object sender, EventArgs e)
+        public static void CapNhatTongTien(string soHDN)
         {
+            try
+            {
+                // Tính tổng tiền từ chi tiết hóa đơn
+                string query = "SELECT SUM(ThanhTien) AS TongTien FROM ChiTietHoaDonNhap WHERE SoHDN = @SoHDN";
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@SoHDN", soHDN }
+                };
 
-        }
+                DataTable dt = ProcessingData.GetData(query, parameters);
 
-        private void Clear_Click(object sender, EventArgs e)
-        {
+                if (dt.Rows.Count > 0)
+                {
+                    decimal tongTien = dt.Rows[0]["TongTien"] != DBNull.Value ? Convert.ToDecimal(dt.Rows[0]["TongTien"]) : 0;
 
-        }
+                    // Cập nhật tổng tiền vào hóa đơn
+                    var updateValues = new Dictionary<string, object>
+                    {
+                        { "TongTien", tongTien }
+                    };
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TBGIAMGIA_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TBDONGIA_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TBSOLUONG_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SoHDNTB_TextChanged(object sender, EventArgs e)
-        {
-
+                    // Gọi phương thức Update tổng quát
+                    ProcessingData.Update("HoaDonNhap", updateValues, "SoHDN", soHDN);
+                    //MessageBox.Show(tongTien.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy chi tiết hóa đơn.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật tổng tiền: " + ex.Message);
+            }
         }
     }
 }

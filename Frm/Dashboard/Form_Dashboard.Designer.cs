@@ -72,7 +72,6 @@
             this.chart_doanhthu.Series.Add(series1);
             this.chart_doanhthu.Size = new System.Drawing.Size(374, 275);
             this.chart_doanhthu.TabIndex = 0;
-            this.chart_doanhthu.Click += new System.EventHandler(this.chart1_Click);
             // 
             // chart_chitieu
             // 
@@ -132,7 +131,6 @@
             this.label_title.TabIndex = 3;
             this.label_title.Text = "DASHBOARD";
             this.label_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_title.Click += new System.EventHandler(this.label3_Click);
             // 
             // lblProfitOrLoss
             // 

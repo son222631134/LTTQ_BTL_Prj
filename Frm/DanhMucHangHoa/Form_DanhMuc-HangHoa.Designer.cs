@@ -599,7 +599,6 @@
             this.Name = "frmDanhMucHangHoa";
             this.Text = "DANH MỤC HÀNG HOÁ";
             this.Load += new System.EventHandler(this.frmDanhMucHangHoa_Load);
-            this.StyleChanged += new System.EventHandler(this.frmDanhMucHangHoa_StyleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa)).EndInit();
             this.panel_input.ResumeLayout(false);
             this.panel_input.PerformLayout();

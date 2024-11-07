@@ -11,7 +11,6 @@ using System.Data.SqlClient;
 using System.Collections;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using COMExcel = Microsoft.Office.Interop.Excel;
-//using HoaDonBan.Class;
 using System.Runtime.InteropServices;
 using OfficeOpenXml;
 using System.IO;
@@ -22,7 +21,6 @@ namespace BTL_Prj.Frm.HoaDonBan
 {
     public partial class frmHoaDonBan : Form
     {
-
         public frmHoaDonBan()
         {
             InitializeComponent();
