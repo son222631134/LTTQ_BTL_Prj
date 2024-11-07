@@ -238,6 +238,7 @@
             // 
             // panel_button
             // 
+            this.panel_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panel_button.BackColor = System.Drawing.Color.Transparent;
             this.panel_button.Controls.Add(this.button1);
             this.panel_button.Controls.Add(this.button2);
@@ -245,7 +246,6 @@
             this.panel_button.Controls.Add(this.button4);
             this.panel_button.Controls.Add(this.button5);
             this.panel_button.Controls.Add(this.button6);
-            this.panel_button.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_button.Location = new System.Drawing.Point(3, 531);
             this.panel_button.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.panel_button.Name = "panel_button";
@@ -255,9 +255,7 @@
             // 
             // panel_input
             // 
-            this.panel_input.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_input.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel_input.BackColor = System.Drawing.Color.Transparent;
             this.panel_input.Controls.Add(this.label1);
             this.panel_input.Controls.Add(this.TBHDN);

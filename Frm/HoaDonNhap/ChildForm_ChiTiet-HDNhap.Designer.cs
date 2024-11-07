@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvChiTietHoaDonNhap = new System.Windows.Forms.DataGridView();
             this.BTSUA = new System.Windows.Forms.Button();
             this.BTDELETE = new System.Windows.Forms.Button();
@@ -55,8 +55,8 @@
             // 
             // dgvChiTietHoaDonNhap
             // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvChiTietHoaDonNhap.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvChiTietHoaDonNhap.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvChiTietHoaDonNhap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -230,12 +230,12 @@
             // 
             // panel_button
             // 
+            this.panel_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panel_button.Controls.Add(this.BTADDCTHDN);
             this.panel_button.Controls.Add(this.Clear);
             this.panel_button.Controls.Add(this.ExitForm2);
             this.panel_button.Controls.Add(this.BTSUA);
             this.panel_button.Controls.Add(this.BTDELETE);
-            this.panel_button.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_button.Location = new System.Drawing.Point(0, 560);
             this.panel_button.Name = "panel_button";
             this.panel_button.Size = new System.Drawing.Size(954, 60);
@@ -243,8 +243,7 @@
             // 
             // panel_input
             // 
-            this.panel_input.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_input.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel_input.Controls.Add(this.SoHDNTB);
             this.panel_input.Controls.Add(this.TBSOLUONG);
             this.panel_input.Controls.Add(this.TBDONGIA);

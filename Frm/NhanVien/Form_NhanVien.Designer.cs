@@ -362,6 +362,7 @@
             // 
             // panel_button
             // 
+            this.panel_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panel_button.Controls.Add(this.btnClear);
             this.panel_button.Controls.Add(this.btnThoat);
             this.panel_button.Controls.Add(this.btnLuu);
@@ -369,7 +370,6 @@
             this.panel_button.Controls.Add(this.btnThemMoi);
             this.panel_button.Controls.Add(this.btnSua);
             this.panel_button.Controls.Add(this.btnXoa);
-            this.panel_button.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_button.Location = new System.Drawing.Point(0, 640);
             this.panel_button.Name = "panel_button";
             this.panel_button.Size = new System.Drawing.Size(954, 60);
@@ -397,9 +397,7 @@
             // 
             // panel_input
             // 
-            this.panel_input.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_input.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel_input.Controls.Add(this.label1);
             this.panel_input.Controls.Add(this.label6);
             this.panel_input.Controls.Add(this.dtNgaySinh);

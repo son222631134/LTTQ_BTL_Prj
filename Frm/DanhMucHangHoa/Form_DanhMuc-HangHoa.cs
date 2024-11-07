@@ -317,5 +317,9 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
             tabControl1.SelectedTab = tabControl1.TabPages[0];
 
         }
+
+        private void frmDanhMucHangHoa_StyleChanged(object sender, EventArgs e)
+        {
+        }
     }
 }

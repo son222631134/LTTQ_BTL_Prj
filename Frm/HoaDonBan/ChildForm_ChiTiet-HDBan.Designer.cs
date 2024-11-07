@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvChiTietHoaDonBan = new System.Windows.Forms.DataGridView();
             this.cboMaHang = new System.Windows.Forms.ComboBox();
             this.txtThanhTien = new System.Windows.Forms.TextBox();
@@ -61,8 +61,8 @@
             // 
             // dgvChiTietHoaDonBan
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvChiTietHoaDonBan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvChiTietHoaDonBan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvChiTietHoaDonBan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -251,10 +251,10 @@
             // 
             // panel_button
             // 
+            this.panel_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panel_button.Controls.Add(this.btnThem);
             this.panel_button.Controls.Add(this.btnChinhSua);
             this.panel_button.Controls.Add(this.btnDong);
-            this.panel_button.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_button.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.panel_button.Location = new System.Drawing.Point(0, 560);
             this.panel_button.Margin = new System.Windows.Forms.Padding(0);
@@ -264,8 +264,7 @@
             // 
             // panel_input
             // 
-            this.panel_input.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel_input.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel_input.Controls.Add(this.cboMaHang);
             this.panel_input.Controls.Add(this.label10);
             this.panel_input.Controls.Add(this.btnHuy);

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label_title = new System.Windows.Forms.Label();
             this.panel_title = new System.Windows.Forms.Panel();
             this.tabPage_ChiTietHoaDon = new System.Windows.Forms.TabPage();
@@ -129,12 +129,12 @@
             // 
             // panel_button
             // 
+            this.panel_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panel_button.Controls.Add(this.btnThem);
             this.panel_button.Controls.Add(this.btnDong);
             this.panel_button.Controls.Add(this.btnCapNhat);
             this.panel_button.Controls.Add(this.btnInHoaDon);
             this.panel_button.Controls.Add(this.btnChiTiet);
-            this.panel_button.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel_button.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.panel_button.Location = new System.Drawing.Point(3, 526);
             this.panel_button.Name = "panel_button";
@@ -210,6 +210,7 @@
             // 
             // panel_Input
             // 
+            this.panel_Input.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel_Input.Controls.Add(this.panel_TimKIem);
             this.panel_Input.Controls.Add(this.btnHuy);
             this.panel_Input.Controls.Add(this.label2);
@@ -229,7 +230,6 @@
             this.panel_Input.Controls.Add(this.label9);
             this.panel_Input.Controls.Add(this.txtTenKhach);
             this.panel_Input.Controls.Add(this.txtMaHDBan);
-            this.panel_Input.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_Input.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.panel_Input.Location = new System.Drawing.Point(3, 3);
             this.panel_Input.Name = "panel_Input";
@@ -529,8 +529,8 @@
             // 
             // dgvHDBanHang
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvHDBanHang.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvHDBanHang.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHDBanHang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
