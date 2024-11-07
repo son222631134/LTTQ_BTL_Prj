@@ -14,6 +14,7 @@ namespace BTL_Prj.Class
                                                     + Prepare.getDatabaseDirectory()
                                                     + ";Integrated Security=True;User Instance=True";
         private static SqlConnection sqlConnection;
+        public static SqlConnection SqlConnection { get => sqlConnection; set => sqlConnection = value; }
 
         public ProcessingData() { }
 
