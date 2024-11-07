@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -84,10 +84,12 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -120,6 +122,18 @@
     <Compile Include="Frm\DanhMucKhachHang\Form_DanhMuc-KhachHang.Designer.cs">
       <DependentUpon>Form_DanhMuc-KhachHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\Dashboard\Form_Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Dashboard\Form_Dashboard.Designer.cs">
+      <DependentUpon>Form_Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\HoaDonBan\ChildForm_ChiTiet-HDBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\HoaDonBan\ChildForm_ChiTiet-HDBan.Designer.cs">
+      <DependentUpon>ChildForm_ChiTiet-HDBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\HoaDonBan\Form_ChiTiet-HDBan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +145,12 @@
     </Compile>
     <Compile Include="Frm\HoaDonBan\Form_HoaDonBan.Designer.cs">
       <DependentUpon>Form_HoaDonBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\HoaDonNhap\ChildForm_ChiTiet-HDNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\HoaDonNhap\ChildForm_ChiTiet-HDNhap.Designer.cs">
+      <DependentUpon>ChildForm_ChiTiet-HDNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\HoaDonNhap\Form_ChiTiet-HDNhap.cs">
       <SubType>Form</SubType>
@@ -164,11 +184,20 @@
     <EmbeddedResource Include="Frm\DanhMucKhachHang\Form_DanhMuc-KhachHang.resx">
       <DependentUpon>Form_DanhMuc-KhachHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Dashboard\Form_Dashboard.resx">
+      <DependentUpon>Form_Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\HoaDonBan\ChildForm_ChiTiet-HDBan.resx">
+      <DependentUpon>ChildForm_ChiTiet-HDBan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\HoaDonBan\Form_ChiTiet-HDBan.resx">
       <DependentUpon>Form_ChiTiet-HDBan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\HoaDonBan\Form_HoaDonBan.resx">
       <DependentUpon>Form_HoaDonBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\HoaDonNhap\ChildForm_ChiTiet-HDNhap.resx">
+      <DependentUpon>ChildForm_ChiTiet-HDNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\HoaDonNhap\Form_ChiTiet-HDNhap.resx">
       <DependentUpon>Form_ChiTiet-HDNhap.cs</DependentUpon>
@@ -209,6 +238,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include=".TaskListLog.txt" />
+    <Content Include="Database\CreateDatabase.sql" />
     <Content Include="Database\Database_BTL.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -216,6 +246,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database_BTL.mdf</DependentUpon>
     </Content>
+    <Content Include="Database\Media\Media\Logo\32x32-LogoUTC.ico" />
+    <Content Include="Database\Media\Media\Logo\640px-LogoUTC.ico" />
+    <Content Include="Database\Media\Media\Logo\64x64-LogoUTC.ico" />
+    <Content Include="Database\Media\Media\Logo\icon.ico" />
+    <Content Include="Database\Media\Media\User\Avatar_Admin.jpg" />
     <None Include="Database\Media\User\Avatar_Admin.jpg" />
   </ItemGroup>
   <ItemGroup>

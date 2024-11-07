@@ -50,11 +50,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnHuy = new System.Windows.Forms.Button();
             this.panel_button = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_input = new System.Windows.Forms.Panel();
             this.panel_title = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDonBan)).BeginInit();
             this.panel_button.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panel_input.SuspendLayout();
             this.panel_title.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -272,30 +272,30 @@
             this.panel_button.Size = new System.Drawing.Size(954, 60);
             this.panel_button.TabIndex = 41;
             // 
-            // panel1
+            // panel_input
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel_input.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.cboMaHang);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.btnHuy);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.btnClearCT);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.txtThanhTien);
-            this.panel1.Controls.Add(this.txtSoLuong);
-            this.panel1.Controls.Add(this.txtDonGiaBan);
-            this.panel1.Controls.Add(this.txtGiamGia);
-            this.panel1.Controls.Add(this.txtTenHang);
-            this.panel1.Location = new System.Drawing.Point(2, 83);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(950, 156);
-            this.panel1.TabIndex = 42;
+            this.panel_input.Controls.Add(this.cboMaHang);
+            this.panel_input.Controls.Add(this.label10);
+            this.panel_input.Controls.Add(this.btnHuy);
+            this.panel_input.Controls.Add(this.label12);
+            this.panel_input.Controls.Add(this.label14);
+            this.panel_input.Controls.Add(this.btnClearCT);
+            this.panel_input.Controls.Add(this.label11);
+            this.panel_input.Controls.Add(this.label13);
+            this.panel_input.Controls.Add(this.label15);
+            this.panel_input.Controls.Add(this.txtThanhTien);
+            this.panel_input.Controls.Add(this.txtSoLuong);
+            this.panel_input.Controls.Add(this.txtDonGiaBan);
+            this.panel_input.Controls.Add(this.txtGiamGia);
+            this.panel_input.Controls.Add(this.txtTenHang);
+            this.panel_input.Location = new System.Drawing.Point(2, 83);
+            this.panel_input.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_input.Name = "panel_input";
+            this.panel_input.Size = new System.Drawing.Size(950, 156);
+            this.panel_input.TabIndex = 42;
             // 
             // panel_title
             // 
@@ -312,7 +312,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 700);
             this.Controls.Add(this.panel_title);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel_input);
             this.Controls.Add(this.panel_button);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvChiTietHoaDonBan);
@@ -322,8 +322,8 @@
             this.Load += new System.EventHandler(this.frmChiTietHoaDonBan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDonBan)).EndInit();
             this.panel_button.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panel_input.ResumeLayout(false);
+            this.panel_input.PerformLayout();
             this.panel_title.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -353,7 +353,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Panel panel_button;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_input;
         private System.Windows.Forms.Panel panel_title;
     }
 }

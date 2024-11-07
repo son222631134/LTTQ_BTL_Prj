@@ -11,7 +11,6 @@ using System.Data.SqlClient;
 using System.Collections;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using COMExcel = Microsoft.Office.Interop.Excel;
-//using HoaDonBan.Class;
 using System.Runtime.InteropServices;
 using OfficeOpenXml;
 using System.IO;
@@ -22,7 +21,6 @@ namespace BTL_Prj.Frm.HoaDonBan
 {
     public partial class frmHoaDonBan : Form
     {
-
         public frmHoaDonBan()
         {
             InitializeComponent();
@@ -41,48 +39,7 @@ namespace BTL_Prj.Frm.HoaDonBan
             LoadMaKhachHang();
             dgvHDBanHang.CellClick += dgvHDBanHang_CellClick;
             dgvHDBanHang.CellDoubleClick += dgvHDBanHang_CellDoubleClick;
-        }
-
-
-        private void SetFieldsState(bool enabled)
-        {
-            btnClear.Enabled = enabled;
-            btnHuy.Enabled = enabled;
-            txtMaHDBan.Enabled = enabled;
-            dtpNgayBan.Enabled = enabled;
-            cboMaNhanVien.Enabled = enabled;
-            txtTenNhanVien.Enabled = enabled;
-            cboMaKhach.Enabled = enabled;
-            txtTenKhach.Enabled = enabled;
-            txtDiaChi.Enabled = enabled;
-            txtDienThoai.Enabled = enabled;
-        }
-
-
-        private void DisablePointer()
-        {
-            dgvHDBanHang.ClearSelection();
-
-            txtMaHDBan.TabStop = false;
-            cboMaNhanVien.TabStop = false;
-            cboMaKhach.TabStop = false;
-            dtpNgayBan.TabStop = false;
-
-            this.ActiveControl = null;
-        }
-
-        private void LoadDataGridView()
-        {
-            DataTable dt = ProcessingData.GetData("SELECT * FROM HoaDonBan");
-            dgvHDBanHang.DataSource = dt;
-        }
-
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            btnThem.Enabled = false;
-            btnCapNhat.Enabled = true;
-            SetFieldsState(true);
-            ResetValues();
+            tabControl1.TabPages.Remove(tabPage_ChiTietHoaDon);
         }
 
         private void ThemHoaDonVaoCDSL()
@@ -115,7 +72,6 @@ namespace BTL_Prj.Frm.HoaDonBan
                 LoadDataGridView();
             }
         }
-
         private void ResetValues()
         {
             txtMaHDBan.Text = "";
@@ -128,16 +84,6 @@ namespace BTL_Prj.Frm.HoaDonBan
             txtDienThoai.Text = "";
             txtTongTien.Text = "0";
         }
-
-        private void cboMaNhanVien_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboMaNhanVien.SelectedItem != null)
-            {
-                string selectedMaNV = cboMaNhanVien.SelectedItem.ToString();
-                GetTenNhanVien(selectedMaNV);
-            }
-        }
-
         private void LoadMaNhanVien()
         {
             try
@@ -154,7 +100,6 @@ namespace BTL_Prj.Frm.HoaDonBan
                 MessageBox.Show("Lỗi khi tải mã nhân viên: " + ex.Message);
             }
         }
-
         private void GetTenNhanVien(string maNV)
         {
             try
@@ -174,16 +119,6 @@ namespace BTL_Prj.Frm.HoaDonBan
                 MessageBox.Show("Lỗi khi lấy tên nhân viên: " + ex.Message);
             }
         }
-
-        private void cboMaKhach_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboMaKhach.SelectedItem != null)
-            {
-                string selectedMaKH = cboMaKhach.SelectedItem.ToString();
-                GetThongTinKhachHang(selectedMaKH);
-            }
-        }
-
         private void LoadMaKhachHang()
         {
             try
@@ -200,7 +135,6 @@ namespace BTL_Prj.Frm.HoaDonBan
                 MessageBox.Show("Lỗi khi tải mã khách hàng: " + ex.Message);
             }
         }
-
         private void GetThongTinKhachHang(string maKH)
         {
             try
@@ -222,38 +156,6 @@ namespace BTL_Prj.Frm.HoaDonBan
                 MessageBox.Show("Lỗi khi lấy thông tin khách hàng: " + ex.Message);
             }
         }
-
-        private void dgvHDBanHang_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0) return;
-
-            int soHDB = Convert.ToInt32(dgvHDBanHang.Rows[e.RowIndex].Cells["SoHDB"].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa hóa đơn này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                ProcessingData.Delete("HoaDonBan", "SoHDB", soHDB);
-                LoadDataGridView();
-            }
-        }
-
-        private void btnInHoaDon_Click(object sender, EventArgs e)
-        {
-            if (btnCapNhat.Enabled == false)
-            {
-                MessageBox.Show("Vui lòng hoàn thành chỉnh sửa hoặc hủy để xem chi tiết hóa đơn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (dgvHDBanHang.CurrentRow == null || string.IsNullOrEmpty(txtMaHDBan.Text))
-            {
-                MessageBox.Show("Vui lòng chọn hóa đơn để in.");
-            }
-            else
-            {
-                InHoaDonRaExcel();
-            }
-        }
-
         private void InHoaDonRaExcel()
         {
             if (dgvHDBanHang.CurrentRow == null || string.IsNullOrEmpty(txtMaHDBan.Text))
@@ -339,81 +241,6 @@ namespace BTL_Prj.Frm.HoaDonBan
                 }
             }
         }
-
-        private void dgvHDBanHang_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            SetFieldsState(false);
-            btnThem.Enabled = true;
-            btnCapNhat.Enabled = true;
-            if (e.RowIndex < 0) return;
-
-            btnChiTiet.Enabled = true;
-            btnInHoaDon.Enabled = true;
-
-            DataGridViewRow row = dgvHDBanHang.Rows[e.RowIndex];
-            txtMaHDBan.Text = row.Cells["SoHDB"].Value.ToString();
-            cboMaNhanVien.Text = row.Cells["MaNV"].Value.ToString();
-            cboMaKhach.Text = row.Cells["MaKhach"].Value.ToString();
-            dtpNgayBan.Value = Convert.ToDateTime(row.Cells["NgayBan"].Value);
-            txtTongTien.Text = row.Cells["TongTien"].Value.ToString();
-
-            GetTenNhanVien(cboMaNhanVien.Text);
-            GetThongTinKhachHang(cboMaKhach.Text);
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            if (btnThem.Enabled == false)
-            {
-                ThemHoaDonVaoCDSL();
-                ResetValues();
-                SetFieldsState(false);
-                LoadDataGridView();
-                btnThem.Enabled = true;
-                btnCapNhat.Enabled= true;
-                btnChiTiet.Enabled = false;
-                btnInHoaDon.Enabled = false;
-            }
-            if(btnCapNhat.Enabled == false)
-            {
-                CapNhatHoaDon();
-                ResetValues();
-                SetFieldsState(false);
-                LoadDataGridView();
-                btnThem.Enabled = true;
-                btnCapNhat.Enabled = true;
-                btnChiTiet.Enabled = false;
-                btnInHoaDon.Enabled = false;
-            }
-        }
-
-        private void btnCapNhat_Click(object sender, EventArgs e)
-        {
-            if (btnThem.Enabled == false)
-            {
-                MessageBox.Show("Đang trong chế độ thêm, vui lòng hoàn tất thêm hoặc hủy thao tác trước khi cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(txtMaHDBan.Text) ||
-                string.IsNullOrEmpty(cboMaNhanVien.Text) ||
-                string.IsNullOrEmpty(txtTenNhanVien.Text) ||
-                string.IsNullOrEmpty(cboMaKhach.Text) ||
-                string.IsNullOrEmpty(txtTenKhach.Text) ||
-                string.IsNullOrEmpty(txtDiaChi.Text) ||
-                string.IsNullOrEmpty(txtDienThoai.Text))
-            {
-                MessageBox.Show("Vui lòng chọn một hóa đơn để cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-
-            if (dgvHDBanHang.CurrentRow == null) return;
-
-            btnCapNhat.Enabled = false;
-            SetFieldsState(true);
-        }
-
         private void CapNhatHoaDon()
         {
             if (dgvHDBanHang.CurrentRow == null)
@@ -455,59 +282,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                 MessageBox.Show("Lỗi khi cập nhật hóa đơn: " + ex.Message);
             }
         }
-
-        private void btnChiTiet_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtMaHDBan.Text) ||
-                string.IsNullOrEmpty(cboMaNhanVien.Text) ||
-                string.IsNullOrEmpty(txtTenNhanVien.Text) ||
-                string.IsNullOrEmpty(cboMaKhach.Text) ||
-                string.IsNullOrEmpty(txtTenKhach.Text) ||
-                string.IsNullOrEmpty(txtDiaChi.Text) ||
-                string.IsNullOrEmpty(txtDienThoai.Text))
-            {
-                MessageBox.Show("Vui lòng chọn một hóa đơn để xem chi tiết.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (btnCapNhat.Enabled == false)
-            {
-                MessageBox.Show("Vui lòng hoàn thành chỉnh sửa hoặc hủy để xem chi tiết hóa đơn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (dgvHDBanHang.CurrentRow != null)
-            {
-                int soHDB = Convert.ToInt32(dgvHDBanHang.CurrentRow.Cells["SoHDB"].Value);
-
-                frmChiTietHoaDonBan chiTietForm = new frmChiTietHoaDonBan(soHDB);
-                chiTietForm.FormClosed += (s, args) => CapNhatTongTien(soHDB);
-                chiTietForm.FormClosed += (s, args) => LoadDataGridView();
-                chiTietForm.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn hóa đơn để xem chi tiết.");
-            }
-        }
-
-        private void btnDong_Click(object sender, EventArgs e)
-        {
-                this.Close();
-			return;
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn đóng?", "Xác nhận đóng", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.Close();
-            }
-        }
-
-        private void dgvHDBanHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void CapNhatTongTien(int soHDB)
+        public static void CapNhatTongTien(int soHDB)
         {
             try
             {
@@ -532,7 +307,7 @@ namespace BTL_Prj.Frm.HoaDonBan
 
                     // Gọi phương thức Update tổng quát
                     ProcessingData.Update("HoaDonBan", updateValues, "SoHDB", soHDB);
-
+                    //MessageBox.Show(tongTien.ToString());
                 }
                 else
                 {
@@ -544,17 +319,6 @@ namespace BTL_Prj.Frm.HoaDonBan
                 MessageBox.Show("Lỗi khi cập nhật tổng tiền: " + ex.Message);
             }
         }
-
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            LocHoaDon();
-        }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void LocHoaDon()
         {
             string query = "SELECT * FROM HoaDonBan WHERE 1=1";
@@ -582,12 +346,178 @@ namespace BTL_Prj.Frm.HoaDonBan
                 MessageBox.Show("Lỗi khi lọc: " + ex.Message);
             }
         }
-
-        private void btnHuyLoc_Click(object sender, EventArgs e)
+        private void SetFieldsState(bool enabled)
         {
-            LoadDataGridView();
+            btnClear.Enabled = enabled;
+            btnHuy.Enabled = enabled;
+            txtMaHDBan.Enabled = enabled;
+            dtpNgayBan.Enabled = enabled;
+            cboMaNhanVien.Enabled = enabled;
+            txtTenNhanVien.Enabled = enabled;
+            cboMaKhach.Enabled = enabled;
+            txtTenKhach.Enabled = enabled;
+            txtDiaChi.Enabled = enabled;
+            txtDienThoai.Enabled = enabled;
+        }
+        private void LoadDataGridView()
+        {
+            DataTable dt = ProcessingData.GetData("SELECT * FROM HoaDonBan");
+            dgvHDBanHang.DataSource = dt;
+        }
+        private void DisablePointer()
+        {
+            dgvHDBanHang.ClearSelection();
+
+            txtMaHDBan.TabStop = false;
+            cboMaNhanVien.TabStop = false;
+            cboMaKhach.TabStop = false;
+            dtpNgayBan.TabStop = false;
+
+            this.ActiveControl = null;
+        }
+        private void SwitchToChiTiet(int soHDB)
+        {
+            if (tabControl1.TabPages.Contains(tabPage_ChiTietHoaDon))
+            {
+                tabControl1.TabPages.Remove(tabPage_ChiTietHoaDon);
+            }
+            tabControl1.TabPages.Add(tabPage_ChiTietHoaDon);
+
+            //frmChiTietHoaDonBan chiTietForm = new frmChiTietHoaDonBan(soHDB);
+            ChildfrmChiTietHoaDonBan chiTietForm = new ChildfrmChiTietHoaDonBan(soHDB);
+            chiTietForm.FormClosed += (s, args) => CapNhatTongTien(soHDB);
+            chiTietForm.FormClosed += (s, args) => LoadDataGridView();
+            //chiTietForm.ShowDialog();
+            tabControl1.SelectedTab = tabPage_ChiTietHoaDon;
+            chiTietForm.TopLevel = false;
+            chiTietForm.Dock = DockStyle.Fill;
+            tabPage_ChiTietHoaDon.Controls.Clear();
+            tabPage_ChiTietHoaDon.Controls.Add(chiTietForm);
+            tabPage_ChiTietHoaDon.Tag = chiTietForm;
+            chiTietForm.BringToFront();
+            chiTietForm.Show();
+            chiTietForm.FormBorderStyle = FormBorderStyle.None;
+        }
+        
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            btnThem.Enabled = false;
+            btnCapNhat.Enabled = true;
+            SetFieldsState(true);
+            ResetValues();
+        }
+        private void btnCapNhat_Click(object sender, EventArgs e)
+        {
+            if (btnThem.Enabled == false)
+            {
+                MessageBox.Show("Đang trong chế độ thêm, vui lòng hoàn tất thêm hoặc hủy thao tác trước khi cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtMaHDBan.Text) ||
+                string.IsNullOrEmpty(cboMaNhanVien.Text) ||
+                string.IsNullOrEmpty(txtTenNhanVien.Text) ||
+                string.IsNullOrEmpty(cboMaKhach.Text) ||
+                string.IsNullOrEmpty(txtTenKhach.Text) ||
+                string.IsNullOrEmpty(txtDiaChi.Text) ||
+                string.IsNullOrEmpty(txtDienThoai.Text))
+            {
+                MessageBox.Show("Vui lòng chọn một hóa đơn để cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            if (dgvHDBanHang.CurrentRow == null) return;
+
+            btnCapNhat.Enabled = false;
+            SetFieldsState(true);
+            txtMaHDBan.Enabled = false;
+        }
+        private void btnChiTiet_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMaHDBan.Text) ||
+                string.IsNullOrEmpty(cboMaNhanVien.Text) ||
+                string.IsNullOrEmpty(txtTenNhanVien.Text) ||
+                string.IsNullOrEmpty(cboMaKhach.Text) ||
+                string.IsNullOrEmpty(txtTenKhach.Text) ||
+                string.IsNullOrEmpty(txtDiaChi.Text) ||
+                string.IsNullOrEmpty(txtDienThoai.Text))
+            {
+                MessageBox.Show("Vui lòng chọn một hóa đơn để xem chi tiết.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (btnCapNhat.Enabled == false)
+            {
+                MessageBox.Show("Vui lòng hoàn thành chỉnh sửa hoặc hủy để xem chi tiết hóa đơn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dgvHDBanHang.CurrentRow != null)
+            {
+                int soHDB = Convert.ToInt32(dgvHDBanHang.CurrentRow.Cells["SoHDB"].Value);
+                SwitchToChiTiet(soHDB);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn để xem chi tiết.");
+            }
+        }
+        private void btnInHoaDon_Click(object sender, EventArgs e)
+        {
+            if (btnCapNhat.Enabled == false)
+            {
+                MessageBox.Show("Vui lòng hoàn thành chỉnh sửa hoặc hủy để xem chi tiết hóa đơn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dgvHDBanHang.CurrentRow == null || string.IsNullOrEmpty(txtMaHDBan.Text))
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn để in.");
+            }
+            else
+            {
+                InHoaDonRaExcel();
+            }
+        }
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            return;
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn đóng?", "Xác nhận đóng", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (btnThem.Enabled == false)
+            {
+                int lastMaHDBan = int.Parse(txtMaHDBan.Text);
+                ThemHoaDonVaoCDSL();
+                ResetValues();
+                SetFieldsState(false);
+                LoadDataGridView();
+                btnThem.Enabled = true;
+                btnCapNhat.Enabled = true;
+                btnChiTiet.Enabled = false;
+                btnInHoaDon.Enabled = false;
+                SwitchToChiTiet(lastMaHDBan);
+            }
+            if (btnCapNhat.Enabled == false)
+            {
+                CapNhatHoaDon();
+                ResetValues();
+                SetFieldsState(false);
+                LoadDataGridView();
+                btnThem.Enabled = true;
+                btnCapNhat.Enabled = true;
+                btnChiTiet.Enabled = false;
+                btnInHoaDon.Enabled = false;
+            }
+        }
         private void btnHuy_Click(object sender, EventArgs e)
         {
             btnThem.Enabled = true;
@@ -600,14 +530,64 @@ namespace BTL_Prj.Frm.HoaDonBan
             SetFieldsState(false);
         }
 
-        private void dtpNgayBan_ValueChanged(object sender, EventArgs e)
+        private void btnTimKiem_Click(object sender, EventArgs e)
         {
-
+            LocHoaDon();
+        }
+        private void btnHuyLoc_Click(object sender, EventArgs e)
+        {
+            LoadDataGridView();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void cboMaNhanVien_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cboMaNhanVien.SelectedItem != null)
+            {
+                string selectedMaNV = cboMaNhanVien.SelectedItem.ToString();
+                GetTenNhanVien(selectedMaNV);
+            }
+        }
+        private void cboMaKhach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboMaKhach.SelectedItem != null)
+            {
+                string selectedMaKH = cboMaKhach.SelectedItem.ToString();
+                GetThongTinKhachHang(selectedMaKH);
+            }
+        }
 
+        private void dgvHDBanHang_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex >= dgvHDBanHang.RowCount - 1) return;
+
+            int soHDB = Convert.ToInt32(dgvHDBanHang.Rows[e.RowIndex].Cells["SoHDB"].Value);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa hóa đơn này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                ProcessingData.Delete("HoaDonBan", "SoHDB", soHDB);
+                LoadDataGridView();
+            }
+        }
+        private void dgvHDBanHang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SetFieldsState(false);
+            btnThem.Enabled = true;
+            btnCapNhat.Enabled = true;
+            if (e.RowIndex < 0 || e.RowIndex >= dgvHDBanHang.RowCount -1) return;
+
+            btnChiTiet.Enabled = true;
+            btnInHoaDon.Enabled = true;
+
+            DataGridViewRow row = dgvHDBanHang.Rows[e.RowIndex];
+            txtMaHDBan.Text = row.Cells["SoHDB"].Value.ToString();
+            cboMaNhanVien.Text = row.Cells["MaNV"].Value.ToString();
+            cboMaKhach.Text = row.Cells["MaKhach"].Value.ToString();
+            dtpNgayBan.Value = Convert.ToDateTime(row.Cells["NgayBan"].Value);
+            txtTongTien.Text = row.Cells["TongTien"].Value.ToString();
+
+            GetTenNhanVien(cboMaNhanVien.Text);
+            GetThongTinKhachHang(cboMaKhach.Text);
         }
     }
 }
+    

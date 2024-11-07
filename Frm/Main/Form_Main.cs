@@ -1,17 +1,12 @@
 ﻿using BTL_Prj.Class;
 using BTL_Prj.Frm.DanhMucHangHoa;
 using BTL_Prj.Frm.DanhMucKhachHang;
+using BTL_Prj.Frm.Dashboard;
 using BTL_Prj.Frm.HoaDonBan;
 using BTL_Prj.Frm.HoaDonNhap;
 using BTL_Prj.Frm.NhanVien;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BTL_Prj.Frm.Main
@@ -38,7 +33,8 @@ namespace BTL_Prj.Frm.Main
             lb_username.Text = "Hello, Admin";
             lb_username.TextAlign = ContentAlignment.MiddleCenter;
 
-            //openChildForm(new frmHoaDonNhap());
+            openChildForm(new FrmDashboard());
+            ActivateButton(btn_Dashboard);
         }
 
         // xử lí mở form con
@@ -124,22 +120,17 @@ namespace BTL_Prj.Frm.Main
             if (result == DialogResult.Yes)
             {
                 Dispose();
-            }  
+            }
         }
 
         private void btn_Dashboard_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
-            if (activeform != null)
-                activeform.Close();
+            openChildForm(new FrmDashboard());
+            //if (activeform != null)
+            //    activeform.Close();
 
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             ProcessingData.CloseConnection();

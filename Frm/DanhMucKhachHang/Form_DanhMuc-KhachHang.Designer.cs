@@ -49,13 +49,13 @@
             this.groupBox_function = new System.Windows.Forms.GroupBox();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel_info = new System.Windows.Forms.Panel();
+            this.panel_button = new System.Windows.Forms.Panel();
+            this.panel_input = new System.Windows.Forms.Panel();
             this.panel_title = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
             this.groupBox_function.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel_info.SuspendLayout();
+            this.panel_button.SuspendLayout();
+            this.panel_input.SuspendLayout();
             this.panel_title.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +75,7 @@
             // 
             this.txtMaKhach.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtMaKhach.Location = new System.Drawing.Point(159, 24);
-            this.txtMaKhach.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaKhach.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaKhach.Name = "txtMaKhach";
             this.txtMaKhach.Size = new System.Drawing.Size(168, 26);
             this.txtMaKhach.TabIndex = 2;
@@ -128,7 +128,7 @@
             // 
             this.txtTenKhach.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtTenKhach.Location = new System.Drawing.Point(159, 95);
-            this.txtTenKhach.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTenKhach.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenKhach.Name = "txtTenKhach";
             this.txtTenKhach.Size = new System.Drawing.Size(168, 26);
             this.txtTenKhach.TabIndex = 2;
@@ -137,7 +137,7 @@
             // 
             this.txtDiaChi.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtDiaChi.Location = new System.Drawing.Point(487, 24);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(144, 26);
             this.txtDiaChi.TabIndex = 2;
@@ -146,7 +146,7 @@
             // 
             this.txtDienThoai.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtDienThoai.Location = new System.Drawing.Point(487, 95);
-            this.txtDienThoai.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDienThoai.Margin = new System.Windows.Forms.Padding(2);
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(144, 26);
             this.txtDienThoai.TabIndex = 2;
@@ -219,7 +219,7 @@
             // txtTimKiem
             // 
             this.txtTimKiem.Location = new System.Drawing.Point(35, 29);
-            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(180, 26);
             this.txtTimKiem.TabIndex = 6;
@@ -227,7 +227,7 @@
             // btnTimKiem
             // 
             this.btnTimKiem.Location = new System.Drawing.Point(21, 78);
-            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(93, 40);
             this.btnTimKiem.TabIndex = 7;
@@ -238,7 +238,7 @@
             // btnQuayLai
             // 
             this.btnQuayLai.Location = new System.Drawing.Point(137, 78);
-            this.btnQuayLai.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnQuayLai.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuayLai.Name = "btnQuayLai";
             this.btnQuayLai.Size = new System.Drawing.Size(93, 40);
             this.btnQuayLai.TabIndex = 8;
@@ -254,9 +254,9 @@
             this.groupBox_function.Controls.Add(this.btnQuayLai);
             this.groupBox_function.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.groupBox_function.Location = new System.Drawing.Point(690, 2);
-            this.groupBox_function.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox_function.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox_function.Name = "groupBox_function";
-            this.groupBox_function.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox_function.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox_function.Size = new System.Drawing.Size(251, 135);
             this.groupBox_function.TabIndex = 9;
             this.groupBox_function.TabStop = false;
@@ -286,39 +286,37 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // panel1
+            // panel_button
             // 
-            this.panel1.Controls.Add(this.btnHuy);
-            this.panel1.Controls.Add(this.btnThem);
-            this.panel1.Controls.Add(this.btnLuu);
-            this.panel1.Controls.Add(this.btnDong);
-            this.panel1.Controls.Add(this.btnXoa);
-            this.panel1.Controls.Add(this.btnSua);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 640);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(954, 60);
-            this.panel1.TabIndex = 10;
+            this.panel_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel_button.Controls.Add(this.btnHuy);
+            this.panel_button.Controls.Add(this.btnThem);
+            this.panel_button.Controls.Add(this.btnLuu);
+            this.panel_button.Controls.Add(this.btnDong);
+            this.panel_button.Controls.Add(this.btnXoa);
+            this.panel_button.Controls.Add(this.btnSua);
+            this.panel_button.Location = new System.Drawing.Point(0, 640);
+            this.panel_button.Name = "panel_button";
+            this.panel_button.Size = new System.Drawing.Size(954, 60);
+            this.panel_button.TabIndex = 10;
             // 
-            // panel_info
+            // panel_input
             // 
-            this.panel_info.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_info.Controls.Add(this.txtDiaChi);
-            this.panel_info.Controls.Add(this.txtMaKhach);
-            this.panel_info.Controls.Add(this.groupBox_function);
-            this.panel_info.Controls.Add(this.txtTenKhach);
-            this.panel_info.Controls.Add(this.txtDienThoai);
-            this.panel_info.Controls.Add(this.label5);
-            this.panel_info.Controls.Add(this.label1);
-            this.panel_info.Controls.Add(this.label4);
-            this.panel_info.Controls.Add(this.label3);
-            this.panel_info.Location = new System.Drawing.Point(2, 83);
-            this.panel_info.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_info.Name = "panel_info";
-            this.panel_info.Size = new System.Drawing.Size(950, 151);
-            this.panel_info.TabIndex = 11;
+            this.panel_input.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel_input.Controls.Add(this.txtDiaChi);
+            this.panel_input.Controls.Add(this.txtMaKhach);
+            this.panel_input.Controls.Add(this.groupBox_function);
+            this.panel_input.Controls.Add(this.txtTenKhach);
+            this.panel_input.Controls.Add(this.txtDienThoai);
+            this.panel_input.Controls.Add(this.label5);
+            this.panel_input.Controls.Add(this.label1);
+            this.panel_input.Controls.Add(this.label4);
+            this.panel_input.Controls.Add(this.label3);
+            this.panel_input.Location = new System.Drawing.Point(2, 83);
+            this.panel_input.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_input.Name = "panel_input";
+            this.panel_input.Size = new System.Drawing.Size(950, 151);
+            this.panel_input.TabIndex = 11;
             // 
             // panel_title
             // 
@@ -336,19 +334,19 @@
             this.ClientSize = new System.Drawing.Size(954, 700);
             this.Controls.Add(this.dgvKhachHang);
             this.Controls.Add(this.panel_title);
-            this.Controls.Add(this.panel_info);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel_input);
+            this.Controls.Add(this.panel_button);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmKhachHang";
             this.Text = "DANH MỤC KHÁCH HÀNG";
             this.Load += new System.EventHandler(this.frmDanhMucKhachHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).EndInit();
             this.groupBox_function.ResumeLayout(false);
             this.groupBox_function.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel_info.ResumeLayout(false);
-            this.panel_info.PerformLayout();
+            this.panel_button.ResumeLayout(false);
+            this.panel_input.ResumeLayout(false);
+            this.panel_input.PerformLayout();
             this.panel_title.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -376,8 +374,8 @@
         private System.Windows.Forms.GroupBox groupBox_function;
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnHuy;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel_info;
+        private System.Windows.Forms.Panel panel_button;
+        private System.Windows.Forms.Panel panel_input;
         private System.Windows.Forms.Panel panel_title;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,18 +12,22 @@ namespace BTL_Prj.Class
     {
         public static void CopyFile(string src, string des)
         {
+            string path = des.Substring(0, des.LastIndexOf("\\"));
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
             try
             {
-                File.Copy(src, des,true);
-            } catch (Exception ex)
-            {
-
+                File.Copy(src, des, true);
+            } catch (Exception ex) {
+                if (ex is IOException)
+                {
+                    File.Delete(des);
+                    File.Copy(src, des, true);
+                }
             }
         }
 
-        internal static void Copy(string src, string dest)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
