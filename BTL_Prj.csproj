@@ -132,12 +132,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database_BTLDataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\Login\Form_Login.Designer.cs">
-      <DependentUpon>Form_Login.cs</DependentUpon>
-    </Compile>
     <Compile Include="Frm\DanhMucHangHoa\Form_DanhMuc-HangHoa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +186,13 @@
     <Compile Include="Frm\HoaDonNhap\Form_ThongTin-HDNhap.Designer.cs">
       <DependentUpon>Form_ThongTin-HDNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\Loader.cs" />
+    <Compile Include="Frm\Login\Form_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Login\Form_Login.Designer.cs">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\Main\Form_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,9 +237,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Frm\Login\Form_Login.resx">
-      <DependentUpon>Form_Login.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Frm\DanhMucHangHoa\Form_DanhMuc-HangHoa.resx">
       <DependentUpon>Form_DanhMuc-HangHoa.cs</DependentUpon>
     </EmbeddedResource>
@@ -265,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\HoaDonNhap\Form_ThongTin-HDNhap.resx">
       <DependentUpon>Form_ThongTin-HDNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Login\Form_Login.resx">
+      <DependentUpon>Form_Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Main\Form_Main.resx">
       <DependentUpon>Form_Main.cs</DependentUpon>
@@ -362,6 +363,11 @@
     <Content Include="Database\Media\Media\Logo\64x64-LogoUTC.ico" />
     <Content Include="Database\Media\Media\Logo\icon.ico" />
     <Content Include="Database\Media\Media\User\Avatar_Admin.jpg" />
+    <Content Include="Frm\readme.htm" />
+    <Content Include="Frm\x64\msvcr120.dll" />
+    <Content Include="Frm\x64\SqlServerSpatial140.dll" />
+    <Content Include="Frm\x86\msvcr120.dll" />
+    <Content Include="Frm\x86\SqlServerSpatial140.dll" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
