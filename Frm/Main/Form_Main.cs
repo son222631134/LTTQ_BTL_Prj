@@ -13,8 +13,20 @@ namespace BTL_Prj.Frm.Main
 {
     public partial class frmMain : Form
     {
+        string username;
+        string name;
         public frmMain()
         {
+            Form_Login frmLogin = new Form_Login();
+            frmLogin.ShowDialog();
+            if (frmLogin.isFail)
+            {
+                ProcessingData.CloseConnection();
+                this.Close();
+            }
+            username = frmLogin.username;
+            name = frmLogin.name;
+
             InitializeComponent();
         }
 
@@ -26,15 +38,14 @@ namespace BTL_Prj.Frm.Main
             //Frontend
             txt_warning.Hide();
             Prepare.setFormProperties(this);
-            //prepare.setDgvProperties(dgvNhanVien);
-            //dataProcess = new DataProcess(prepare.getDatabaseDirectory());
-
             this.FormBorderStyle = FormBorderStyle.Sizable;
-            lb_username.Text = "Hello, Admin";
+
+            lb_username.Text = "Hello, " + name;
             lb_username.TextAlign = ContentAlignment.MiddleCenter;
 
             openChildForm(new FrmDashboard());
             ActivateButton(btn_Dashboard);
+
         }
 
         // xử lí mở form con

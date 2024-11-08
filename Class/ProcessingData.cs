@@ -13,13 +13,11 @@ namespace BTL_Prj.Class
         private static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename="
                                                     + Prepare.getDatabaseDirectory()
                                                     + ";Integrated Security=True;";
-        //private static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\anhtu\\OneDrive\\Máy tính\\Code\\Lap trinh truc quan\\BTL\\BTL_Prj\\Database\\Database_BTL.mdf\";Integrated Security=True";
         private static SqlConnection sqlConnection;
         public static SqlConnection SqlConnection { get => sqlConnection; set => sqlConnection = value; }
 
         public ProcessingData() { }
 
-        // Mở kết nối cơ sở dữ liệu
         public static void OpenConnection()
         {
             if (sqlConnection == null)
@@ -28,8 +26,6 @@ namespace BTL_Prj.Class
             if (sqlConnection.State == ConnectionState.Closed)
                 sqlConnection.Open();
         }
-
-        // Đóng kết nối cơ sở dữ liệu
         public static void CloseConnection()
         {
             if (sqlConnection != null && sqlConnection.State == ConnectionState.Open)

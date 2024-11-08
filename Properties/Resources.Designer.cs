@@ -63,6 +63,16 @@ namespace BTL_Prj.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _640px_LogoUTC {
+            get {
+                object obj = ResourceManager.GetObject("640px-LogoUTC", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Avatar_Admin {
             get {
                 object obj = ResourceManager.GetObject("Avatar_Admin", resourceCulture);
