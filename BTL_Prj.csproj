@@ -104,11 +104,11 @@
     <Compile Include="Class\Function.cs" />
     <Compile Include="Class\Prepare.cs" />
     <Compile Include="Class\ProcessingData.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Frm\Login\Form_Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Frm\Login\Form_Login.Designer.cs">
+      <DependentUpon>Form_Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\DanhMucHangHoa\Form_DanhMuc-HangHoa.cs">
       <SubType>Form</SubType>
@@ -178,6 +178,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Frm\Login\Form_Login.resx">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\DanhMucHangHoa\Form_DanhMuc-HangHoa.resx">
       <DependentUpon>Form_DanhMuc-HangHoa.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +224,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Database\Media\User\Avatar_Admin.jpg" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -246,12 +250,19 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database_BTL.mdf</DependentUpon>
     </Content>
+    <Content Include="Database\Media\HangHoa\ImgHangHoa1.jpg" />
+    <Content Include="Database\Media\HangHoa\ImgHangHoa2.jpg" />
+    <Content Include="Database\Media\HangHoa\ImgHangHoa3.jpg" />
+    <Content Include="Database\Media\Logo\32x32-LogoUTC.ico" />
+    <Content Include="Database\Media\Logo\640px-LogoUTC.ico" />
+    <None Include="Database\Media\Logo\640px-LogoUTC.jpg" />
+    <Content Include="Database\Media\Logo\64x64-LogoUTC.ico" />
+    <Content Include="Database\Media\Logo\icon.ico" />
     <Content Include="Database\Media\Media\Logo\32x32-LogoUTC.ico" />
     <Content Include="Database\Media\Media\Logo\640px-LogoUTC.ico" />
     <Content Include="Database\Media\Media\Logo\64x64-LogoUTC.ico" />
     <Content Include="Database\Media\Media\Logo\icon.ico" />
     <Content Include="Database\Media\Media\User\Avatar_Admin.jpg" />
-    <None Include="Database\Media\User\Avatar_Admin.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

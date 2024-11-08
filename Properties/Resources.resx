@@ -121,4 +121,7 @@
   <data name="Avatar_Admin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Database\Media\User\Avatar_Admin.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="640px-LogoUTC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Database\Media\Logo\640px-LogoUTC.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

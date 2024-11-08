@@ -75,7 +75,7 @@
             // ptb_user
             // 
             this.ptb_user.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ptb_user.Image = global::BTL_Prj.Properties.Resources.Avatar_Admin;
+            this.ptb_user.Image = global::BTL_Prj.Properties.Resources._640px_LogoUTC;
             this.ptb_user.Location = new System.Drawing.Point(61, 32);
             this.ptb_user.Name = "ptb_user";
             this.ptb_user.Size = new System.Drawing.Size(64, 64);
