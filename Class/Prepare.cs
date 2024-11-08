@@ -29,6 +29,7 @@ namespace BTL_Prj.Class
         }
         public static string getDatabaseDirectory()
         {
+            //MessageBox.Show(getProjectDirectory() + DatabaseDirectoryInProject);
             return getProjectDirectory() + DatabaseDirectoryInProject;
         }
         public static string getMediaDirectoryInProject() { return MediaDirectoryInProject;}

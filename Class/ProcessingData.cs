@@ -10,9 +10,10 @@ namespace BTL_Prj.Class
 {
     internal class ProcessingData
     {
-        private static string connectionString = "Data Source=.\\SQLEXPRESS;AttachDbFilename="
+        private static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename="
                                                     + Prepare.getDatabaseDirectory()
-                                                    + ";Integrated Security=True;User Instance=True";
+                                                    + ";Integrated Security=True;";
+        //private static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\anhtu\\OneDrive\\Máy tính\\Code\\Lap trinh truc quan\\BTL\\BTL_Prj\\Database\\Database_BTL.mdf\";Integrated Security=True";
         private static SqlConnection sqlConnection;
         public static SqlConnection SqlConnection { get => sqlConnection; set => sqlConnection = value; }
 
@@ -640,7 +641,29 @@ namespace BTL_Prj.Class
                     return dt;
                 }
             }
-            public static void NhanVien_AddNhanVien(string maNV, string tenNV, string diaChi, string dienThoai, string gioiTinh, DateTime ngaySinh, string maCV)
+            public static DataTable GetAllHangHoa()
+            {
+                // using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT * FROM DMHangHoa";
+                    SqlDataAdapter adt = new SqlDataAdapter(query, sqlConnection);
+                    DataTable dt = new DataTable();
+                    adt.Fill(dt);
+                    return dt;
+                }
+            }
+            public static DataTable GetAllKhachHang()
+            {
+                // using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT * FROM KhachHang";
+                    SqlDataAdapter adt = new SqlDataAdapter(query, sqlConnection);
+                    DataTable dt = new DataTable();
+                    adt.Fill(dt);
+                    return dt;
+                }
+            }
+        public static void NhanVien_AddNhanVien(string maNV, string tenNV, string diaChi, string dienThoai, string gioiTinh, DateTime ngaySinh, string maCV)
             {
                 // using (SqlConnection sqlConnection = new SqlConnection(connectionString))
                 {

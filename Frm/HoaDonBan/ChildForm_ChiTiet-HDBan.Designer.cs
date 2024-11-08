@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvChiTietHoaDonBan = new System.Windows.Forms.DataGridView();
             this.cboMaHang = new System.Windows.Forms.ComboBox();
             this.txtThanhTien = new System.Windows.Forms.TextBox();
@@ -54,6 +54,7 @@
             this.txt_MaHoaDon = new System.Windows.Forms.TextBox();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.labelTongTien = new System.Windows.Forms.Label();
+            this.btnReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDonBan)).BeginInit();
             this.panel_button.SuspendLayout();
             this.panel_input.SuspendLayout();
@@ -61,8 +62,8 @@
             // 
             // dgvChiTietHoaDonBan
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvChiTietHoaDonBan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvChiTietHoaDonBan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvChiTietHoaDonBan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -207,7 +208,7 @@
             // btnChinhSua
             // 
             this.btnChinhSua.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnChinhSua.Location = new System.Drawing.Point(417, 10);
+            this.btnChinhSua.Location = new System.Drawing.Point(357, 10);
             this.btnChinhSua.Name = "btnChinhSua";
             this.btnChinhSua.Size = new System.Drawing.Size(120, 40);
             this.btnChinhSua.TabIndex = 38;
@@ -252,6 +253,7 @@
             // panel_button
             // 
             this.panel_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel_button.Controls.Add(this.btnReport);
             this.panel_button.Controls.Add(this.btnThem);
             this.panel_button.Controls.Add(this.btnChinhSua);
             this.panel_button.Controls.Add(this.btnDong);
@@ -326,6 +328,16 @@
             this.labelTongTien.TabIndex = 43;
             this.labelTongTien.Text = "Tổng tiền";
             // 
+            // btnReport
+            // 
+            this.btnReport.Location = new System.Drawing.Point(507, 10);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(112, 40);
+            this.btnReport.TabIndex = 39;
+            this.btnReport.Text = "Report";
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
             // ChildfrmChiTietHoaDonBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,5 +389,6 @@
         private System.Windows.Forms.TextBox txt_MaHoaDon;
         private System.Windows.Forms.TextBox txtTongTien;
         private System.Windows.Forms.Label labelTongTien;
+        private System.Windows.Forms.Button btnReport;
     }
 }

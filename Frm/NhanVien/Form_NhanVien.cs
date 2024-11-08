@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BTL_Prj.Class;
+using BTL_Prj.Frm.Report;
 
 namespace BTL_Prj.Frm.NhanVien
 {
@@ -253,6 +254,12 @@ namespace BTL_Prj.Frm.NhanVien
             {
                 Dispose();
             }   
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            FormReport_NhanVien report = new FormReport_NhanVien();
+            report.ShowDialog();
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using BTL_Prj.Class;
 using System.Linq;
+using BTL_Prj.Frm.Report.ReportHangHoa;
 
 namespace BTL_Prj.Frm.DanhMucHangHoa
 {
@@ -316,6 +317,12 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
             dgvHangHoa_CellClick(sender, new DataGridViewCellEventArgs(/*dgvHangHoa_TimKiem.CurrentCell.ColumnIndex*/0, /*dgvHangHoa_TimKiem.CurrentRow.Index*/ Row_in_dgvHangHoa));
             tabControl1.SelectedTab = tabControl1.TabPages[0];
 
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+			FormReport_HangHoa report = new FormReport_HangHoa();
+			report.ShowDialog();
         }
     }
 }

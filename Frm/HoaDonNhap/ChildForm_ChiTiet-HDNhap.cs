@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
 using BTL_Prj.Class;
+using BTL_Prj.Frm.Report.ReportChiTietHoaDonNhap;
 
 namespace BTL_Prj.Frm.HoaDonNhap
 {
@@ -230,6 +231,12 @@ namespace BTL_Prj.Frm.HoaDonNhap
             {
                 MessageBox.Show("Lỗi khi cập nhật tổng tiền: " + ex.Message);
             }
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            FormReport_ChiTietHDN report = new FormReport_ChiTietHDN(selectedSoHDN);
+            report.ShowDialog();
         }
     }
 }
