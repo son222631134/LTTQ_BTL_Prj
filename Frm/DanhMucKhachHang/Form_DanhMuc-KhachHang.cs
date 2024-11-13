@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Drawing;
 using BTL_Prj.Class;
+using BTL_Prj.Frm.Report.ReportKhachHang;
 
 namespace BTL_Prj.Frm.DanhMucKhachHang
 {
@@ -198,6 +199,12 @@ namespace BTL_Prj.Frm.DanhMucKhachHang
             SetDefaultState();
             LoadData();
             txtTimKiem.Clear();
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            FormReport_KhachHang report = new FormReport_KhachHang();
+            report.ShowDialog();
         }
     }
 }

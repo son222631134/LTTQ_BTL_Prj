@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnDong = new System.Windows.Forms.Button();
@@ -37,7 +37,6 @@
             this.dgvHangHoa = new System.Windows.Forms.DataGridView();
             this.panel_input = new System.Windows.Forms.Panel();
             this.btnBrowse = new System.Windows.Forms.Button();
-            this.picHangHoa = new System.Windows.Forms.PictureBox();
             this.cboMaDacDiem = new System.Windows.Forms.ComboBox();
             this.cboMaMau = new System.Windows.Forms.ComboBox();
             this.cboMaCongDung = new System.Windows.Forms.ComboBox();
@@ -72,15 +71,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvHangHoa_TimKiem = new System.Windows.Forms.DataGridView();
             this.panel_title = new System.Windows.Forms.Panel();
+            this.btnReport = new System.Windows.Forms.Button();
+            this.picHangHoa = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa)).BeginInit();
             this.panel_input.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).BeginInit();
             this.panel_button.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1_ThongTinChung.SuspendLayout();
             this.tabPage_TimKiem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa_TimKiem)).BeginInit();
             this.panel_title.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).BeginInit();
             this.SuspendLayout();
             // 
             // btnThem
@@ -98,7 +99,7 @@
             // btnLuu
             // 
             this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnLuu.Location = new System.Drawing.Point(644, 10);
+            this.btnLuu.Location = new System.Drawing.Point(549, 10);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(120, 40);
@@ -122,7 +123,7 @@
             // btnXoa
             // 
             this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnXoa.Location = new System.Drawing.Point(332, 10);
+            this.btnXoa.Location = new System.Drawing.Point(283, 10);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(120, 40);
@@ -133,8 +134,8 @@
             // 
             // dgvHangHoa
             // 
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvHangHoa.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvHangHoa.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHangHoa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -191,17 +192,6 @@
             this.btnBrowse.Text = "Chọn ảnh";
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
-            // 
-            // picHangHoa
-            // 
-            this.picHangHoa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picHangHoa.Location = new System.Drawing.Point(767, 25);
-            this.picHangHoa.Margin = new System.Windows.Forms.Padding(2);
-            this.picHangHoa.Name = "picHangHoa";
-            this.picHangHoa.Size = new System.Drawing.Size(120, 120);
-            this.picHangHoa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picHangHoa.TabIndex = 6;
-            this.picHangHoa.TabStop = false;
             // 
             // cboMaDacDiem
             // 
@@ -457,7 +447,7 @@
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnSua.Location = new System.Drawing.Point(176, 10);
+            this.btnSua.Location = new System.Drawing.Point(150, 10);
             this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(120, 40);
@@ -469,7 +459,7 @@
             // btnHuy
             // 
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnHuy.Location = new System.Drawing.Point(488, 10);
+            this.btnHuy.Location = new System.Drawing.Point(416, 10);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(2);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(120, 40);
@@ -481,6 +471,7 @@
             // panel_button
             // 
             this.panel_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel_button.Controls.Add(this.btnReport);
             this.panel_button.Controls.Add(this.btnThem);
             this.panel_button.Controls.Add(this.btnSua);
             this.panel_button.Controls.Add(this.btnDong);
@@ -563,8 +554,8 @@
             // 
             // dgvHangHoa_TimKiem
             // 
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvHangHoa_TimKiem.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvHangHoa_TimKiem.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHangHoa_TimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -587,6 +578,28 @@
             this.panel_title.Size = new System.Drawing.Size(954, 80);
             this.panel_title.TabIndex = 12;
             // 
+            // btnReport
+            // 
+            this.btnReport.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.Location = new System.Drawing.Point(677, 10);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(116, 40);
+            this.btnReport.TabIndex = 10;
+            this.btnReport.Text = "Report";
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
+            // picHangHoa
+            // 
+            this.picHangHoa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picHangHoa.Location = new System.Drawing.Point(767, 25);
+            this.picHangHoa.Margin = new System.Windows.Forms.Padding(2);
+            this.picHangHoa.Name = "picHangHoa";
+            this.picHangHoa.Size = new System.Drawing.Size(120, 120);
+            this.picHangHoa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picHangHoa.TabIndex = 6;
+            this.picHangHoa.TabStop = false;
+            // 
             // frmDanhMucHangHoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -602,7 +615,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa)).EndInit();
             this.panel_input.ResumeLayout(false);
             this.panel_input.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).EndInit();
             this.panel_button.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1_ThongTinChung.ResumeLayout(false);
@@ -610,6 +622,7 @@
             this.tabPage_TimKiem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa_TimKiem)).EndInit();
             this.panel_title.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -658,6 +671,7 @@
         private System.Windows.Forms.DataGridView dgvHangHoa_TimKiem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label_tabpageTimKiem_dgvGuide;
+        private System.Windows.Forms.Button btnReport;
     }
 }
 

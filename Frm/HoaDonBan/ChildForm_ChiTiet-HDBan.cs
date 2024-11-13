@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
 using BTL_Prj.Class;
+using BTL_Prj.Frm.Report.ReportChiTietHoaDonBan;
 
 namespace BTL_Prj.Frm.HoaDonBan
 {
@@ -387,6 +388,12 @@ namespace BTL_Prj.Frm.HoaDonBan
                 GetTenHang(cboMaHang.Text);
                 GetDonGiaBan(cboMaHang.Text);
             }
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            FormReport_ChiTietHDB report = new FormReport_ChiTietHDB(soHDB);
+            report.ShowDialog();
         }
     }
 }

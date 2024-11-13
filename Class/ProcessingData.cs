@@ -637,7 +637,29 @@ namespace BTL_Prj.Class
                     return dt;
                 }
             }
-            public static void NhanVien_AddNhanVien(string maNV, string tenNV, string diaChi, string dienThoai, string gioiTinh, DateTime ngaySinh, string maCV)
+            public static DataTable GetAllHangHoa()
+            {
+                // using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT * FROM DMHangHoa";
+                    SqlDataAdapter adt = new SqlDataAdapter(query, sqlConnection);
+                    DataTable dt = new DataTable();
+                    adt.Fill(dt);
+                    return dt;
+                }
+            }
+            public static DataTable GetAllKhachHang()
+            {
+                // using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT * FROM KhachHang";
+                    SqlDataAdapter adt = new SqlDataAdapter(query, sqlConnection);
+                    DataTable dt = new DataTable();
+                    adt.Fill(dt);
+                    return dt;
+                }
+            }
+        public static void NhanVien_AddNhanVien(string maNV, string tenNV, string diaChi, string dienThoai, string gioiTinh, DateTime ngaySinh, string maCV)
             {
                 // using (SqlConnection sqlConnection = new SqlConnection(connectionString))
                 {

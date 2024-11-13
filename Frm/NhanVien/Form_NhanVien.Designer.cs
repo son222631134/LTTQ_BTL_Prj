@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.mtbSoDienThoai = new System.Windows.Forms.MaskedTextBox();
             this.chkGioiTinh = new System.Windows.Forms.CheckBox();
@@ -58,6 +58,7 @@
             this.panel_title = new System.Windows.Forms.Panel();
             this.label_title = new System.Windows.Forms.Label();
             this.panel_input = new System.Windows.Forms.Panel();
+            this.btnReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel_button.SuspendLayout();
@@ -211,8 +212,8 @@
             // 
             // dgvNhanVien
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvNhanVien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvNhanVien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvNhanVien.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -279,7 +280,7 @@
             // btnHuy
             // 
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnHuy.Location = new System.Drawing.Point(488, 10);
+            this.btnHuy.Location = new System.Drawing.Point(417, 10);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(0);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(120, 40);
@@ -291,7 +292,7 @@
             // btnLuu
             // 
             this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnLuu.Location = new System.Drawing.Point(644, 10);
+            this.btnLuu.Location = new System.Drawing.Point(553, 10);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(0);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(120, 40);
@@ -303,7 +304,7 @@
             // btnXoa
             // 
             this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnXoa.Location = new System.Drawing.Point(332, 10);
+            this.btnXoa.Location = new System.Drawing.Point(283, 10);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(0);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(120, 40);
@@ -315,7 +316,7 @@
             // btnSua
             // 
             this.btnSua.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnSua.Location = new System.Drawing.Point(176, 10);
+            this.btnSua.Location = new System.Drawing.Point(153, 10);
             this.btnSua.Margin = new System.Windows.Forms.Padding(0);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(120, 40);
@@ -339,7 +340,7 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnClear.Location = new System.Drawing.Point(488, 10);
+            this.btnClear.Location = new System.Drawing.Point(417, 10);
             this.btnClear.Margin = new System.Windows.Forms.Padding(0);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(120, 40);
@@ -351,7 +352,7 @@
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnThoat.Location = new System.Drawing.Point(800, 10);
+            this.btnThoat.Location = new System.Drawing.Point(818, 10);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(0);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(120, 40);
@@ -363,6 +364,7 @@
             // panel_button
             // 
             this.panel_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel_button.Controls.Add(this.btnReport);
             this.panel_button.Controls.Add(this.btnClear);
             this.panel_button.Controls.Add(this.btnThoat);
             this.panel_button.Controls.Add(this.btnLuu);
@@ -417,6 +419,17 @@
             this.panel_input.Name = "panel_input";
             this.panel_input.Size = new System.Drawing.Size(950, 161);
             this.panel_input.TabIndex = 17;
+            // 
+            // btnReport
+            // 
+            this.btnReport.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.Location = new System.Drawing.Point(691, 10);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(114, 38);
+            this.btnReport.TabIndex = 10;
+            this.btnReport.Text = "Report";
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // frmNhanVien
             // 
@@ -473,6 +486,7 @@
         private System.Windows.Forms.Panel panel_title;
         private System.Windows.Forms.Label label_title;
         private System.Windows.Forms.Panel panel_input;
+        private System.Windows.Forms.Button btnReport;
     }
 }
 

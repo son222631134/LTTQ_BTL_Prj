@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvChiTietHoaDonNhap = new System.Windows.Forms.DataGridView();
             this.BTSUA = new System.Windows.Forms.Button();
             this.BTDELETE = new System.Windows.Forms.Button();
@@ -48,6 +48,7 @@
             this.CBBMAHANG = new System.Windows.Forms.ComboBox();
             this.panel_button = new System.Windows.Forms.Panel();
             this.panel_input = new System.Windows.Forms.Panel();
+            this.btnReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDonNhap)).BeginInit();
             this.panel_button.SuspendLayout();
             this.panel_input.SuspendLayout();
@@ -55,8 +56,8 @@
             // 
             // dgvChiTietHoaDonNhap
             // 
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvChiTietHoaDonNhap.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvChiTietHoaDonNhap.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvChiTietHoaDonNhap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -73,7 +74,7 @@
             // BTSUA
             // 
             this.BTSUA.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.BTSUA.Location = new System.Drawing.Point(233, 10);
+            this.BTSUA.Location = new System.Drawing.Point(197, 10);
             this.BTSUA.Name = "BTSUA";
             this.BTSUA.Size = new System.Drawing.Size(120, 40);
             this.BTSUA.TabIndex = 50;
@@ -84,7 +85,7 @@
             // BTDELETE
             // 
             this.BTDELETE.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.BTDELETE.Location = new System.Drawing.Point(417, 10);
+            this.BTDELETE.Location = new System.Drawing.Point(345, 10);
             this.BTDELETE.Name = "BTDELETE";
             this.BTDELETE.Size = new System.Drawing.Size(120, 40);
             this.BTDELETE.TabIndex = 49;
@@ -106,7 +107,7 @@
             // Clear
             // 
             this.Clear.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.Clear.Location = new System.Drawing.Point(601, 10);
+            this.Clear.Location = new System.Drawing.Point(491, 10);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(120, 40);
             this.Clear.TabIndex = 47;
@@ -219,6 +220,7 @@
             // panel_button
             // 
             this.panel_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel_button.Controls.Add(this.btnReport);
             this.panel_button.Controls.Add(this.BTADDCTHDN);
             this.panel_button.Controls.Add(this.Clear);
             this.panel_button.Controls.Add(this.ExitForm2);
@@ -247,6 +249,17 @@
             this.panel_input.Name = "panel_input";
             this.panel_input.Size = new System.Drawing.Size(954, 161);
             this.panel_input.TabIndex = 56;
+            // 
+            // btnReport
+            // 
+            this.btnReport.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.Location = new System.Drawing.Point(632, 10);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(130, 40);
+            this.btnReport.TabIndex = 51;
+            this.btnReport.Text = "Report";
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // ChildfrmChiTietHDNhap
             // 
@@ -287,5 +300,6 @@
         private System.Windows.Forms.ComboBox CBBMAHANG;
         private System.Windows.Forms.Panel panel_button;
         private System.Windows.Forms.Panel panel_input;
+        private System.Windows.Forms.Button btnReport;
     }
 }
