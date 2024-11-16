@@ -179,11 +179,6 @@ namespace BTL_Prj.Frm.HoaDonNhap
 			return;
         }
 
-        private void dtgrvFORM2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dtgrvFORM2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Hiển thị dữ liệu từ hàng đã chọn lên các TextBox

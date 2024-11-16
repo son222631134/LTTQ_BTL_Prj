@@ -82,6 +82,22 @@ namespace BTL_Prj.Frm.HoaDonNhap
                 columnValues.Add("ThanhTien", thanhTien);
 
                 ProcessingData.Insert("ChiTietHoaDonNhap", columnValues);
+
+                //cong SLHH
+                var check = new Dictionary<string, object>
+                {
+                    {"@MaHang", int.Parse(CBBMAHANG.Text) }
+
+                }; DataTable dt = ProcessingData.GetData("SELECT SoLuong From DMHangHoa WHERE MaHang = @MaHang", check);
+                int prev_SoLuong = int.Parse(dt.Rows[0]["SoLuong"].ToString());
+
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@SoLuong", prev_SoLuong +  int.Parse(TBSOLUONG.Text) },
+                    { "@MaHang", int.Parse(CBBMAHANG.Text) }
+                };
+                ProcessingData.ExecuteQuery("UPDATE DMHangHoa SET SoLuong = @SoLuong Where MaHang = @MaHang", parameters);
+
                 MessageBox.Show("Thêm chi tiết hóa đơn nhập thành công!");
                 LoadDataToGridView(); // Cập nhật lại dữ liệu trên DataGridView
                 ClearFields(); // Xóa các trường sau khi thêm

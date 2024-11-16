@@ -70,6 +70,20 @@ namespace BTL_Prj.Frm.HoaDonBan
         {
             try
             {
+                //Kiem tra co du so luong ko
+                var check = new Dictionary<string, object>
+                {
+                    {"@MaHang", int.Parse(cboMaHang.Text) }
+
+                };
+                DataTable dt = ProcessingData.GetData("SELECT SoLuong From DMHangHoa WHERE MaHang = @MaHang", check);
+                if (int.Parse(dt.Rows[0]["SoLuong"].ToString()) < int.Parse(txtSoLuong.Text))
+                {
+                    throw new InvalidOperationException("Số lượng mặt hàng nhập nhiều hơn số lượng đang có");
+                    return;
+                }
+                int prev_SoLuong = int.Parse(dt.Rows[0]["SoLuong"].ToString());
+
                 // Truy vấn để kiểm tra sự tồn tại của hàng hóa trong hóa đơn
                 string checkQuery = "SELECT * FROM ChiTietHoaDonBan WHERE SoHDB = @SoHDB AND MaHang = @MaHang";
                 var checkParams = new Dictionary<string, object>
@@ -79,7 +93,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                 };
 
                 // Lấy dữ liệu từ cơ sở dữ liệu
-                DataTable dt = ProcessingData.GetData(checkQuery, checkParams);
+                dt = ProcessingData.GetData(checkQuery, checkParams);
                 if (dt.Rows.Count > 0)
                 {
                     MessageBox.Show("Mã hàng đã tồn tại trong hóa đơn. Vui lòng chọn mã hàng khác.", "Thông báo");
@@ -97,6 +111,13 @@ namespace BTL_Prj.Frm.HoaDonBan
                     { "@ThanhTien", decimal.Parse(txtThanhTien.Text) }
                 };
                 ProcessingData.ExecuteQuery(query, parameters);
+                //tru SLHH
+                parameters = new Dictionary<string, object>
+                {
+                    { "@SoLuong", prev_SoLuong -  int.Parse(txtSoLuong.Text) },
+                    { "@MaHang", int.Parse(cboMaHang.Text) }
+                };
+                ProcessingData.ExecuteQuery("UPDATE DMHangHoa SET SoLuong = @SoLuong Where MaHang = @MaHang",parameters);
                 MessageBox.Show("Thêm thành công");
             }
             catch (Exception e)
@@ -315,7 +336,7 @@ namespace BTL_Prj.Frm.HoaDonBan
         {
             cboMaHang.Enabled = false;
             if (btnThem.Enabled == false)
-            {
+            {            
                 ThemThongTinHDVaoCDSL();
                 ResetValues();
                 SetFieldsState(false);
