@@ -170,8 +170,8 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 					decimal.TryParse(txtDonGiaBan.Text, out decimal donGiaBan))	{
 					//then
 					string src = picHangHoa.ImageLocation;
-					string dest = Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + "\\HangHoa\\" + "ImgHangHoa" + txtMaHang.Text;
-					Function.CopyFile(src, dest);
+					string dest = "\\HangHoa\\" + "ImgHangHoa" + txtMaHang.Text;
+					Function.CopyFile(src, Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + dest);
 					var columnValues = new Dictionary<string, object> {
 						{ "MaHang", txtMaHang.Text },
 						{ "TenHang", txtTenHang.Text },
@@ -183,7 +183,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 						{ "MaCongDung", cboMaCongDung.SelectedValue.ToString() },
 						{ "MaMau", cboMaMau.SelectedValue.ToString() },
 						{ "MaDacDiem", cboMaDacDiem.SelectedValue.ToString() },
-						{ "ImagePath", dest }
+						{ "ImagePath", Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + dest }
 					};
 
 					try
@@ -211,8 +211,8 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 					decimal.TryParse(txtDonGiaBan.Text, out decimal donGiaBan))
                 { //then
                     string src = picHangHoa.ImageLocation;
-                    string dest = Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + "HangHoa\\" + "ImgHangHoa" + txtMaHang.Text + ".jpg";
-                    Function.CopyFile(src, dest);
+                    string dest = "HangHoa\\" + "ImgHangHoa" + txtMaHang.Text + ".jpg";
+                    Function.CopyFile(src, Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + dest);
 					MessageBox.Show(src + "\r\n" + dest);
                     var columnValues = new Dictionary<string, object>
 					{
@@ -225,7 +225,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 						{ "MaCongDung", cboMaCongDung.SelectedValue.ToString() },
 						{ "MaMau", cboMaMau.SelectedValue.ToString() },
 						{ "MaDacDiem", cboMaDacDiem.SelectedValue.ToString() },
-						{ "ImagePath", dest }
+						{ "ImagePath", Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + dest }
 					};
 
 					try
