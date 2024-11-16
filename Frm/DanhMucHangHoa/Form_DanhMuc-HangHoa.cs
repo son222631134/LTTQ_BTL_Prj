@@ -183,7 +183,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 						{ "MaCongDung", cboMaCongDung.SelectedValue.ToString() },
 						{ "MaMau", cboMaMau.SelectedValue.ToString() },
 						{ "MaDacDiem", cboMaDacDiem.SelectedValue.ToString() },
-						{ "ImagePath", Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + dest }
+						{ "ImagePath", dest }
 					};
 
 					try
@@ -213,7 +213,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
                     string src = picHangHoa.ImageLocation;
                     string dest = "HangHoa\\" + "ImgHangHoa" + txtMaHang.Text + ".jpg";
                     Function.CopyFile(src, Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + dest);
-					MessageBox.Show(src + "\r\n" + dest);
+					//MessageBox.Show(src + "\r\n" + dest);
                     var columnValues = new Dictionary<string, object>
 					{
 						{ "TenHang", txtTenHang.Text },
@@ -225,7 +225,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 						{ "MaCongDung", cboMaCongDung.SelectedValue.ToString() },
 						{ "MaMau", cboMaMau.SelectedValue.ToString() },
 						{ "MaDacDiem", cboMaDacDiem.SelectedValue.ToString() },
-						{ "ImagePath", Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + dest }
+						{ "ImagePath", dest }
 					};
 
 					try
@@ -272,7 +272,8 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 				cboMaCongDung.SelectedValue = row.Cells["MaCongDung"].Value;
 				cboMaMau.SelectedValue = row.Cells["MaMau"].Value;
 				cboMaDacDiem.SelectedValue = row.Cells["MaDacDiem"].Value;
-				picHangHoa.ImageLocation = row.Cells["ImagePath"].Value.ToString();
+				picHangHoa.ImageLocation = Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + row.Cells["ImagePath"].Value.ToString();
+				//MessageBox.Show(picHangHoa.ImageLocation +"\r\r\n\n" + row.Cells["ImagePath"].Value.ToString());
 				EnableFields(false); 
 			}
 		}

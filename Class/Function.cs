@@ -12,6 +12,7 @@ namespace BTL_Prj.Class
     {
         public static void CopyFile(string src, string des)
         {
+            if (src == des) return;
             string path = des.Substring(0, des.LastIndexOf("\\"));
             if (!Directory.Exists(path))
             {

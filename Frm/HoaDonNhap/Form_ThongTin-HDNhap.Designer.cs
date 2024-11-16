@@ -67,7 +67,6 @@
             this.CBBNCC.Name = "CBBNCC";
             this.CBBNCC.Size = new System.Drawing.Size(254, 27);
             this.CBBNCC.TabIndex = 40;
-            this.CBBNCC.SelectedIndexChanged += new System.EventHandler(this.CBBNCC_SelectedIndexChanged);
             // 
             // CBBMNV
             // 
@@ -77,7 +76,6 @@
             this.CBBMNV.Name = "CBBMNV";
             this.CBBMNV.Size = new System.Drawing.Size(254, 27);
             this.CBBMNV.TabIndex = 39;
-            this.CBBMNV.SelectedIndexChanged += new System.EventHandler(this.CBBMNV_SelectedIndexChanged);
             // 
             // dgvHoaDonNhap
             // 
@@ -141,7 +139,6 @@
             this.DatetimeNC.Name = "DatetimeNC";
             this.DatetimeNC.Size = new System.Drawing.Size(254, 26);
             this.DatetimeNC.TabIndex = 30;
-            this.DatetimeNC.ValueChanged += new System.EventHandler(this.DatetimeNC_ValueChanged);
             // 
             // TBHDN
             // 
@@ -150,7 +147,6 @@
             this.TBHDN.Name = "TBHDN";
             this.TBHDN.Size = new System.Drawing.Size(254, 26);
             this.TBHDN.TabIndex = 23;
-            this.TBHDN.TextChanged += new System.EventHandler(this.TBHDN_TextChanged);
             // 
             // button6
             // 

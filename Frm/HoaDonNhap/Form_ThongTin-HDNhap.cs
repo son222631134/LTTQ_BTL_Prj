@@ -20,6 +20,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
             LoadComboBoxData();
             LoadDataToGridView();
             tabControl1.TabPages.Remove(tabPage_ChiTietHoaDon);
+            
         }
         private void LoadComboBoxData()
         {
@@ -63,24 +64,9 @@ namespace BTL_Prj.Frm.HoaDonNhap
             chiTietForm.Show();
             chiTietForm.FormBorderStyle = FormBorderStyle.None;
         }
-        private void TBHDN_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void CBBMNV_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void CBBNCC_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void DatetimeNC_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
         private void ClearBT_Click(object sender, EventArgs e)
         {
+            TBHDN.Enabled = true;
             TBHDN.Clear();
             CBBMNV.SelectedIndex = -1;
             CBBNCC.SelectedIndex = -1;
@@ -181,6 +167,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
         }
         private void dtgrvHDN_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            TBHDN.Enabled = false;
             if (e.RowIndex < 0 || e.RowIndex >= dgvHoaDonNhap.RowCount - 1) return;
             // Hiển thị dữ liệu từ hàng đã chọn lên các TextBox và ComboBox
             //if (e.RowIndex >= 0)
