@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,73 +22,147 @@ namespace BTL_Prj.Frm.Dashboard
         }
         private void FrmDashboard_Load(object sender, EventArgs e)
         {
-            LoadChart1Data();
-            LoadChart2Data();
-            DisplayProfitOrLoss();
-            chart_chitieu.Font = new Font("Times New Roman", 12, FontStyle.Bold); // Change the font here
-            chart_doanhthu.Font = new Font("Times New Roman", 12, FontStyle.Bold); // Change the font here
+
+            LoadMonthlyRevenueChart();
+            LoadMonthlyExpense();
+            DisplayProfitOrLoss();  
+            LoadLastestOrderTable();
+            LoadChartTonKho();
+            LoadDataKho();
+            LoadDataKhach();
+            LoadDataNV();
         }
-        private void LoadChart1Data()
+
+        void LoadLastestOrderTable()
         {
-            //string connectionString = "Data Source=MAN4KA\\DATABASE_LEARN;Initial Catalog=MoreQLBanHoaQua;Persist Security Info=True;User ID=sa;Password=manaka;Encrypt=True;TrustServerCertificate=True";
-            string query = "SELECT SoHDB, SUM(TongTien) as TT FROM HoaDonBan GROUP BY SoHDB";
+            string query = @"
+        SELECT * 
+        FROM HoaDonBan
+        WHERE CONVERT(DATE, NgayBan) = CONVERT(DATE, GETDATE())";
+            dgvLastestOrder.DataSource = ProcessingData.GetData(query);
+        }
 
-            //using (SqlConnection connection = new SqlConnection(connectionString))
+        void LoadChartTonKho()
+        {
+            chart_tonkho.Series.Clear();
+            Series series = chart_tonkho.Series.Add("Số lượng hàng tồn kho");
+            series.ChartType = SeriesChartType.Bar;
+            chart_tonkho.ChartAreas[0].AxisX.Interval = 1;
+
+            string query = @"SELECT TenHang, SoLuong FROM DMHangHoa where SoLuong > 0";
+            chart_tonkho.DataSource = ProcessingData.GetData(query);
+            series.XValueMember = "TenHang";
+            series.YValueMembers = "SoLuong";
+        }
+
+        void LoadMonthlyRevenueChart()
+        {
+            chartDoanhthuthang.Series.Clear();
+            Series series = chartDoanhthuthang.Series.Add("Doanh thu 2024");
+            series.ChartType = SeriesChartType.Line;
+            series.BorderWidth = 3;
+            series.Color = Color.Blue;
+            series.MarkerStyle = MarkerStyle.Circle;
+            series.MarkerSize = 8;
+            series.MarkerColor = Color.Red;
+            series.IsValueShownAsLabel = true;
+
+            string query = "SELECT \r\n    MONTH(NgayBan) AS Month,\r\n    SUM(TongTien) AS TotalRevenue\r\nFROM \r\n    HoaDonBan\r\nWHERE \r\n    YEAR(NgayBan) = YEAR(GETDATE())\r\nGROUP BY \r\n    YEAR(NgayBan), MONTH(NgayBan)\r\nORDER BY \r\n\tMonth;";
+            chartDoanhthuthang.DataSource = ProcessingData.GetData(query);
+            series.XValueMember = "Month";
+            series.YValueMembers = "TotalRevenue";
+        }
+
+        void LoadMonthlyExpense()
+        {
+            chartChiTheoThang.Series.Clear();
+            Series series = chartChiTheoThang.Series.Add("Chi phí 2024");
+            series.ChartType = SeriesChartType.Line;
+            series.BorderWidth = 3;
+            series.Color = Color.Aquamarine;
+            series.MarkerStyle = MarkerStyle.Circle;
+            series.MarkerSize = 8;
+            series.MarkerColor = Color.Red;
+            series.IsValueShownAsLabel = true;
+
+            string query = "SELECT \r\n    YEAR(NgayNhap) AS Year,\r\n    MONTH(NgayNhap) AS Month,\r\n    SUM(TongTien) AS TotalExpenses\r\nFROM \r\n    HoaDonNhap\r\nWHERE \r\n    YEAR(NgayNhap) = YEAR(GETDATE())\r\nGROUP BY \r\n    YEAR(NgayNhap), MONTH(NgayNhap)\r\nORDER BY \r\n    Year, Month;";
+            chartChiTheoThang.DataSource = ProcessingData.GetData(query);
+            series.XValueMember = "Month";
+            series.YValueMembers = "TotalExpenses";
+        }
+
+        void LoadDataKho()
+        {
+            
+            string query = "SELECT SUM(ISNULL(SoLuong, 0)) AS tong FROM DMHangHoa;";
+            DataTable dataTable = ProcessingData.GetData(query);
+
+            if (dataTable.Rows.Count > 0 && dataTable.Rows[0]["tong"] != DBNull.Value)
             {
-                SqlDataAdapter adapter = new SqlDataAdapter(query, ProcessingData.SqlConnection);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
+                int soLuongTonKho = Convert.ToInt32(dataTable.Rows[0]["tong"]);
+                labelDataTonKho.Text = $"{soLuongTonKho} Mặt hàng";
+            }
+            else
+            {
+                labelDataTonKho.Text = "0 Mặt hàng";
+            }
 
-                chart_doanhthu.Series.Clear();
-                var series = new Series("Doanh Thu")
-                {
-                    XValueMember = "SoHDB",
-                    YValueMembers = "TT",
-                    ChartType = SeriesChartType.Column
-                };
 
-                chart_doanhthu.DataSource = dataTable;
-                chart_doanhthu.Series.Add(series);
-                chart_doanhthu.DataBind();
+        }
+
+        void LoadDataKhach()
+        {
+            string query = @"
+        SELECT COUNT(DISTINCT MaKhach) AS SoKhach
+        FROM HoaDonBan
+        WHERE MONTH(NgayBan) = MONTH(GETDATE()) AND YEAR(NgayBan) = YEAR(GETDATE());";
+
+            DataTable dataTable = ProcessingData.GetData(query);
+
+            if (dataTable.Rows.Count > 0 && dataTable.Rows[0]["SoKhach"] != DBNull.Value)
+            {
+                int soKhach = Convert.ToInt32(dataTable.Rows[0]["SoKhach"]);
+                labelDataSoKhach.Text = $"{soKhach} Khách hàng";
+            }
+            else
+            {
+                labelDataSoKhach.Text = "0 Khách hàng";
             }
         }
-        private void LoadChart2Data()
+
+        void LoadDataNV()
         {
-            //string connectionString = "Data Source=MAN4KA\\DATABASE_LEARN;Initial Catalog=MoreQLBanHoaQua;Persist Security Info=True;User ID=sa;Password=manaka;Encrypt=True;TrustServerCertificate=True";
-            string query = "SELECT SoHDN, SUM(TongTien) as TT FROM HoaDonNhap GROUP BY SoHDN";
-
-            //using (SqlConnection connection = new SqlConnection(connectionString))
+            string queryNhanVienUuTu = @"
+                            SELECT TOP 1 NhanVien.MaNV, NhanVien.TenNV, COUNT(HoaDonBan.SoHDB) AS SoHoaDon
+                            FROM HoaDonBan
+                            JOIN NhanVien ON HoaDonBan.MaNV = NhanVien.MaNV
+                            GROUP BY NhanVien.MaNV, NhanVien.TenNV
+                            ORDER BY SoHoaDon DESC;";
+            DataTable nhanVienTable = ProcessingData.GetData(queryNhanVienUuTu);
+            if (nhanVienTable.Rows.Count > 0)
             {
-                SqlDataAdapter adapter = new SqlDataAdapter(query, ProcessingData.SqlConnection);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-
-                chart_chitieu.Series.Clear();
-                var series = new Series("Chi Tiêu")
-                {
-                    XValueMember = "SoHDN",
-                    YValueMembers = "TT",
-                    ChartType = SeriesChartType.Column
-                };
-
-                chart_chitieu.DataSource = dataTable;
-                chart_chitieu.Series.Add(series);
-                chart_chitieu.DataBind();
+                string tenNV = nhanVienTable.Rows[0]["TenNV"].ToString();
+                string soHoaDon = nhanVienTable.Rows[0]["SoHoaDon"].ToString();
+                labelNhanVienMVP.Text = $"{tenNV} ({soHoaDon} hóa đơn)";
+            }
+            else
+            {
+                labelNhanVienMVP.Text = "Không có dữ liệu";
             }
         }
+
 
         private void DisplayProfitOrLoss()
         {
             decimal chiTieu = 0;
             decimal doanhThu = 0;
-            //string connectionString = "Data Source=MAN4KA\\DATABASE_LEARN;Initial Catalog=MoreQLBanHoaQua;Persist Security Info=True;User ID=sa;Password=manaka;Encrypt=True;TrustServerCertificate=True";
+           
             string query1 = "SELECT SUM(TongTien) AS TongChi FROM HoaDonNhap";
             string query2 = "SELECT SUM(TongTien) AS TongThu FROM HoaDonBan";
 
-            //using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query1, ProcessingData.SqlConnection);
-                //connection.Open();
+                
                 SqlDataReader reader = command.ExecuteReader();
 
                 if (reader.Read())
@@ -98,10 +173,10 @@ namespace BTL_Prj.Frm.Dashboard
                 reader.Close();
             }
 
-            //using (SqlConnection connection = new SqlConnection(connectionString))
+            
             {
                 SqlCommand command = new SqlCommand(query2, ProcessingData.SqlConnection);
-                //connection.Open();
+                
                 SqlDataReader reader = command.ExecuteReader();
 
                 if (reader.Read())
@@ -112,16 +187,31 @@ namespace BTL_Prj.Frm.Dashboard
             }
 
             decimal ketQua = doanhThu - chiTieu;
-            lblProfitOrLoss.Text = ketQua >= 0 ? "Lãi: " + ketQua : "Lỗ: " + ketQua;
-            lblProfitOrLoss.ForeColor = ketQua >= 0 ? Color.Green : Color.Red;
+            
+           labelDataDoanhThu.Text = ketQua.ToString();
         }
         private void FrmDashboard_SizeChanged(object sender, EventArgs e)
         {
-            panel_ChiTieu.Width = panel_DoanhThu.Width = this.Width / 2;
-            chart_chitieu.Size = chart_doanhthu.Size = new Size(panel_ChiTieu.Width * 2 / 3, panel_ChiTieu.Height * 2 / 3);
-            chart_chitieu.Location = chart_doanhthu.Location = new Point(panel_ChiTieu.Width / 2 - chart_chitieu.Width / 2,
-                                                                            panel_ChiTieu.Height / 2 - chart_chitieu.Height / 2);
-            label_chitieu.Width = label_doanhthu.Width = this.Width / 2;
+          //  panel_ChiTieu.Width = panel_DoanhThu.Width = this.Width / 2;
+           // chart_chitieu.Size = chart_doanhthu.Size = new Size(panel_ChiTieu.Width * 2 / 3, panel_ChiTieu.Height * 2 / 3);
+           // chart_chitieu.Location = chart_doanhthu.Location = new Point(panel_ChiTieu.Width / 2 - chart_chitieu.Width / 2,
+                                                                      //      panel_ChiTieu.Height / 2 - chart_chitieu.Height / 2);
+            //label_chitieu.Width = label_doanhthu.Width = this.Width / 2;
+        }
+
+        private void chart_doanhthu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

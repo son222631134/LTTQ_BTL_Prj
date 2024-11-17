@@ -38,6 +38,8 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
             {
                 dgvHangHoa.Columns["ImagePath"].Visible = false;
             }
+			dgvHangHoa.Columns["DonGiaNhap"].DefaultCellStyle.Format = "#,##0";
+			dgvHangHoa.Columns["DonGiaBan"].DefaultCellStyle.Format = "#,##0";
         }
 
 		private void LoadComboBoxData()
