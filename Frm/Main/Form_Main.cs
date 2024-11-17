@@ -15,6 +15,7 @@ namespace BTL_Prj.Frm.Main
     {
         string username;
         string name;
+        bool UserIsAdmin;
         public frmMain()
         {
             Form_Login frmLogin = new Form_Login();
@@ -26,6 +27,7 @@ namespace BTL_Prj.Frm.Main
             }
             username = frmLogin.username;
             name = frmLogin.name;
+            UserIsAdmin = frmLogin.isAdmin;
 
             InitializeComponent();
         }
@@ -42,6 +44,11 @@ namespace BTL_Prj.Frm.Main
 
             lb_username.Text = "Hello, " + name;
             lb_username.TextAlign = ContentAlignment.MiddleCenter;
+
+            if (!UserIsAdmin)
+            {
+                btn_menu_NhanVien.Enabled = false;
+            }
 
             openChildForm(new FrmDashboard());
             ActivateButton(btn_Dashboard);
@@ -121,6 +128,11 @@ namespace BTL_Prj.Frm.Main
 
         private void btn_menu_NhanVien_Click(object sender, EventArgs e)
         {
+            if (!UserIsAdmin)
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào mục này!");
+                return;
+            }
             ActivateButton(sender);
             openChildForm(new frmNhanVien());
         }
