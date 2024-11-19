@@ -32,13 +32,14 @@ namespace BTL_Prj.Frm.HoaDonBan
 
             btnChiTiet.Enabled = false;
             btnInHoaDon.Enabled = false;
+            btnXoa.Enabled = false;
             DisablePointer();
             SetFieldsState(false);
             LoadDataGridView();
             LoadMaNhanVien();
             LoadMaKhachHang();
             dgvHDBanHang.CellClick += dgvHDBanHang_CellClick;
-            dgvHDBanHang.CellDoubleClick += dgvHDBanHang_CellDoubleClick;
+            //dgvHDBanHang.CellDoubleClick += dgvHDBanHang_CellDoubleClick;
             tabControl1.TabPages.Remove(tabPage_ChiTietHoaDon);
         }
 
@@ -381,6 +382,8 @@ namespace BTL_Prj.Frm.HoaDonBan
             {
                 tabControl1.TabPages.Remove(tabPage_ChiTietHoaDon);
             }
+            tabPage_ChiTietHoaDon = new TabPage();
+            tabPage_ChiTietHoaDon.Text = "Chi Tiết";
             tabControl1.TabPages.Add(tabPage_ChiTietHoaDon);
 
             //frmChiTietHoaDonBan chiTietForm = new frmChiTietHoaDonBan(soHDB);
@@ -526,6 +529,7 @@ namespace BTL_Prj.Frm.HoaDonBan
             btnInHoaDon.Enabled = false;
             btnClear.Enabled = false;
             btnHuy.Enabled = false;
+            btnXoa.Enabled = false;
             ResetValues();
             SetFieldsState(false);
         }
@@ -556,18 +560,18 @@ namespace BTL_Prj.Frm.HoaDonBan
             }
         }
 
-        private void dgvHDBanHang_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 || e.RowIndex >= dgvHDBanHang.RowCount - 1) return;
+        //private void dgvHDBanHang_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex < 0 || e.RowIndex >= dgvHDBanHang.RowCount - 1) return;
 
-            int soHDB = Convert.ToInt32(dgvHDBanHang.Rows[e.RowIndex].Cells["SoHDB"].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa hóa đơn này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                ProcessingData.Delete("HoaDonBan", "SoHDB", soHDB);
-                LoadDataGridView();
-            }
-        }
+        //    int soHDB = Convert.ToInt32(dgvHDBanHang.Rows[e.RowIndex].Cells["SoHDB"].Value);
+        //    DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa hóa đơn này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+        //    if (dialogResult == DialogResult.Yes)
+        //    {
+        //        ProcessingData.Delete("HoaDonBan", "SoHDB", soHDB);
+        //        LoadDataGridView();
+        //    }
+        //}
         private void dgvHDBanHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SetFieldsState(false);
@@ -577,6 +581,7 @@ namespace BTL_Prj.Frm.HoaDonBan
 
             btnChiTiet.Enabled = true;
             btnInHoaDon.Enabled = true;
+            btnXoa.Enabled = true;
 
             DataGridViewRow row = dgvHDBanHang.Rows[e.RowIndex];
             txtMaHDBan.Text = row.Cells["SoHDB"].Value.ToString();
@@ -587,6 +592,43 @@ namespace BTL_Prj.Frm.HoaDonBan
 
             GetTenNhanVien(cboMaNhanVien.Text);
             GetThongTinKhachHang(cboMaKhach.Text);
+        }
+
+        private void txtTongTien_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMaHDBan.Text) ||
+                string.IsNullOrEmpty(cboMaNhanVien.Text) ||
+                string.IsNullOrEmpty(txtTenNhanVien.Text) ||
+                string.IsNullOrEmpty(cboMaKhach.Text) ||
+                string.IsNullOrEmpty(txtTenKhach.Text) ||
+                string.IsNullOrEmpty(txtDiaChi.Text) ||
+                string.IsNullOrEmpty(txtDienThoai.Text))
+            {
+                MessageBox.Show("Vui lòng chọn một hóa đơn để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            int soHDB = Convert.ToInt32(dgvHDBanHang.CurrentRow.Cells["SoHDB"].Value);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa hóa đơn này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                ProcessingData.Delete("HoaDonBan", "SoHDB", soHDB);
+                LoadDataGridView();
+                ResetValues();
+                SetFieldsState(false);
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPage_ThongTinChung)
+            {
+                LoadDataGridView();
+            }
         }
     }
 }

@@ -323,6 +323,7 @@ namespace BTL_Prj.Frm.HoaDonBan
         }
         private void btnDong_Click(object sender, EventArgs e)
         {
+            Parent.Dispose();
             this.Close();
             return;
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn đóng?", "Xác nhận đóng", MessageBoxButtons.YesNo);
@@ -415,6 +416,32 @@ namespace BTL_Prj.Frm.HoaDonBan
         {
             FormReport_ChiTietHDB report = new FormReport_ChiTietHDB(soHDB);
             report.ShowDialog();
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(cboMaHang.Text) ||
+                string.IsNullOrEmpty(txtTenHang.Text) ||
+                string.IsNullOrEmpty(txtThanhTien.Text) ||
+                string.IsNullOrEmpty(txtSoLuong.Text) ||
+                string.IsNullOrEmpty(txtGiamGia.Text) ||
+                string.IsNullOrEmpty(txtDonGiaBan.Text))
+            {
+                MessageBox.Show("Vui lòng chọn một mặt hàng để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            string maHang = dgvChiTietHoaDonBan.CurrentRow.Cells["MaHang"].Value.ToString();
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa mặt hàng này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                DeleteMatHang(maHang);
+                LoadDataGridView();
+                ResetValues();
+                CapNhatTongTien();
+                SetFieldsState(false);
+                btnThem.Enabled = true;
+                btnChinhSua.Enabled = true;
+            }
         }
     }
 }
