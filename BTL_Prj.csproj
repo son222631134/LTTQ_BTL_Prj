@@ -132,6 +132,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database_BTLDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Frm\DanhMucHangHoa\CreateEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\DanhMucHangHoa\CreateEditForm.Designer.cs">
+      <DependentUpon>CreateEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\DanhMucHangHoa\Form_DanhMuc-HangHoa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +243,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Frm\DanhMucHangHoa\CreateEditForm.resx">
+      <DependentUpon>CreateEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\DanhMucHangHoa\Form_DanhMuc-HangHoa.resx">
       <DependentUpon>Form_DanhMuc-HangHoa.cs</DependentUpon>
     </EmbeddedResource>

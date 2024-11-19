@@ -67,8 +67,9 @@ namespace BTL_Prj.Class
                 return dataTable;
             }
 
-            // Phương thức thực thi câu lệnh SQL (INSERT, UPDATE, DELETE)
-            public static void ExecuteQuery(string query, Dictionary<string, object> parameters = null)
+
+        // Phương thức thực thi câu lệnh SQL (INSERT, UPDATE, DELETE)
+        public static void ExecuteQuery(string query, Dictionary<string, object> parameters = null)
             {
                 try
                 {
@@ -149,6 +150,8 @@ namespace BTL_Prj.Class
 
                 return GetData(query, parameters);
             }
+            
+            
 
 /*
         //DanhMucHangHoa
@@ -734,6 +737,23 @@ namespace BTL_Prj.Class
                     return dt;
                 }
             }
+
+        public static void RunSQLQuerry(string query, SqlParameter[] parameters = null)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))  // Giả định có connectionString
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    // Nếu có tham số thì thêm vào câu lệnh
+                    if (parameters != null)
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                    }
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
     }
 }

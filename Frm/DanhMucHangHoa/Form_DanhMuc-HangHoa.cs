@@ -9,11 +9,14 @@ using System.Reflection;
 using BTL_Prj.Class;
 using System.Linq;
 using BTL_Prj.Frm.Report.ReportHangHoa;
+using OfficeOpenXml;
 
 namespace BTL_Prj.Frm.DanhMucHangHoa
 {
 	public partial class frmDanhMucHangHoa : Form
 	{
+		string table;
+
 		public frmDanhMucHangHoa()
 		{
 			InitializeComponent();
@@ -23,14 +26,22 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 			Prepare.setFormProperties(this);
 			Prepare.setDgvProperties(dgvHangHoa);
 			Prepare.setDgvProperties(dgvHangHoa_TimKiem);
+			Prepare.setDgvProperties(dataGridView1);
 			
 			LoadData();
 			LoadComboBoxData();
 			SetDefaultState();
+			
 
-			picHangHoa.SizeMode = PictureBoxSizeMode.StretchImage;
+            picHangHoa.SizeMode = PictureBoxSizeMode.StretchImage;
+            
+
+
         }
-        private void LoadData()
+
+
+
+        public void LoadData()
 		{
 			string query = "SELECT * FROM DMHangHoa";
 			dgvHangHoa.DataSource = ProcessingData.GetData(query);
@@ -42,7 +53,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 			dgvHangHoa.Columns["DonGiaBan"].DefaultCellStyle.Format = "#,##0";
         }
 
-		private void LoadComboBoxData()
+		public void LoadComboBoxData()
 		{
 			cboMaDonVi.DataSource = ProcessingData.GetComboBoxData("DonViTinh", "MaDonVi", "TenDonVi");
 			cboMaDonVi.DisplayMember = "TenDonVi";
@@ -326,6 +337,148 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
         {
 			FormReport_HangHoa report = new FormReport_HangHoa();
 			report.ShowDialog();
+        }
+
+		//Data
+
+		
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {	
+
+
+            if (tabControl.SelectedTab != null && tabControl.SelectedTab.Tag != null)
+            {
+                string selectedTableName = tabControl.SelectedTab.Tag.ToString();
+
+                if (!string.IsNullOrEmpty(selectedTableName))
+                {
+                    LoadDataForTab(selectedTableName);
+                }
+                else
+                {
+                    MessageBox.Show("Tên bảng không hợp lệ hoặc chưa được gán.");
+                }
+            }
+        }
+
+		DataGridViewRow dgvr = null;
+		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			if(dataGridView1.SelectedRows.Count > 0)
+			{
+				this.dgvr = dataGridView1.SelectedRows[0];
+			}
+		}
+
+        public void LoadDataForTab(string tableName)
+        {
+            string query = "SELECT * FROM " + tableName;
+            DataTable data = ProcessingData.GetData(query);
+            dataGridView1.DataSource = data;
+        }
+
+        private void btnThemData_Click(object sender, EventArgs e)
+        {
+            string table = tabControl.SelectedTab.Name;
+
+           
+            if (string.IsNullOrEmpty(table))
+            {
+                MessageBox.Show("Không thể xác định bảng!");
+                return;
+            }
+
+            var form = new CreateEditForm(dgvr, this, table, "Them");
+            form.ShowDialog();
+        }
+
+        private void btnSuaData_Click(object sender, EventArgs e)
+        {
+            if (this.dgvr == null)
+            {
+                MessageBox.Show("Hãy chọn 1 Data!");
+                return;
+            }
+
+            
+            string table = tabControl.SelectedTab.Name;
+
+            
+            if (string.IsNullOrEmpty(table))
+            {
+                MessageBox.Show("Không thể xác định bảng!");
+                return;
+            }
+			                                                //SonTrau
+            var form = new CreateEditForm(dgvr, this, table, "Sua");
+            form.ShowDialog();
+        }
+
+        private void btnXoaData_Click(object sender, EventArgs e)
+        {
+            table = tabControl.SelectedTab.Name; 
+
+            if (this.dgvr == null)
+			{
+				MessageBox.Show("Hãy chon 1 data");
+                return;
+            }
+			string ID = dgvr.Cells[0].Value.ToString();
+			DialogResult result = MessageBox.Show($"Bạn có chắc muốn xóa data này {this.table}: " + ID+ " ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			if (result == DialogResult.Yes)
+			{
+				string idInTable = "";
+				if (this.table.Equals("CongDung"))
+				{
+					idInTable = "MaCongDung";
+				}
+				else if (this.table.Equals("MauSac"))
+				{
+					idInTable = "MaMau";
+				}
+				else if (this.table.Equals("DonViTinh"))
+				{
+					idInTable = "MaDonVi";
+				}
+				else if (this.table.Equals("DacDiem"))
+				{
+					idInTable = "MaDacDiem";
+				}
+				else if(this.table.Equals("NoiSanXuat"))
+				{
+					idInTable = "MaNoiSX";
+				}
+
+				string query = $"DELETE FROM {this.table} WHERE {idInTable} =@ID";
+
+
+				SqlParameter[] parameters = new SqlParameter[]
+				{
+					new SqlParameter("@ID",ID)
+				};
+				try
+				{
+					ProcessingData.RunSQLQuerry(query, parameters);
+					MessageBox.Show("Xóa dữ liệu thành công");
+					LoadDataForTab(this.table);
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
+            }
+
+        }
+
+		//SonTrau
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			if (tabControl1.SelectedTab.Name == tabData.Name)
+			{
+				tabControl.SelectedTab = CongDung;
+				LoadDataForTab( CongDung.Tag.ToString() );
+
+            }
         }
     }
 }
