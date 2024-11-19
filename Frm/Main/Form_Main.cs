@@ -83,8 +83,6 @@ namespace BTL_Prj.Frm.Main
             childForm.FormBorderStyle = FormBorderStyle.None;
         }
 
-        // xử lí chuyển màu khi click vào button
-        //maybe ko cần
         private Button currentButton;
         private void ActivateButton(object btnSender)
         {
