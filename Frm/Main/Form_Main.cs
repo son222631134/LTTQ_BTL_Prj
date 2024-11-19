@@ -19,6 +19,7 @@ namespace BTL_Prj.Frm.Main
         string name;
         bool UserIsAdmin;
         bool UserKeepLogin;
+        public bool isReload = false;
         public frmMain()
         {
             Form_Login frmLogin = new Form_Login();
@@ -33,9 +34,9 @@ namespace BTL_Prj.Frm.Main
                 " WHERE Username = \'" + frmLogin.username + "\'"
                 );
             username = frmLogin.username;
-            name = ProcessingData.GetData("SELECT * FROM NhanVien WHERE MaNV = \'" + dt.Rows[0]["MaNV"] + "\'").Rows[0]["TenNV"].ToString();
-            UserIsAdmin = dt.Rows[0]["IsAdmin"].ToString() == "true" ? true : false;
-            UserKeepLogin = frmLogin.KeepLogin;
+            UserIsAdmin = bool.Parse(dt.Rows[0]["IsAdmin"].ToString());
+            name = UserIsAdmin ? "Admin" : ProcessingData.GetData("SELECT * FROM NhanVien WHERE MaNV = \'" + dt.Rows[0]["MaNV"] + "\'").Rows[0]["TenNV"].ToString();
+            UserKeepLogin = frmLogin.checkBox_KeepLogin.Checked;
 
             InitializeComponent();
         }
@@ -56,6 +57,7 @@ namespace BTL_Prj.Frm.Main
             if (!UserIsAdmin)
             {
                 btn_menu_NhanVien.Enabled = false;
+                btn_menu_NhanVien.Hide();
             }
 
             openChildForm(new FrmDashboard());
@@ -109,31 +111,32 @@ namespace BTL_Prj.Frm.Main
                 }
             }
         }
+        private void btn_Dashboard_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+            openChildForm(new FrmDashboard());
 
+        }
         private void btn_menu_HangHoa_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
             openChildForm(new frmDanhMucHangHoa());
         }
-
         private void btn_menu_HDBan_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
             openChildForm(new frmHoaDonBan());
         }
-
         private void btn_menu_HDNhap_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
             openChildForm(new frmHoaDonNhap());
         }
-
         private void btn_menu_KhachHang_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
             openChildForm(new frmKhachHang());
         }
-
         private void btn_menu_NhanVien_Click(object sender, EventArgs e)
         {
             if (!UserIsAdmin)
@@ -144,29 +147,29 @@ namespace BTL_Prj.Frm.Main
             ActivateButton(sender);
             openChildForm(new frmNhanVien());
         }
-
+        private void btn_Logout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất không?", "Đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                isReload = true;
+                Close();
+            }
+        }
         private void btn_menu_Thoat_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                Dispose();
+                Close();
+                isReload = false;
             }
-        }
-
-        private void btn_Dashboard_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender);
-            openChildForm(new FrmDashboard());
-            //if (activeform != null)
-            //    activeform.Close();
-
         }
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //Update TTL to DB
-            Function.Logout(username, UserKeepLogin);
+            Function.Logout(username, UserKeepLogin && !isReload);
             ProcessingData.CloseConnection();
         }
+
     }
 }

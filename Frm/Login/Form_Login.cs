@@ -15,7 +15,6 @@ namespace BTL_Prj
     {
         public bool isFail = true;
         public string username;
-        public bool KeepLogin;
 
         public DataTable dt;
         public Form_Login()
@@ -31,6 +30,7 @@ namespace BTL_Prj
             string username = Function.CheckLastLogin();
             if (username != "")
             {
+                checkBox_KeepLogin.Checked = true;
                 LoginSuccess(username);
             }
 
@@ -74,7 +74,6 @@ namespace BTL_Prj
         {
             string username = txt_TaiKhoan.Text;
             string password = txt_MatKhau.Text;
-            KeepLogin = checkBox_KeepLogin.Checked;
 
             validate(username, password);
 

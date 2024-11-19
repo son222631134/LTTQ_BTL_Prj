@@ -56,7 +56,7 @@ namespace BTL_Prj.Class
 
             if (dt.Rows[0]["KeepLoginExpDate"].ToString() != "")
             {
-                if (DateTime.Parse(dt.Rows[0]["KeepLoginExpDate"].ToString()) >= DateTime.Now)
+                if (DateTime.Parse(dt.Rows[0]["KeepLoginExpDate"].ToString()) > DateTime.Now)
                 {
                     return dt.Rows[0]["Username"].ToString();
                 }
@@ -74,11 +74,7 @@ namespace BTL_Prj.Class
         }
         public static void Logout(string username, bool KeepLogin)
         {
-            DateTime KeepLoginExpDate = DateTime.Now;
-            if (KeepLogin)
-            {
-                KeepLoginExpDate += TimeSpan.FromSeconds(Prepare.getTTL());
-            }
+            DateTime KeepLoginExpDate = KeepLogin ? DateTime.Now + TimeSpan.FromSeconds(Prepare.getTTL()) : DateTime.Now;
             ProcessingData.ExecuteQuery("UPDATE Account " +
                 "SET KeepLoginExpDate = " + "\'" + KeepLoginExpDate.ToString() + "\'" +
                 " WHERE Username = " + "\'" + username + "\'"
