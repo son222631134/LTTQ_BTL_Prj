@@ -37,6 +37,7 @@
             this.dgvHangHoa = new System.Windows.Forms.DataGridView();
             this.panel_input = new System.Windows.Forms.Panel();
             this.btnBrowse = new System.Windows.Forms.Button();
+            this.picHangHoa = new System.Windows.Forms.PictureBox();
             this.cboMaDacDiem = new System.Windows.Forms.ComboBox();
             this.cboMaMau = new System.Windows.Forms.ComboBox();
             this.cboMaCongDung = new System.Windows.Forms.ComboBox();
@@ -64,6 +65,7 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
             this.panel_button = new System.Windows.Forms.Panel();
+            this.btnReport = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1_ThongTinChung = new System.Windows.Forms.TabPage();
             this.tabPage_TimKiem = new System.Windows.Forms.TabPage();
@@ -71,17 +73,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvHangHoa_TimKiem = new System.Windows.Forms.DataGridView();
             this.panel_title = new System.Windows.Forms.Panel();
-            this.btnReport = new System.Windows.Forms.Button();
-            this.picHangHoa = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa)).BeginInit();
             this.panel_input.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).BeginInit();
             this.panel_button.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1_ThongTinChung.SuspendLayout();
             this.tabPage_TimKiem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa_TimKiem)).BeginInit();
             this.panel_title.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).BeginInit();
             this.SuspendLayout();
             // 
             // btnThem
@@ -134,6 +134,7 @@
             // 
             // dgvHangHoa
             // 
+            this.dgvHangHoa.AllowUserToAddRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.dgvHangHoa.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHangHoa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -192,6 +193,17 @@
             this.btnBrowse.Text = "Chọn ảnh";
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // picHangHoa
+            // 
+            this.picHangHoa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picHangHoa.Location = new System.Drawing.Point(767, 25);
+            this.picHangHoa.Margin = new System.Windows.Forms.Padding(2);
+            this.picHangHoa.Name = "picHangHoa";
+            this.picHangHoa.Size = new System.Drawing.Size(120, 120);
+            this.picHangHoa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picHangHoa.TabIndex = 6;
+            this.picHangHoa.TabStop = false;
             // 
             // cboMaDacDiem
             // 
@@ -483,6 +495,17 @@
             this.panel_button.Size = new System.Drawing.Size(940, 60);
             this.panel_button.TabIndex = 10;
             // 
+            // btnReport
+            // 
+            this.btnReport.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.Location = new System.Drawing.Point(677, 10);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(116, 40);
+            this.btnReport.TabIndex = 10;
+            this.btnReport.Text = "Report";
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
             // tabControl1
             // 
             this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
@@ -578,28 +601,6 @@
             this.panel_title.Size = new System.Drawing.Size(954, 80);
             this.panel_title.TabIndex = 12;
             // 
-            // btnReport
-            // 
-            this.btnReport.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.Location = new System.Drawing.Point(677, 10);
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(116, 40);
-            this.btnReport.TabIndex = 10;
-            this.btnReport.Text = "Report";
-            this.btnReport.UseVisualStyleBackColor = true;
-            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
-            // 
-            // picHangHoa
-            // 
-            this.picHangHoa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picHangHoa.Location = new System.Drawing.Point(767, 25);
-            this.picHangHoa.Margin = new System.Windows.Forms.Padding(2);
-            this.picHangHoa.Name = "picHangHoa";
-            this.picHangHoa.Size = new System.Drawing.Size(120, 120);
-            this.picHangHoa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picHangHoa.TabIndex = 6;
-            this.picHangHoa.TabStop = false;
-            // 
             // frmDanhMucHangHoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -615,6 +616,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa)).EndInit();
             this.panel_input.ResumeLayout(false);
             this.panel_input.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).EndInit();
             this.panel_button.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1_ThongTinChung.ResumeLayout(false);
@@ -622,7 +624,6 @@
             this.tabPage_TimKiem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa_TimKiem)).EndInit();
             this.panel_title.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).EndInit();
             this.ResumeLayout(false);
 
         }

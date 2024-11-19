@@ -52,6 +52,7 @@ namespace BTL_Prj.Class
             dgv.ReadOnly = true;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv.Font = new System.Drawing.Font("Times New Roman", 12F);
+            dgv.AllowUserToAddRows = true;
 
         }
     }

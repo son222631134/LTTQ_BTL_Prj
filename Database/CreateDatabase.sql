@@ -112,6 +112,26 @@ CREATE TABLE ChiTietHoaDonNhap (
     CONSTRAINT FK_ChiTietHDN_HoaDonNhap FOREIGN KEY (SoHDN) REFERENCES HoaDonNhap(SoHDN) ON DELETE CASCADE,
     CONSTRAINT FK_ChiTietHDN_DMHangHoa FOREIGN KEY (MaHang) REFERENCES DMHangHoa(MaHang)
 );
+
+--Son
+CREATE TABLE [dbo].[Account]
+(
+	[Username] VARCHAR(32) NOT NULL,
+    [Password] VARCHAR(32) NOT NULL, 
+    [MaNV] INT NULL,
+	[IsAdmin] BIT NULL,
+	PRIMARY KEY (Username),
+	FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV)
+)
+insert into Account(Username, Password, MaNV, IsAdmin) values
+('Admin', '123', NULL, 1),
+('NV1', '123', 1, 0),
+('NV2', '123', 2, 0),
+('NV3', '123', 3, 0);
+--
+
+
+
 -- Thêm dữ liệu cho bảng CongViec
 INSERT INTO CongViec (MaCV, TenCV, MucLuong) VALUES
 (1, N'Quản lý', 15000000),

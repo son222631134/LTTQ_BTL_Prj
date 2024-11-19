@@ -55,6 +55,7 @@
             this.txt_TaiKhoan.Name = "txt_TaiKhoan";
             this.txt_TaiKhoan.Size = new System.Drawing.Size(147, 26);
             this.txt_TaiKhoan.TabIndex = 1;
+            this.txt_TaiKhoan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TaiKhoan_KeyPress);
             // 
             // label_MatKhau
             // 
@@ -73,6 +74,7 @@
             this.txt_MatKhau.Name = "txt_MatKhau";
             this.txt_MatKhau.Size = new System.Drawing.Size(147, 26);
             this.txt_MatKhau.TabIndex = 1;
+            this.txt_MatKhau.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_MatKhau_KeyPress);
             // 
             // btn_DangNhap
             // 
@@ -118,6 +120,7 @@
             this.Name = "Form_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Login_FormClosed);
             this.Load += new System.EventHandler(this.Form_Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

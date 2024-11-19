@@ -83,7 +83,6 @@
             this.dgvChiTietHoaDonNhap.Size = new System.Drawing.Size(939, 386);
             this.dgvChiTietHoaDonNhap.TabIndex = 51;
             this.dgvChiTietHoaDonNhap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrvFORM2_CellClick);
-            this.dgvChiTietHoaDonNhap.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrvFORM2_CellContentClick);
             // 
             // BTSUA
             // 

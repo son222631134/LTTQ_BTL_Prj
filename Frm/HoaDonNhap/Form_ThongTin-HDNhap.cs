@@ -29,6 +29,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
             LoadMaNhaCungCap();
             dgvHoaDonNhap.CellClick += dtgrvHDN_CellClick;
             tabControl1.TabPages.Remove(tabPage_ChiTietHoaDon);
+            
         }
         //private void LoadComboBoxData()
         //{
@@ -326,7 +327,6 @@ namespace BTL_Prj.Frm.HoaDonNhap
             {
                 InHoaDonRaExcel();
             }
-
         }
         private void Chitiethoadon_Click(object sender, EventArgs e)
         {
@@ -554,7 +554,14 @@ namespace BTL_Prj.Frm.HoaDonNhap
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
+//<<<<<<< RepairImgDir
+            TBHDN.Enabled = false;
+            if (e.RowIndex < 0 || e.RowIndex >= dgvHoaDonNhap.RowCount - 1) return;
+            // Hiển thị dữ liệu từ hàng đã chọn lên các TextBox và ComboBox
+            //if (e.RowIndex >= 0)
+//=======
             if (btnThem.Enabled == false)
+//>>>>>>> master
             {
                 string lastMaHDN = txtMaHDN.Text;
                 ThemHoaDonVaoCDSL();

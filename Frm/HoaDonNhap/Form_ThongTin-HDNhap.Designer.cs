@@ -82,6 +82,7 @@
             // 
             // cboMaNCC
             // 
+
             this.cboMaNCC.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.cboMaNCC.FormattingEnabled = true;
             this.cboMaNCC.Location = new System.Drawing.Point(535, 25);

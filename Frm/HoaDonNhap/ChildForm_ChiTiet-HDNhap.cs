@@ -152,6 +152,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
                     { "@SoHDN", selectedSoHDN },
                     { "@MaHang", int.Parse(maHang) }
                 };
+
                 ProcessingData.ExecuteQuery(query, parameters);
                 MessageBox.Show("Xóa mặt hàng thành công.");
             }

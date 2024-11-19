@@ -170,8 +170,8 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 					decimal.TryParse(txtDonGiaBan.Text, out decimal donGiaBan))	{
 					//then
 					string src = picHangHoa.ImageLocation;
-					string dest = Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + "\\HangHoa\\" + "ImgHangHoa" + txtMaHang.Text;
-					Function.CopyFile(src, dest);
+					string dest = "\\HangHoa\\" + "ImgHangHoa" + txtMaHang.Text;
+					Function.CopyFile(src, Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + dest);
 					var columnValues = new Dictionary<string, object> {
 						{ "MaHang", txtMaHang.Text },
 						{ "TenHang", txtTenHang.Text },
@@ -211,9 +211,9 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 					decimal.TryParse(txtDonGiaBan.Text, out decimal donGiaBan))
                 { //then
                     string src = picHangHoa.ImageLocation;
-                    string dest = Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + "HangHoa\\" + "ImgHangHoa" + txtMaHang.Text + ".jpg";
-                    Function.CopyFile(src, dest);
-					MessageBox.Show(src + "\r\n" + dest);
+                    string dest = "HangHoa\\" + "ImgHangHoa" + txtMaHang.Text + ".jpg";
+                    Function.CopyFile(src, Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + dest);
+					//MessageBox.Show(src + "\r\n" + dest);
                     var columnValues = new Dictionary<string, object>
 					{
 						{ "TenHang", txtTenHang.Text },
@@ -272,7 +272,8 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 				cboMaCongDung.SelectedValue = row.Cells["MaCongDung"].Value;
 				cboMaMau.SelectedValue = row.Cells["MaMau"].Value;
 				cboMaDacDiem.SelectedValue = row.Cells["MaDacDiem"].Value;
-				picHangHoa.ImageLocation = row.Cells["ImagePath"].Value.ToString();
+				picHangHoa.ImageLocation = Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + row.Cells["ImagePath"].Value.ToString();
+				//MessageBox.Show(picHangHoa.ImageLocation +"\r\r\n\n" + row.Cells["ImagePath"].Value.ToString());
 				EnableFields(false); 
 			}
 		}
