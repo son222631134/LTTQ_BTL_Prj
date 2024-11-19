@@ -41,6 +41,7 @@
             this.panel_childForm = new System.Windows.Forms.Panel();
             this.txt_warning = new System.Windows.Forms.TextBox();
             this.panel_LeftBar = new System.Windows.Forms.Panel();
+            this.btn_Logout = new System.Windows.Forms.Button();
             this.btn_Dashboard = new System.Windows.Forms.Button();
             this.panel_user.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_user)).BeginInit();
@@ -219,6 +220,7 @@
             // 
             this.panel_LeftBar.AutoSize = true;
             this.panel_LeftBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel_LeftBar.Controls.Add(this.btn_Logout);
             this.panel_LeftBar.Controls.Add(this.btn_menu_Thoat);
             this.panel_LeftBar.Controls.Add(this.panel_user);
             this.panel_LeftBar.Controls.Add(this.btn_Dashboard);
@@ -234,6 +236,25 @@
             this.panel_LeftBar.Name = "panel_LeftBar";
             this.panel_LeftBar.Size = new System.Drawing.Size(186, 701);
             this.panel_LeftBar.TabIndex = 0;
+            // 
+            // btn_Logout
+            // 
+            this.btn_Logout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_Logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btn_Logout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Logout.FlatAppearance.BorderSize = 0;
+            this.btn_Logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btn_Logout.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btn_Logout.Location = new System.Drawing.Point(0, 600);
+            this.btn_Logout.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Logout.Name = "btn_Logout";
+            this.btn_Logout.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.btn_Logout.Size = new System.Drawing.Size(186, 46);
+            this.btn_Logout.TabIndex = 3;
+            this.btn_Logout.Text = "Đăng Xuất";
+            this.btn_Logout.UseVisualStyleBackColor = false;
+            this.btn_Logout.Click += new System.EventHandler(this.btn_Logout_Click);
             // 
             // btn_Dashboard
             // 
@@ -292,5 +313,6 @@
         private System.Windows.Forms.Panel panel_LeftBar;
         private System.Windows.Forms.Button btn_Dashboard;
         private System.Windows.Forms.TextBox txt_warning;
+        private System.Windows.Forms.Button btn_Logout;
     }
 }

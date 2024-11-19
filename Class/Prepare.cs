@@ -18,7 +18,7 @@ namespace BTL_Prj.Class
         private static readonly string MediaDirectoryInProject =    "\\Database\\Media\\";
         private static readonly string DatabaseDirectoryInProject = "\\Database\\Database_BTL.mdf";
         private static readonly string IconFilename = "32x32-LogoUTC.ico";
-        private static int TTL = 15;
+        private static int TTL = 60;
 
         public Prepare()
         {
