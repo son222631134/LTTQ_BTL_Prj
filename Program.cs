@@ -16,13 +16,13 @@ namespace BTL_Prj
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            try
-            {
-                Application.Run(new Frm.Main.frmMain());
-            }
-            catch (Exception ex) { }
+            //try
+            //{
+            //    Application.Run(new Frm.Main.frmMain());
+            //}
+            //catch (Exception ex) { }
 
-            //Application.Run(new Frm.Main.frmMain());
+            Application.Run(new Frm.Main.frmMain());
             //Application.Run(new Form_Login());
         }
     }

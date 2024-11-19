@@ -6,8 +6,10 @@ using BTL_Prj.Frm.HoaDonBan;
 using BTL_Prj.Frm.HoaDonNhap;
 using BTL_Prj.Frm.NhanVien;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using static OfficeOpenXml.ExcelErrorValue;
 
 namespace BTL_Prj.Frm.Main
 {
@@ -16,6 +18,7 @@ namespace BTL_Prj.Frm.Main
         string username;
         string name;
         bool UserIsAdmin;
+        bool UserKeepLogin;
         public frmMain()
         {
             Form_Login frmLogin = new Form_Login();
@@ -25,9 +28,14 @@ namespace BTL_Prj.Frm.Main
                 ProcessingData.CloseConnection();
                 this.Close();
             }
+            DataTable dt = ProcessingData.GetData(
+                "SELECT * FROM Account" +
+                " WHERE Username = \'" + frmLogin.username + "\'"
+                );
             username = frmLogin.username;
-            name = frmLogin.name;
-            UserIsAdmin = frmLogin.isAdmin;
+            name = ProcessingData.GetData("SELECT * FROM NhanVien WHERE MaNV = \'" + dt.Rows[0]["MaNV"] + "\'").Rows[0]["TenNV"].ToString();
+            UserIsAdmin = dt.Rows[0]["IsAdmin"].ToString() == "true" ? true : false;
+            UserKeepLogin = frmLogin.KeepLogin;
 
             InitializeComponent();
         }
@@ -156,6 +164,8 @@ namespace BTL_Prj.Frm.Main
         }
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
+            //Update TTL to DB
+            Function.Logout(username, UserKeepLogin);
             ProcessingData.CloseConnection();
         }
     }

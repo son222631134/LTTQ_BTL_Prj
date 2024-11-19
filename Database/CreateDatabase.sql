@@ -120,6 +120,8 @@ CREATE TABLE [dbo].[Account]
     [Password] VARCHAR(32) NOT NULL, 
     [MaNV] INT NULL,
 	[IsAdmin] BIT NULL,
+	LastLogin DATETIME NULL,
+	TimeOut INT NULL,
 	PRIMARY KEY (Username),
 	FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV)
 )
