@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label_title = new System.Windows.Forms.Label();
             this.panel_title = new System.Windows.Forms.Panel();
             this.tabPage_ChiTietHoaDon = new System.Windows.Forms.TabPage();
@@ -39,7 +39,6 @@
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnInHoaDon = new System.Windows.Forms.Button();
             this.btnChiTiet = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
             this.panel_Input = new System.Windows.Forms.Panel();
             this.panel_TimKIem = new System.Windows.Forms.Panel();
             this.cboMaNVLoc = new System.Windows.Forms.ComboBox();
@@ -71,6 +70,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.dgvHDBanHang = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.panel_title.SuspendLayout();
             this.tabPage_ThongTinChung.SuspendLayout();
             this.panel_button.SuspendLayout();
@@ -114,7 +114,6 @@
             // 
             this.tabPage_ThongTinChung.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_ThongTinChung.Controls.Add(this.panel_button);
-            this.tabPage_ThongTinChung.Controls.Add(this.label17);
             this.tabPage_ThongTinChung.Controls.Add(this.panel_Input);
             this.tabPage_ThongTinChung.Controls.Add(this.txtTongTien);
             this.tabPage_ThongTinChung.Controls.Add(this.label16);
@@ -130,6 +129,7 @@
             // panel_button
             // 
             this.panel_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel_button.Controls.Add(this.btnXoa);
             this.panel_button.Controls.Add(this.btnThem);
             this.panel_button.Controls.Add(this.btnDong);
             this.panel_button.Controls.Add(this.btnCapNhat);
@@ -146,7 +146,7 @@
             this.btnThem.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnThem.Location = new System.Drawing.Point(19, 10);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(154, 40);
+            this.btnThem.Size = new System.Drawing.Size(126, 40);
             this.btnThem.TabIndex = 8;
             this.btnThem.Text = "Thêm hóa đơn";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -155,9 +155,9 @@
             // btnDong
             // 
             this.btnDong.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnDong.Location = new System.Drawing.Point(755, 10);
+            this.btnDong.Location = new System.Drawing.Point(786, 10);
             this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(154, 40);
+            this.btnDong.Size = new System.Drawing.Size(126, 40);
             this.btnDong.TabIndex = 8;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
@@ -166,9 +166,9 @@
             // btnCapNhat
             // 
             this.btnCapNhat.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnCapNhat.Location = new System.Drawing.Point(203, 10);
+            this.btnCapNhat.Location = new System.Drawing.Point(173, 10);
             this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.Size = new System.Drawing.Size(154, 40);
+            this.btnCapNhat.Size = new System.Drawing.Size(126, 40);
             this.btnCapNhat.TabIndex = 8;
             this.btnCapNhat.Text = "Cập nhật hóa đơn";
             this.btnCapNhat.UseVisualStyleBackColor = true;
@@ -177,9 +177,9 @@
             // btnInHoaDon
             // 
             this.btnInHoaDon.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnInHoaDon.Location = new System.Drawing.Point(571, 10);
+            this.btnInHoaDon.Location = new System.Drawing.Point(632, 10);
             this.btnInHoaDon.Name = "btnInHoaDon";
-            this.btnInHoaDon.Size = new System.Drawing.Size(154, 40);
+            this.btnInHoaDon.Size = new System.Drawing.Size(126, 40);
             this.btnInHoaDon.TabIndex = 8;
             this.btnInHoaDon.Text = "In hóa đơn";
             this.btnInHoaDon.UseVisualStyleBackColor = true;
@@ -188,25 +188,13 @@
             // btnChiTiet
             // 
             this.btnChiTiet.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnChiTiet.Location = new System.Drawing.Point(387, 10);
+            this.btnChiTiet.Location = new System.Drawing.Point(476, 10);
             this.btnChiTiet.Name = "btnChiTiet";
-            this.btnChiTiet.Size = new System.Drawing.Size(154, 40);
+            this.btnChiTiet.Size = new System.Drawing.Size(126, 40);
             this.btnChiTiet.TabIndex = 8;
             this.btnChiTiet.Text = "Chi tiết hóa đơn";
             this.btnChiTiet.UseVisualStyleBackColor = true;
             this.btnChiTiet.Click += new System.EventHandler(this.btnChiTiet_Click);
-            // 
-            // label17
-            // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(22, 491);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(175, 19);
-            this.label17.TabIndex = 6;
-            this.label17.Text = "Nhấn đúp một dòng để xóa";
             // 
             // panel_Input
             // 
@@ -515,6 +503,7 @@
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.Size = new System.Drawing.Size(173, 26);
             this.txtTongTien.TabIndex = 5;
+            this.txtTongTien.TextChanged += new System.EventHandler(this.txtTongTien_TextChanged);
             // 
             // label16
             // 
@@ -529,8 +518,8 @@
             // 
             // dgvHDBanHang
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvHDBanHang.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvHDBanHang.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHDBanHang.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -557,6 +546,20 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(954, 615);
             this.tabControl1.TabIndex = 9;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.AutoSize = true;
+            this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnXoa.Location = new System.Drawing.Point(331, 10);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(120, 40);
+            this.btnXoa.TabIndex = 38;
+            this.btnXoa.Text = "Xoá hóa đơn";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // frmHoaDonBan
             // 
@@ -573,6 +576,7 @@
             this.tabPage_ThongTinChung.ResumeLayout(false);
             this.tabPage_ThongTinChung.PerformLayout();
             this.panel_button.ResumeLayout(false);
+            this.panel_button.PerformLayout();
             this.panel_Input.ResumeLayout(false);
             this.panel_Input.PerformLayout();
             this.panel_TimKIem.ResumeLayout(false);
@@ -595,7 +599,6 @@
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.Button btnInHoaDon;
         private System.Windows.Forms.Button btnChiTiet;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel_Input;
         private System.Windows.Forms.Panel panel_TimKIem;
         private System.Windows.Forms.ComboBox cboMaNVLoc;
@@ -627,6 +630,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DataGridView dgvHDBanHang;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Button btnXoa;
     }
 }
 

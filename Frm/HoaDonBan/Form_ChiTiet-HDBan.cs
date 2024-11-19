@@ -37,7 +37,7 @@ namespace BTL_Prj.Frm.HoaDonBan
             cboMaHang.SelectedIndexChanged += cboMaHang_SelectedIndexChanged;
             txtSoLuong.Leave += txtSoLuong_Leave;
             txtGiamGia.Leave += txtGiamGia_Leave;
-            dgvChiTietHoaDonBan.CellDoubleClick += dgvChiTietHoaDonBan_CellDoubleClick;
+            //dgvChiTietHoaDonBan.CellDoubleClick += dgvChiTietHoaDonBan_CellDoubleClick;
             dgvChiTietHoaDonBan.CellClick += dgvChiTietHoaDonBan_CellClick;
         }
         private void SetFieldsState(bool enabled)
@@ -206,23 +206,23 @@ namespace BTL_Prj.Frm.HoaDonBan
             SetFieldsState(true);
         }
 
-        private void dgvChiTietHoaDonBan_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                string maHang = dgvChiTietHoaDonBan.Rows[e.RowIndex].Cells["MaHang"].Value.ToString();
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa mặt hàng này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    DeleteMatHang(maHang);
-                    LoadDataGridView();
-                    ResetValues();
-                    SetFieldsState(false);
-                    btnThem.Enabled = true;
-                    btnChinhSua.Enabled = true;
-                }
-            }
-        }
+        //private void dgvChiTietHoaDonBan_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex >= 0)
+        //    {
+        //        string maHang = dgvChiTietHoaDonBan.Rows[e.RowIndex].Cells["MaHang"].Value.ToString();
+        //        DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa mặt hàng này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+        //        if (dialogResult == DialogResult.Yes)
+        //        {
+        //            DeleteMatHang(maHang);
+        //            LoadDataGridView();
+        //            ResetValues();
+        //            SetFieldsState(false);
+        //            btnThem.Enabled = true;
+        //            btnChinhSua.Enabled = true;
+        //        }
+        //    }
+        //}
 
         private void DeleteMatHang(string maHang)
         {
@@ -390,6 +390,21 @@ namespace BTL_Prj.Frm.HoaDonBan
             SetFieldsState(false);
             btnThem.Enabled = true;
             btnChinhSua.Enabled = true;
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            string maHang = dgvChiTietHoaDonBan.CurrentRow.Cells["MaHang"].Value.ToString();
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa mặt hàng này?", "Xác nhận xóa", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                DeleteMatHang(maHang);
+                LoadDataGridView();
+                ResetValues();
+                SetFieldsState(false);
+                btnThem.Enabled = true;
+                btnChinhSua.Enabled = true;
+            }
         }
     }
 }
