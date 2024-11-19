@@ -48,6 +48,7 @@ namespace BTL_Prj.Frm.Main
             if (!UserIsAdmin)
             {
                 btn_menu_NhanVien.Enabled = false;
+                btn_menu_NhanVien.Hide();
             }
 
             openChildForm(new FrmDashboard());
@@ -73,8 +74,6 @@ namespace BTL_Prj.Frm.Main
             childForm.FormBorderStyle = FormBorderStyle.None;
         }
 
-        // xử lí chuyển màu khi click vào button
-        //maybe ko cần
         private Button currentButton;
         private void ActivateButton(object btnSender)
         {
