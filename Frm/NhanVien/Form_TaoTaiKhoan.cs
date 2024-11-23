@@ -42,6 +42,8 @@ namespace BTL_Prj.Frm.NhanVien
                 txt_taikhoan.Text = dt.Rows[0]["Username"].ToString();
                 txt_taikhoan.Enabled = false;
             }
+            txt_matkhau.UseSystemPasswordChar = true;
+            txt_nhaplaiMK.UseSystemPasswordChar = true;
         }
 
         private void btn_Huy_Click(object sender, EventArgs e)

@@ -35,7 +35,7 @@ namespace BTL_Prj.Frm.Main
                 );
             username = frmLogin.username;
             UserIsAdmin = bool.Parse(dt.Rows[0]["IsAdmin"].ToString());
-            name = UserIsAdmin ? "Admin" : ProcessingData.GetData("SELECT * FROM NhanVien WHERE MaNV = \'" + dt.Rows[0]["MaNV"] + "\'").Rows[0]["TenNV"].ToString();
+            name = username.ToLower()=="admin" ? "Admin" : ProcessingData.GetData("SELECT * FROM NhanVien WHERE MaNV = \'" + dt.Rows[0]["MaNV"] + "\'").Rows[0]["TenNV"].ToString();
             UserKeepLogin = frmLogin.checkBox_KeepLogin.Checked;
 
             InitializeComponent();

@@ -94,7 +94,8 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
             }
 
            
-            if (dgvr == null) 
+            if (btn == "Them") 
+            //if (dgvr == null) 
             {
                 string query = $"INSERT INTO {this.table}({idColumn}, {nameColumn}) VALUES (@Ma, @Ten)";
                 SqlParameter[] parameters = new SqlParameter[]

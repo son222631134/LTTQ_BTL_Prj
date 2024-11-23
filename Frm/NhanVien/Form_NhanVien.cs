@@ -127,6 +127,7 @@ namespace BTL_Prj.Frm.NhanVien
 
             if (result == DialogResult.Yes)
             {
+                ProcessingData.ExecuteQuery("DELETE FROM Account WHERE MaNV = \'" + txtMaNV.Text + "\'");
                 ProcessingData.NhanVien_DeleteNhanVien(txtMaNV.Text);
                 MessageBox.Show("Xóa nhân viên thành công!");
                 ClearTextBoxes();

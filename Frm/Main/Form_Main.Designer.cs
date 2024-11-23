@@ -209,7 +209,8 @@
             // txt_warning
             // 
             this.txt_warning.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_warning.Location = new System.Drawing.Point(148, 122);
+            this.txt_warning.ForeColor = System.Drawing.Color.Transparent;
+            this.txt_warning.Location = new System.Drawing.Point(224, 235);
             this.txt_warning.Multiline = true;
             this.txt_warning.Name = "txt_warning";
             this.txt_warning.Size = new System.Drawing.Size(428, 199);
