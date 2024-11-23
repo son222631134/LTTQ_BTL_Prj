@@ -22,6 +22,7 @@ namespace BTL_Prj.Frm.Dashboard
         }
         private void FrmDashboard_Load(object sender, EventArgs e)
         {
+            Prepare.setDgvProperties(dgvLastestOrder);
 
             LoadMonthlyRevenueChart();
             LoadMonthlyExpense();
