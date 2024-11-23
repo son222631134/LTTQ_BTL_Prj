@@ -21,10 +21,11 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
             this.parentForm = parentForm;
             this.table = table;
             this.btn = btn;
-            
             DisplayInfor();
-            
-
+        }
+        private void CreateEditForm_Load(object sender, EventArgs e)
+        {
+            Prepare.setFormProperties(this);
         }
 
         private void DisplayInfor()
@@ -132,12 +133,6 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
             parentForm?.LoadData();
             parentForm?.LoadComboBoxData();
             this.Close();
-        }
-
-
-        private void CreateEditForm_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnDong = new System.Windows.Forms.Button();
@@ -74,14 +74,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvHangHoa_TimKiem = new System.Windows.Forms.DataGridView();
             this.tabData = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_Data = new System.Windows.Forms.DataGridView();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.CongDung = new System.Windows.Forms.TabPage();
             this.MauSac = new System.Windows.Forms.TabPage();
             this.DonViTinh = new System.Windows.Forms.TabPage();
             this.DacDiem = new System.Windows.Forms.TabPage();
             this.NoiSanXuat = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_Data = new System.Windows.Forms.Panel();
             this.btnXoaData = new System.Windows.Forms.Button();
             this.btnSuaData = new System.Windows.Forms.Button();
             this.btnThemData = new System.Windows.Forms.Button();
@@ -96,9 +96,9 @@
             this.tabPage_TimKiem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa_TimKiem)).BeginInit();
             this.tabData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Data)).BeginInit();
             this.tabControl.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panel_Data.SuspendLayout();
             this.panel_title.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -118,7 +118,7 @@
             // btnLuu
             // 
             this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnLuu.Location = new System.Drawing.Point(549, 10);
+            this.btnLuu.Location = new System.Drawing.Point(540, 10);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(120, 40);
@@ -130,7 +130,7 @@
             // btnDong
             // 
             this.btnDong.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnDong.Location = new System.Drawing.Point(800, 10);
+            this.btnDong.Location = new System.Drawing.Point(796, 10);
             this.btnDong.Margin = new System.Windows.Forms.Padding(2);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(120, 40);
@@ -142,7 +142,7 @@
             // btnXoa
             // 
             this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnXoa.Location = new System.Drawing.Point(283, 10);
+            this.btnXoa.Location = new System.Drawing.Point(280, 10);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(120, 40);
@@ -153,8 +153,8 @@
             // 
             // dgvHangHoa
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvHangHoa.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvHangHoa.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvHangHoa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -489,7 +489,7 @@
             // btnHuy
             // 
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnHuy.Location = new System.Drawing.Point(416, 10);
+            this.btnHuy.Location = new System.Drawing.Point(410, 10);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(2);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(120, 40);
@@ -516,7 +516,7 @@
             // btnReport
             // 
             this.btnReport.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.Location = new System.Drawing.Point(677, 10);
+            this.btnReport.Location = new System.Drawing.Point(670, 10);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(116, 40);
             this.btnReport.TabIndex = 10;
@@ -597,8 +597,8 @@
             // 
             // dgvHangHoa_TimKiem
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvHangHoa_TimKiem.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvHangHoa_TimKiem.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvHangHoa_TimKiem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -614,9 +614,9 @@
             // 
             // tabData
             // 
-            this.tabData.Controls.Add(this.dataGridView1);
+            this.tabData.Controls.Add(this.dgv_Data);
             this.tabData.Controls.Add(this.tabControl);
-            this.tabData.Controls.Add(this.panel1);
+            this.tabData.Controls.Add(this.panel_Data);
             this.tabData.Location = new System.Drawing.Point(4, 4);
             this.tabData.Name = "tabData";
             this.tabData.Padding = new System.Windows.Forms.Padding(3);
@@ -625,15 +625,18 @@
             this.tabData.Text = "Data";
             this.tabData.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgv_Data
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 45);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(935, 416);
-            this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dgv_Data.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv_Data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Data.Location = new System.Drawing.Point(6, 22);
+            this.dgv_Data.Name = "dgv_Data";
+            this.dgv_Data.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_Data.Size = new System.Drawing.Size(935, 502);
+            this.dgv_Data.TabIndex = 2;
+            this.dgv_Data.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellClick);
             // 
             // tabControl
             // 
@@ -651,6 +654,7 @@
             // 
             // CongDung
             // 
+            this.CongDung.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CongDung.Location = new System.Drawing.Point(4, 22);
             this.CongDung.Name = "CongDung";
             this.CongDung.Padding = new System.Windows.Forms.Padding(3);
@@ -704,21 +708,24 @@
             this.NoiSanXuat.Text = "Nơi sản xuất";
             this.NoiSanXuat.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // panel_Data
             // 
-            this.panel1.Controls.Add(this.btnXoaData);
-            this.panel1.Controls.Add(this.btnSuaData);
-            this.panel1.Controls.Add(this.btnThemData);
-            this.panel1.Location = new System.Drawing.Point(0, 470);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(945, 117);
-            this.panel1.TabIndex = 0;
+            this.panel_Data.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panel_Data.Controls.Add(this.btnXoaData);
+            this.panel_Data.Controls.Add(this.btnSuaData);
+            this.panel_Data.Controls.Add(this.btnThemData);
+            this.panel_Data.Location = new System.Drawing.Point(3, 527);
+            this.panel_Data.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_Data.Name = "panel_Data";
+            this.panel_Data.Size = new System.Drawing.Size(940, 60);
+            this.panel_Data.TabIndex = 0;
             // 
             // btnXoaData
             // 
-            this.btnXoaData.Location = new System.Drawing.Point(646, 25);
+            this.btnXoaData.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnXoaData.Location = new System.Drawing.Point(699, 10);
             this.btnXoaData.Name = "btnXoaData";
-            this.btnXoaData.Size = new System.Drawing.Size(125, 62);
+            this.btnXoaData.Size = new System.Drawing.Size(120, 40);
             this.btnXoaData.TabIndex = 1;
             this.btnXoaData.Text = "Xóa";
             this.btnXoaData.UseVisualStyleBackColor = true;
@@ -726,9 +733,10 @@
             // 
             // btnSuaData
             // 
-            this.btnSuaData.Location = new System.Drawing.Point(408, 25);
+            this.btnSuaData.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnSuaData.Location = new System.Drawing.Point(410, 10);
             this.btnSuaData.Name = "btnSuaData";
-            this.btnSuaData.Size = new System.Drawing.Size(125, 61);
+            this.btnSuaData.Size = new System.Drawing.Size(120, 40);
             this.btnSuaData.TabIndex = 1;
             this.btnSuaData.Text = "Sửa";
             this.btnSuaData.UseVisualStyleBackColor = true;
@@ -736,9 +744,10 @@
             // 
             // btnThemData
             // 
-            this.btnThemData.Location = new System.Drawing.Point(67, 25);
+            this.btnThemData.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnThemData.Location = new System.Drawing.Point(121, 10);
             this.btnThemData.Name = "btnThemData";
-            this.btnThemData.Size = new System.Drawing.Size(121, 61);
+            this.btnThemData.Size = new System.Drawing.Size(120, 40);
             this.btnThemData.TabIndex = 1;
             this.btnThemData.Text = "Thêm";
             this.btnThemData.UseVisualStyleBackColor = true;
@@ -776,9 +785,9 @@
             this.tabPage_TimKiem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa_TimKiem)).EndInit();
             this.tabData.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Data)).EndInit();
             this.tabControl.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.panel_Data.ResumeLayout(false);
             this.panel_title.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -831,7 +840,7 @@
         private System.Windows.Forms.Label label_tabpageTimKiem_dgvGuide;
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.TabPage tabData;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_Data;
         private System.Windows.Forms.Button btnXoaData;
         private System.Windows.Forms.Button btnSuaData;
         private System.Windows.Forms.Button btnThemData;
@@ -841,7 +850,7 @@
         private System.Windows.Forms.TabPage DonViTinh;
         private System.Windows.Forms.TabPage DacDiem;
         private System.Windows.Forms.TabPage NoiSanXuat;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_Data;
         private System.Windows.Forms.BindingSource bindingSource1;
     }
 }

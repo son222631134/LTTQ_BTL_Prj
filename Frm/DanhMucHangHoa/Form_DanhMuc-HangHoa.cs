@@ -26,7 +26,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 			Prepare.setFormProperties(this);
 			Prepare.setDgvProperties(dgvHangHoa);
 			Prepare.setDgvProperties(dgvHangHoa_TimKiem);
-			Prepare.setDgvProperties(dataGridView1);
+			Prepare.setDgvProperties(dgv_Data);
 			
 			LoadData();
 			LoadComboBoxData();
@@ -362,11 +362,11 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
         }
 
 		DataGridViewRow dgvr = null;
-		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+		private void dgvData_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
-			if(dataGridView1.SelectedRows.Count > 0)
+			if(dgv_Data.SelectedRows.Count > 0)
 			{
-				this.dgvr = dataGridView1.SelectedRows[0];
+				this.dgvr = dgv_Data.SelectedRows[0];
 			}
 		}
 
@@ -374,7 +374,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
         {
             string query = "SELECT * FROM " + tableName;
             DataTable data = ProcessingData.GetData(query);
-            dataGridView1.DataSource = data;
+            dgv_Data.DataSource = data;
         }
 
         private void btnThemData_Click(object sender, EventArgs e)
