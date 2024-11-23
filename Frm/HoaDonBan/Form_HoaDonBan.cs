@@ -364,6 +364,14 @@ namespace BTL_Prj.Frm.HoaDonBan
         {
             DataTable dt = ProcessingData.GetData("SELECT * FROM HoaDonBan");
             dgvHDBanHang.DataSource = dt;
+            dgvHDBanHang.Columns["TongTien"].DefaultCellStyle.Format = "#,##0";
+
+            dgvHDBanHang.Columns["SoHDB"].HeaderText = "Số HĐB";
+            dgvHDBanHang.Columns["MaNV"].HeaderText = "Mã NV";
+            dgvHDBanHang.Columns["MaKhach"].HeaderText = "Mã KH";
+            dgvHDBanHang.Columns["NgayBan"].HeaderText = "Ngày bán";
+            dgvHDBanHang.Columns["TongTien"].HeaderText = "Tổng tiền";
+
         }
         private void DisablePointer()
         {

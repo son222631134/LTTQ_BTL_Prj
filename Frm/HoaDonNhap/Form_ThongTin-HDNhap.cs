@@ -31,22 +31,6 @@ namespace BTL_Prj.Frm.HoaDonNhap
             tabControl1.TabPages.Remove(tabPage_ChiTietHoaDon);
             
         }
-        //private void LoadComboBoxData()
-        //{
-        //    // Load MaNV vào ComboBox CBBMNV
-        //    DataTable dtMaNV = ProcessingData.GetComboBoxData("NhanVien", "MaNV", "MaNV");
-        //    cboMaNV.DataSource = dtMaNV;
-        //    cboMaNV.DisplayMember = "TenNV";
-        //    cboMaNV.ValueMember = "MaNV";
-        //    cboMaNV.SelectedIndex = -1; // Không chọn giá trị mặc định
-
-        //    // Load MaNCC vào ComboBox CBBNCC
-        //    DataTable dtMaNCC = ProcessingData.GetComboBoxData("NhaCungCap", "MaNCC", "MaNCC");
-        //    cboMaNCC.DataSource = dtMaNCC;
-        //    cboMaNCC.DisplayMember = "TenNCC";
-        //    cboMaNCC.ValueMember = "MaNCC";
-        //    cboMaNCC.SelectedIndex = -1; // Không chọn giá trị mặc định
-        //}
         private void SetFieldsState(bool enabled)
         {
             btnLuu.Enabled = enabled;
@@ -106,6 +90,15 @@ namespace BTL_Prj.Frm.HoaDonNhap
         {
             DataTable dt = ProcessingData.GetData("SELECT * FROM HoaDonNhap");
             dgvHoaDonNhap.DataSource = dt;
+
+            dgvHoaDonNhap.Columns["TongTien"].DefaultCellStyle.Format = "#,##0";
+
+            dgvHoaDonNhap.Columns["SoHDN"].HeaderText = "Số hóa đơn";
+            dgvHoaDonNhap.Columns["MaNV"].HeaderText = "Mã nhân viên";
+            dgvHoaDonNhap.Columns["MaNCC"].HeaderText = "Mã nhà cung cấp";
+            dgvHoaDonNhap.Columns["NgayNhap"].HeaderText = "Ngày nhập";
+            dgvHoaDonNhap.Columns["TongTien"].HeaderText = "Tổng tiền";
+
         }
         private void LoadMaNhanVien()
         {

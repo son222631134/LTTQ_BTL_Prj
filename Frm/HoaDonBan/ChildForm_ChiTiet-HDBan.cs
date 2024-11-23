@@ -60,6 +60,14 @@ namespace BTL_Prj.Frm.HoaDonBan
                 var parameters = new Dictionary<string, object> { { "@SoHDB", soHDB } };
                 DataTable dt = ProcessingData.GetData(query, parameters);
                 dgvChiTietHoaDonBan.DataSource = dt;
+
+                dgvChiTietHoaDonBan.Columns["ThanhTien"].DefaultCellStyle.Format = "#,##0";
+
+                dgvChiTietHoaDonBan.Columns["SoHDB"].HeaderText = "Số HDB";
+                dgvChiTietHoaDonBan.Columns["MaHang"].HeaderText = "Mã hàng";
+                dgvChiTietHoaDonBan.Columns["SoLuong"].HeaderText = "Số lượng";
+                dgvChiTietHoaDonBan.Columns["GiamGia"].HeaderText = "Giảm giá";
+                dgvChiTietHoaDonBan.Columns["ThanhTien"].HeaderText = "Thành tiền";
             }
             catch (Exception ex)
             {

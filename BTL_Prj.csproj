@@ -162,12 +162,6 @@
     <Compile Include="Frm\HoaDonBan\ChildForm_ChiTiet-HDBan.Designer.cs">
       <DependentUpon>ChildForm_ChiTiet-HDBan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm\HoaDonBan\Form_ChiTiet-HDBan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\HoaDonBan\Form_ChiTiet-HDBan.Designer.cs">
-      <DependentUpon>Form_ChiTiet-HDBan.cs</DependentUpon>
-    </Compile>
     <Compile Include="Frm\HoaDonBan\Form_HoaDonBan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,12 +173,6 @@
     </Compile>
     <Compile Include="Frm\HoaDonNhap\ChildForm_ChiTiet-HDNhap.Designer.cs">
       <DependentUpon>ChildForm_ChiTiet-HDNhap.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm\HoaDonNhap\Form_ChiTiet-HDNhap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\HoaDonNhap\Form_ChiTiet-HDNhap.Designer.cs">
-      <DependentUpon>Form_ChiTiet-HDNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\HoaDonNhap\Form_ThongTin-HDNhap.cs">
       <SubType>Form</SubType>
@@ -258,17 +246,11 @@
     <EmbeddedResource Include="Frm\HoaDonBan\ChildForm_ChiTiet-HDBan.resx">
       <DependentUpon>ChildForm_ChiTiet-HDBan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm\HoaDonBan\Form_ChiTiet-HDBan.resx">
-      <DependentUpon>Form_ChiTiet-HDBan.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Frm\HoaDonBan\Form_HoaDonBan.resx">
       <DependentUpon>Form_HoaDonBan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\HoaDonNhap\ChildForm_ChiTiet-HDNhap.resx">
       <DependentUpon>ChildForm_ChiTiet-HDNhap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm\HoaDonNhap\Form_ChiTiet-HDNhap.resx">
-      <DependentUpon>Form_ChiTiet-HDNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\HoaDonNhap\Form_ThongTin-HDNhap.resx">
       <DependentUpon>Form_ThongTin-HDNhap.cs</DependentUpon>

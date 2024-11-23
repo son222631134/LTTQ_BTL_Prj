@@ -63,6 +63,13 @@ namespace BTL_Prj.Frm.HoaDonNhap
                 var parameters = new Dictionary<string, object> { { "@SoHDN", selectedSoHDN } };
                 DataTable dt = ProcessingData.GetData(query, parameters);
                 dgvChiTietHoaDonNhap.DataSource = dt;
+                dgvChiTietHoaDonNhap.Columns["ThanhTien"].DefaultCellStyle.Format = "#,##0";
+
+                dgvChiTietHoaDonNhap.Columns["SOHDN"].HeaderText = "Số HĐN";
+                dgvChiTietHoaDonNhap.Columns["MaHang"].HeaderText = "Mã Hàng";
+                dgvChiTietHoaDonNhap.Columns["SoLuong"].HeaderText = "Số Lượng";
+                dgvChiTietHoaDonNhap.Columns["GiamGia"].HeaderText = "Giảm Giá";
+                dgvChiTietHoaDonNhap.Columns["ThanhTien"].HeaderText = "Thành Tiền";
             }
             catch (Exception ex)
             {

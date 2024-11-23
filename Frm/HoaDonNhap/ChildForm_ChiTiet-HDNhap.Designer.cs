@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvChiTietHoaDonNhap = new System.Windows.Forms.DataGridView();
             this.BTSUA = new System.Windows.Forms.Button();
             this.BTDELETE = new System.Windows.Forms.Button();
@@ -48,12 +48,12 @@
             this.panel_button = new System.Windows.Forms.Panel();
             this.btnReport = new System.Windows.Forms.Button();
             this.panel_input = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtTenHang = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtThanhTien = new System.Windows.Forms.TextBox();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnClearCT = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtThanhTien = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtTenHang = new System.Windows.Forms.TextBox();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.labelTongTien = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDonNhap)).BeginInit();
@@ -63,8 +63,8 @@
             // 
             // dgvChiTietHoaDonNhap
             // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.dgvChiTietHoaDonNhap.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.dgvChiTietHoaDonNhap.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvChiTietHoaDonNhap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -81,7 +81,7 @@
             // BTSUA
             // 
             this.BTSUA.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.BTSUA.Location = new System.Drawing.Point(422, 10);
+            this.BTSUA.Location = new System.Drawing.Point(413, 10);
             this.BTSUA.Name = "BTSUA";
             this.BTSUA.Size = new System.Drawing.Size(120, 40);
             this.BTSUA.TabIndex = 50;
@@ -92,7 +92,7 @@
             // BTDELETE
             // 
             this.BTDELETE.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.BTDELETE.Location = new System.Drawing.Point(281, 10);
+            this.BTDELETE.Location = new System.Drawing.Point(224, 10);
             this.BTDELETE.Name = "BTDELETE";
             this.BTDELETE.Size = new System.Drawing.Size(120, 40);
             this.BTDELETE.TabIndex = 49;
@@ -103,7 +103,7 @@
             // BTADDCTHDN
             // 
             this.BTADDCTHDN.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.BTADDCTHDN.Location = new System.Drawing.Point(141, 10);
+            this.BTADDCTHDN.Location = new System.Drawing.Point(36, 10);
             this.BTADDCTHDN.Name = "BTADDCTHDN";
             this.BTADDCTHDN.Size = new System.Drawing.Size(120, 40);
             this.BTADDCTHDN.TabIndex = 48;
@@ -114,7 +114,7 @@
             // ExitForm2
             // 
             this.ExitForm2.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.ExitForm2.Location = new System.Drawing.Point(712, 10);
+            this.ExitForm2.Location = new System.Drawing.Point(799, 10);
             this.ExitForm2.Name = "ExitForm2";
             this.ExitForm2.Size = new System.Drawing.Size(120, 40);
             this.ExitForm2.TabIndex = 46;
@@ -230,7 +230,7 @@
             // btnReport
             // 
             this.btnReport.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.Location = new System.Drawing.Point(562, 10);
+            this.btnReport.Location = new System.Drawing.Point(601, 10);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(130, 40);
             this.btnReport.TabIndex = 51;
@@ -263,43 +263,6 @@
             this.panel_input.Size = new System.Drawing.Size(954, 161);
             this.panel_input.TabIndex = 56;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label12.Location = new System.Drawing.Point(270, 73);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(64, 19);
-            this.label12.TabIndex = 54;
-            this.label12.Text = "Tên hàng";
-            // 
-            // txtTenHang
-            // 
-            this.txtTenHang.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.txtTenHang.Location = new System.Drawing.Point(359, 70);
-            this.txtTenHang.Name = "txtTenHang";
-            this.txtTenHang.Size = new System.Drawing.Size(122, 26);
-            this.txtTenHang.TabIndex = 55;
-            this.txtTenHang.TextChanged += new System.EventHandler(this.txtTenHang_TextChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label15.Location = new System.Drawing.Point(511, 118);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(71, 19);
-            this.label15.TabIndex = 56;
-            this.label15.Text = "Thành tiền";
-            // 
-            // txtThanhTien
-            // 
-            this.txtThanhTien.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.txtThanhTien.Location = new System.Drawing.Point(589, 115);
-            this.txtThanhTien.Name = "txtThanhTien";
-            this.txtThanhTien.Size = new System.Drawing.Size(122, 26);
-            this.txtThanhTien.TabIndex = 57;
-            // 
             // btnHuy
             // 
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 12F);
@@ -321,6 +284,43 @@
             this.btnClearCT.Text = "Lưu";
             this.btnClearCT.UseVisualStyleBackColor = true;
             this.btnClearCT.Click += new System.EventHandler(this.btnClearCT_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.label15.Location = new System.Drawing.Point(511, 118);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(71, 19);
+            this.label15.TabIndex = 56;
+            this.label15.Text = "Thành tiền";
+            // 
+            // txtThanhTien
+            // 
+            this.txtThanhTien.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.txtThanhTien.Location = new System.Drawing.Point(589, 115);
+            this.txtThanhTien.Name = "txtThanhTien";
+            this.txtThanhTien.Size = new System.Drawing.Size(122, 26);
+            this.txtThanhTien.TabIndex = 57;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.label12.Location = new System.Drawing.Point(270, 73);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(64, 19);
+            this.label12.TabIndex = 54;
+            this.label12.Text = "Tên hàng";
+            // 
+            // txtTenHang
+            // 
+            this.txtTenHang.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.txtTenHang.Location = new System.Drawing.Point(359, 70);
+            this.txtTenHang.Name = "txtTenHang";
+            this.txtTenHang.Size = new System.Drawing.Size(122, 26);
+            this.txtTenHang.TabIndex = 55;
+            this.txtTenHang.TextChanged += new System.EventHandler(this.txtTenHang_TextChanged);
             // 
             // txtTongTien
             // 

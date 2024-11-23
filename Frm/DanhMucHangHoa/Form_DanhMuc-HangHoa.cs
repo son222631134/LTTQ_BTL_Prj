@@ -32,14 +32,8 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 			LoadComboBoxData();
 			SetDefaultState();
 			
-
             picHangHoa.SizeMode = PictureBoxSizeMode.StretchImage;
-            
-
-
         }
-
-
 
         public void LoadData()
 		{
@@ -51,6 +45,17 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
             }
 			dgvHangHoa.Columns["DonGiaNhap"].DefaultCellStyle.Format = "#,##0";
 			dgvHangHoa.Columns["DonGiaBan"].DefaultCellStyle.Format = "#,##0";
+
+			dgvHangHoa.Columns["MaHang"].HeaderText = "Mã hàng";
+			dgvHangHoa.Columns["TenHang"].HeaderText = "Tên hàng";
+			dgvHangHoa.Columns["SoLuong"].HeaderText = "Số lượng";
+			dgvHangHoa.Columns["DonGiaNhap"].HeaderText = "Đơn giá nhập";
+			dgvHangHoa.Columns["DonGiaBan"].HeaderText = "Đơn giá bán";
+			dgvHangHoa.Columns["MaDonVi"].HeaderText = "Mã đơn vị";
+			dgvHangHoa.Columns["MaNoiSX"].HeaderText = "Mã nơi sản xuất";
+			dgvHangHoa.Columns["MaCongDung"].HeaderText = "Mã công dụng";
+			dgvHangHoa.Columns["MaMau"].HeaderText = "Mã màu";
+			dgvHangHoa.Columns["MaDacDiem"].HeaderText = "Mã đặc điểm";
         }
 
 		public void LoadComboBoxData()
