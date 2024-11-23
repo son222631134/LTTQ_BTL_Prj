@@ -49,7 +49,7 @@
             this.btnReport = new System.Windows.Forms.Button();
             this.panel_input = new System.Windows.Forms.Panel();
             this.btnHuy = new System.Windows.Forms.Button();
-            this.btnClearCT = new System.Windows.Forms.Button();
+            this.btnLuu = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.txtThanhTien = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -242,7 +242,7 @@
             // 
             this.panel_input.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel_input.Controls.Add(this.btnHuy);
-            this.panel_input.Controls.Add(this.btnClearCT);
+            this.panel_input.Controls.Add(this.btnLuu);
             this.panel_input.Controls.Add(this.label15);
             this.panel_input.Controls.Add(this.txtThanhTien);
             this.panel_input.Controls.Add(this.label12);
@@ -274,16 +274,16 @@
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click_1);
             // 
-            // btnClearCT
+            // btnLuu
             // 
-            this.btnClearCT.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnClearCT.Location = new System.Drawing.Point(785, 30);
-            this.btnClearCT.Name = "btnClearCT";
-            this.btnClearCT.Size = new System.Drawing.Size(120, 40);
-            this.btnClearCT.TabIndex = 58;
-            this.btnClearCT.Text = "Lưu";
-            this.btnClearCT.UseVisualStyleBackColor = true;
-            this.btnClearCT.Click += new System.EventHandler(this.btnClearCT_Click);
+            this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnLuu.Location = new System.Drawing.Point(785, 30);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(120, 40);
+            this.btnLuu.TabIndex = 58;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // label15
             // 
@@ -389,7 +389,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtThanhTien;
         private System.Windows.Forms.Button btnHuy;
-        private System.Windows.Forms.Button btnClearCT;
+        private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.TextBox txtTongTien;
         private System.Windows.Forms.Label labelTongTien;
     }

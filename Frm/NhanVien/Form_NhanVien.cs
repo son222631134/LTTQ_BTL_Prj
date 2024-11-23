@@ -261,5 +261,17 @@ namespace BTL_Prj.Frm.NhanVien
             FormReport_NhanVien report = new FormReport_NhanVien();
             report.ShowDialog();
         }
+
+        private void btn_TaoTK_Click(object sender, EventArgs e)
+        {
+            if (txtMaNV.Text == "")
+            {
+                MessageBox.Show("Bạn cần chọn nhân viên để tạo tài khoản!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Form_TaoTaiKhoan frm = new Form_TaoTaiKhoan(txtMaNV.Text);
+            frm.ShowDialog();
+        }
     }
 }

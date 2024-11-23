@@ -199,6 +199,12 @@
     <Compile Include="Frm\NhanVien\Form_NhanVien.Designer.cs">
       <DependentUpon>Form_NhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\NhanVien\Form_TaoTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\NhanVien\Form_TaoTaiKhoan.Designer.cs">
+      <DependentUpon>Form_TaoTaiKhoan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\Report\ReportChiTietHoaDonBan\FormReport_ChiTietHDB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\NhanVien\Form_NhanVien.resx">
       <DependentUpon>Form_NhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\NhanVien\Form_TaoTaiKhoan.resx">
+      <DependentUpon>Form_TaoTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Report\ReportChiTietHoaDonBan\FormReport_ChiTietHDB.resx">
       <DependentUpon>FormReport_ChiTietHDB.cs</DependentUpon>

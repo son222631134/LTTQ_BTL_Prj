@@ -109,7 +109,7 @@ namespace BTL_Prj.Frm.Main
                 }
             }
         }
-        private void btn_Dashboard_Click(object sender, EventArgs e)
+        public void btn_Dashboard_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
             openChildForm(new FrmDashboard());

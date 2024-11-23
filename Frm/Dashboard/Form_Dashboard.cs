@@ -189,7 +189,7 @@ namespace BTL_Prj.Frm.Dashboard
 
             decimal ketQua = doanhThu - chiTieu;
             
-           labelDataDoanhThu.Text = ketQua.ToString();
+           labelDataDoanhThu.Text = ketQua.ToString("#,##0");
         }
         private void FrmDashboard_SizeChanged(object sender, EventArgs e)
         {

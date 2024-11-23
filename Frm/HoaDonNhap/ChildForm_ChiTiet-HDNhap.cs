@@ -29,7 +29,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
         }
         private void SetFieldsState(bool enabled)
         {
-            btnClearCT.Enabled = enabled;
+            btnLuu.Enabled = enabled;
             btnHuy.Enabled = enabled;
             TBSOLUONG.Enabled = enabled;
             TBGIAMGIA.Enabled = enabled;
@@ -226,10 +226,10 @@ namespace BTL_Prj.Frm.HoaDonNhap
         {
             try
             {
-                string query = "UPDATE ChiTietHoaDonNhap SET SoLuong = @SoLuong, GiamGia = @GiamGia, ThanhTien = @ThanhTien WHERE SoHDB = @SoHDB AND MaHang = @MaHang";
+                string query = "UPDATE ChiTietHoaDonNhap SET SoLuong = @SoLuong, GiamGia = @GiamGia, ThanhTien = @ThanhTien WHERE SoHDN = @SoHDN AND MaHang = @MaHang";
                 var parameters = new Dictionary<string, object>
                 {
-                    { "@SoHDB", selectedSoHDN },
+                    { "@SoHDN", selectedSoHDN },
                     { "@MaHang", int.Parse(CBBMAHANG.Text) },
                     { "@SoLuong", int.Parse(TBSOLUONG.Text) },
                     { "@GiamGia", decimal.Parse(TBGIAMGIA.Text) },
@@ -392,7 +392,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
 
         }
 
-        private void btnClearCT_Click(object sender, EventArgs e)
+        private void btnLuu_Click(object sender, EventArgs e)
         {
             CBBMAHANG.Enabled = false;
             if (BTADDCTHDN.Enabled == false)

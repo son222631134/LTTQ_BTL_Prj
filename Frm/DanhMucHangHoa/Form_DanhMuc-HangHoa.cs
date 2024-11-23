@@ -10,6 +10,7 @@ using BTL_Prj.Class;
 using System.Linq;
 using BTL_Prj.Frm.Report.ReportHangHoa;
 using OfficeOpenXml;
+using BTL_Prj.Frm.Main;
 
 namespace BTL_Prj.Frm.DanhMucHangHoa
 {
@@ -159,6 +160,7 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
                     try
                     {
                         ProcessingData.Delete("DMHangHoa", "MaHang", txtMaHang.Text);
+						Function.DeleteFile(picHangHoa.ImageLocation);
                         MessageBox.Show("Dữ liệu đã được xóa!");
                         LoadData();
                         SetDefaultState();
@@ -182,14 +184,16 @@ namespace BTL_Prj.Frm.DanhMucHangHoa
 		{
 			if (txtMaHang.Enabled)
 			{
+				txtSoLuong.Text = "0";
+				txtDonGiaNhap.Text = "0";
 				// Insert scenario
 				if (int.TryParse(txtSoLuong.Text, out int soLuong) &&
 					decimal.TryParse(txtDonGiaNhap.Text, out decimal donGiaNhap) &&
 					decimal.TryParse(txtDonGiaBan.Text, out decimal donGiaBan))	{
 					//then
 					string src = picHangHoa.ImageLocation;
-					string dest = "\\HangHoa\\" + "ImgHangHoa" + txtMaHang.Text;
-					Function.CopyFile(src, Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + dest);
+                    string dest = "HangHoa\\" + "ImgHangHoa" + txtMaHang.Text + ".jpg";
+                    Function.CopyFile(src, Prepare.getProjectDirectory() + Prepare.getMediaDirectoryInProject() + dest);
 					var columnValues = new Dictionary<string, object> {
 						{ "MaHang", txtMaHang.Text },
 						{ "TenHang", txtTenHang.Text },
