@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BTL_Prj.Frm.Main;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,14 +17,16 @@ namespace BTL_Prj
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            try
+
+                frmMain frm;
+            do
             {
-                Application.Run(new Frm.Main.frmMain());
-            }
-            catch (Exception ex) { }
+                Application.Run(frm = new frmMain());
+            } while (frm.isReload);
 
             //Application.Run(new Frm.Main.frmMain());
             //Application.Run(new Form_Login());
         }
     }
+
 }

@@ -47,11 +47,11 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.btnChinhSua = new System.Windows.Forms.Button();
             this.btnDong = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnHuy = new System.Windows.Forms.Button();
             this.panel_button = new System.Windows.Forms.Panel();
             this.panel_input = new System.Windows.Forms.Panel();
             this.panel_title = new System.Windows.Forms.Panel();
+            this.btnXoa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDonBan)).BeginInit();
             this.panel_button.SuspendLayout();
             this.panel_input.SuspendLayout();
@@ -207,7 +207,7 @@
             // btnThem
             // 
             this.btnThem.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnThem.Location = new System.Drawing.Point(196, 10);
+            this.btnThem.Location = new System.Drawing.Point(188, 10);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(120, 40);
             this.btnThem.TabIndex = 38;
@@ -218,7 +218,7 @@
             // btnChinhSua
             // 
             this.btnChinhSua.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnChinhSua.Location = new System.Drawing.Point(417, 10);
+            this.btnChinhSua.Location = new System.Drawing.Point(484, 10);
             this.btnChinhSua.Name = "btnChinhSua";
             this.btnChinhSua.Size = new System.Drawing.Size(120, 40);
             this.btnChinhSua.TabIndex = 38;
@@ -237,17 +237,6 @@
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(25, 612);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 19);
-            this.label2.TabIndex = 39;
-            this.label2.Text = "Nhấn đúp một dòng để xóa";
-            // 
             // btnHuy
             // 
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 12F);
@@ -261,6 +250,7 @@
             // 
             // panel_button
             // 
+            this.panel_button.Controls.Add(this.btnXoa);
             this.panel_button.Controls.Add(this.btnThem);
             this.panel_button.Controls.Add(this.btnChinhSua);
             this.panel_button.Controls.Add(this.btnDong);
@@ -306,6 +296,19 @@
             this.panel_title.Size = new System.Drawing.Size(954, 80);
             this.panel_title.TabIndex = 41;
             // 
+            // btnXoa
+            // 
+            this.btnXoa.AutoSize = true;
+            this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnXoa.Location = new System.Drawing.Point(336, 10);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(120, 40);
+            this.btnXoa.TabIndex = 39;
+            this.btnXoa.Text = "Xoá mặt hàng";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // frmChiTietHoaDonBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -314,7 +317,6 @@
             this.Controls.Add(this.panel_title);
             this.Controls.Add(this.panel_input);
             this.Controls.Add(this.panel_button);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvChiTietHoaDonBan);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmChiTietHoaDonBan";
@@ -322,11 +324,11 @@
             this.Load += new System.EventHandler(this.frmChiTietHoaDonBan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietHoaDonBan)).EndInit();
             this.panel_button.ResumeLayout(false);
+            this.panel_button.PerformLayout();
             this.panel_input.ResumeLayout(false);
             this.panel_input.PerformLayout();
             this.panel_title.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -350,10 +352,10 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnChinhSua;
         private System.Windows.Forms.Button btnDong;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Panel panel_button;
         private System.Windows.Forms.Panel panel_input;
         private System.Windows.Forms.Panel panel_title;
+        private System.Windows.Forms.Button btnXoa;
     }
 }

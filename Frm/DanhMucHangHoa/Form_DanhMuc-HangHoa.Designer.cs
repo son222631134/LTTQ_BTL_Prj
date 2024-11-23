@@ -87,6 +87,7 @@
             this.btnThemData = new System.Windows.Forms.Button();
             this.panel_title = new System.Windows.Forms.Panel();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+
             ((System.ComponentModel.ISupportInitialize)(this.dgvHangHoa)).BeginInit();
             this.panel_input.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHangHoa)).BeginInit();
@@ -101,6 +102,7 @@
             this.panel_Data.SuspendLayout();
             this.panel_title.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+
             this.SuspendLayout();
             // 
             // btnThem
@@ -790,7 +792,7 @@
             this.panel_Data.ResumeLayout(false);
             this.panel_title.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            this.ResumeLayout(false);
+
 
         }
 

@@ -18,6 +18,7 @@ namespace BTL_Prj.Class
         private static readonly string MediaDirectoryInProject =    "\\Database\\Media\\";
         private static readonly string DatabaseDirectoryInProject = "\\Database\\Database_BTL.mdf";
         private static readonly string IconFilename = "32x32-LogoUTC.ico";
+        private static int TTL = 60;
 
         public Prepare()
         {
@@ -33,6 +34,7 @@ namespace BTL_Prj.Class
             return getProjectDirectory() + DatabaseDirectoryInProject;
         }
         public static string getMediaDirectoryInProject() { return MediaDirectoryInProject;}
+        public static int getTTL() { return TTL; }
         public static void setFormProperties(Form  frm)
         {
             frm.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -52,6 +54,7 @@ namespace BTL_Prj.Class
             dgv.ReadOnly = true;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv.Font = new System.Drawing.Font("Times New Roman", 12F);
+            dgv.AllowUserToAddRows = true;
 
         }
     }

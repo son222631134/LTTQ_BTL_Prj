@@ -35,6 +35,7 @@
             this.btn_DangNhap = new System.Windows.Forms.Button();
             this.btn_Thoat = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox_KeepLogin = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             this.txt_TaiKhoan.Name = "txt_TaiKhoan";
             this.txt_TaiKhoan.Size = new System.Drawing.Size(147, 26);
             this.txt_TaiKhoan.TabIndex = 1;
+            this.txt_TaiKhoan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_TaiKhoan_KeyPress);
             // 
             // label_MatKhau
             // 
@@ -73,11 +75,12 @@
             this.txt_MatKhau.Name = "txt_MatKhau";
             this.txt_MatKhau.Size = new System.Drawing.Size(147, 26);
             this.txt_MatKhau.TabIndex = 1;
+            this.txt_MatKhau.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_MatKhau_KeyPress);
             // 
             // btn_DangNhap
             // 
             this.btn_DangNhap.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btn_DangNhap.Location = new System.Drawing.Point(70, 122);
+            this.btn_DangNhap.Location = new System.Drawing.Point(70, 151);
             this.btn_DangNhap.Name = "btn_DangNhap";
             this.btn_DangNhap.Size = new System.Drawing.Size(112, 42);
             this.btn_DangNhap.TabIndex = 2;
@@ -88,7 +91,7 @@
             // btn_Thoat
             // 
             this.btn_Thoat.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btn_Thoat.Location = new System.Drawing.Point(202, 122);
+            this.btn_Thoat.Location = new System.Drawing.Point(202, 151);
             this.btn_Thoat.Name = "btn_Thoat";
             this.btn_Thoat.Size = new System.Drawing.Size(112, 42);
             this.btn_Thoat.TabIndex = 2;
@@ -107,21 +110,35 @@
             this.panel1.Size = new System.Drawing.Size(299, 70);
             this.panel1.TabIndex = 3;
             // 
+            // checkBox_KeepLogin
+            // 
+            this.checkBox_KeepLogin.AutoSize = true;
+            this.checkBox_KeepLogin.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.checkBox_KeepLogin.Location = new System.Drawing.Point(85, 122);
+            this.checkBox_KeepLogin.Name = "checkBox_KeepLogin";
+            this.checkBox_KeepLogin.Size = new System.Drawing.Size(186, 20);
+            this.checkBox_KeepLogin.TabIndex = 4;
+            this.checkBox_KeepLogin.Text = "Keep me login in 15 minutes";
+            this.checkBox_KeepLogin.UseVisualStyleBackColor = true;
+            // 
             // Form_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 211);
+            this.Controls.Add(this.checkBox_KeepLogin);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_Thoat);
             this.Controls.Add(this.btn_DangNhap);
             this.Name = "Form_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Login_FormClosed);
             this.Load += new System.EventHandler(this.Form_Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -134,6 +151,7 @@
         private System.Windows.Forms.Button btn_DangNhap;
         private System.Windows.Forms.Button btn_Thoat;
         private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.CheckBox checkBox_KeepLogin;
     }
 }
 

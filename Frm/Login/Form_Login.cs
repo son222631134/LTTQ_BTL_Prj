@@ -15,50 +15,93 @@ namespace BTL_Prj
     {
         public bool isFail = true;
         public string username;
-        public string name;
+
+        public DataTable dt;
         public Form_Login()
         {
+
             InitializeComponent();
         }
         private void Form_Login_Load(object sender, EventArgs e)
         {
             ProcessingData.OpenConnection();
+
+            //Check the lastest login is not expried
+            string username = Function.CheckLastLogin();
+            if (username != "")
+            {
+                checkBox_KeepLogin.Checked = true;
+                LoginSuccess(username);
+            }
+
+            //
             Prepare.setFormProperties(this);
             this.FormBorderStyle = FormBorderStyle.Sizable;
+            checkBox_KeepLogin.Text = "Keep login for " + Prepare.getTTL().ToString() + " seconds";
+            txt_TaiKhoan.Focus();
+            txt_MatKhau.UseSystemPasswordChar = true;
+
+            txt_TaiKhoan.Text = "NV1";
+            txt_MatKhau.Text = "123";
+
         }
 
+        private void LoginSuccess(string username)
+        {
+            this.isFail = false;
+            this.username = username;
+            ProcessingData.ExecuteQuery("UPDATE Account " +
+                "SET LastLogin = " + "\'" + DateTime.Now.ToString() + "\'" +
+                " WHERE Username = " + "\'" + username + "\'"
+                );
+            this.Close();
+
+        }
+        private void validate(string username, string password)
+        {
+            if (username == "" || password == "")
+            {
+                MessageBox.Show("Tài khoản và mật khẩu không được để trống!");
+                return;
+            }
+            if (username.Contains(' ') || password.Contains(' '))
+            {
+                MessageBox.Show("Tài khoản và mật khẩu không được có dấu cách!");
+                return;
+            }
+        }
         private void btn_DangNhap_Click(object sender, EventArgs e)
         {
             string username = txt_TaiKhoan.Text;
             string password = txt_MatKhau.Text;
-            DataTable dt = ProcessingData.NhanVien_SearchNhanVien(username);
 
-            if (username == string.Empty)
+            validate(username, password);
+
+            this.isFail = !Function.CheckLogin(username, password);
+
+            if (this.isFail == true)
             {
                 MessageBox.Show("incorrect username or password");
                 return;
             }
 
-            string result = "";
-            try
+            //Wow, that user remember her/his account!
+            LoginSuccess(username);
+        }
+        private void txt_TaiKhoan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                result = dt.Rows[0]["MaNV"].ToString();
+                txt_MatKhau.Focus();
             }
-            catch (Exception ex)
+        }
+        private void txt_MatKhau_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                result = null;
+                btn_DangNhap_Click(sender, e);
             }
 
-            if (result == null && username.ToLower() != "admin")
-            {
-                MessageBox.Show("incorrect username or password");
-                return;
-            }
-
-            this.isFail = false;
-            this.username = username;
-            this.name = username.ToLower()=="admin" ? "Admin" :  dt.Rows[0]["TenNV"].ToString();
-            this.Close();
         }
 
         private void btn_Thoat_Click(object sender, EventArgs e)
@@ -72,7 +115,9 @@ namespace BTL_Prj
                 this.Close();
             }
         }
-        private void Form_Login_FormClosed(object sender, FormClosingEventArgs e)
+
+
+        private void Form_Login_FormClosed(object sender, FormClosedEventArgs e)
         {
             ProcessingData.CloseConnection();
         }
