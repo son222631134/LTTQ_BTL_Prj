@@ -31,6 +31,10 @@ namespace BTL_Prj.Frm.DanhMucKhachHang
         {
             string query = "SELECT * FROM KhachHang";
             dgvKhachHang.DataSource = ProcessingData.GetData(query);
+            dgvKhachHang.Columns[0].HeaderText = "Mã KH";
+            dgvKhachHang.Columns[1].HeaderText = "Tên khách hàng";
+            dgvKhachHang.Columns[2].HeaderText = "Địa chỉ";
+            dgvKhachHang.Columns[3].HeaderText = "Điện thoại";
         }
 
         private void btnThem_Click(object sender, EventArgs e)

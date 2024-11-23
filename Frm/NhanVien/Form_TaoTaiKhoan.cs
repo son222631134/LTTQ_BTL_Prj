@@ -86,6 +86,7 @@ namespace BTL_Prj.Frm.NhanVien
                     );
                     MessageBox.Show("Cập nhật tài khoản thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
+                    return;
                 }
                 //doi mk
                 if ((txt_matkhau.Text != "" || txt_nhaplaiMK.Text != "") && txt_matkhau.Text != txt_nhaplaiMK.Text)

@@ -37,6 +37,12 @@ namespace BTL_Prj.Frm.NhanVien
         {
             //dgvNhanVien.DataSource = ProcessingData.GetAllNhanVien();
             dgvNhanVien.DataSource = ProcessingData.NhanVien_GetAllNhanVien();
+            dgvNhanVien.Columns["MaNV"].HeaderText = "Mã NV";
+            dgvNhanVien.Columns["TenNV"].HeaderText = "Tên NV";
+            dgvNhanVien.Columns["MaCV"].HeaderText = "Mã CV";
+            dgvNhanVien.Columns["GioiTinh"].HeaderText = "Giới tính";
+            dgvNhanVien.Columns["NgaySinh"].HeaderText = "Ngày sinh";
+            dgvNhanVien.Columns["DiaChi"].HeaderText = "Địa chỉ";
         }
         private void LoadMaCV()
         {
