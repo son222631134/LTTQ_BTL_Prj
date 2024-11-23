@@ -80,6 +80,16 @@ namespace BTL_Prj.Frm.HoaDonNhap
         {
             try
             {
+                var check = new Dictionary<string, object>
+                {
+                    {"@MaHang", int.Parse(CBBMAHANG.Text) }
+
+                };
+                DataTable dt = ProcessingData.GetData("SELECT SoLuong From DMHangHoa WHERE MaHang = @MaHang", check);
+                
+                int prev_SoLuong = int.Parse(dt.Rows[0]["SoLuong"].ToString());
+
+
                 // Truy vấn để kiểm tra sự tồn tại của hàng hóa trong hóa đơn
                 string checkQuery = "SELECT * FROM ChiTietHoaDonNhap WHERE SoHDN = @SoHDN AND MaHang = @MaHang";
                 var checkParams = new Dictionary<string, object>
@@ -89,7 +99,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
                 };
 
                 // Lấy dữ liệu từ cơ sở dữ liệu
-                DataTable dt = ProcessingData.GetData(checkQuery, checkParams);
+                 dt = ProcessingData.GetData(checkQuery, checkParams);
                 if (dt.Rows.Count > 0)
                 {
                     MessageBox.Show("Mã hàng đã tồn tại trong hóa đơn. Vui lòng chọn mã hàng khác.", "Thông báo");
@@ -106,6 +116,7 @@ namespace BTL_Prj.Frm.HoaDonNhap
                     { "@GiamGia", decimal.Parse(TBGIAMGIA.Text) },
                     { "@ThanhTien", decimal.Parse(txtThanhTien.Text) }
                 };
+                ProcessingData.ExecuteQuery("UPDATE DMHangHoa SET SoLuong = @SoLuong WHERE MaHang = @MaHang", new Dictionary<string, object> { { "@SoLuong", prev_SoLuong + int.Parse(TBSOLUONG.Text) }, { "@MaHang", int.Parse(CBBMAHANG.Text) } });
                 ProcessingData.ExecuteQuery(query, parameters);
                 MessageBox.Show("Thêm thành công");
             }

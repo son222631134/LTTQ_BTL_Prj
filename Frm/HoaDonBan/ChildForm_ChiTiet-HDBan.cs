@@ -87,7 +87,7 @@ namespace BTL_Prj.Frm.HoaDonBan
                 DataTable dt = ProcessingData.GetData("SELECT SoLuong From DMHangHoa WHERE MaHang = @MaHang", check);
                 if (int.Parse(dt.Rows[0]["SoLuong"].ToString()) < int.Parse(txtSoLuong.Text))
                 {
-                    throw new InvalidOperationException("Số lượng mặt hàng nhập nhiều hơn số lượng đang có");
+                    MessageBox.Show("Số lượng mặt hàng nhập nhiều hơn số lượng đang có");
                     return;
                 }
                 int prev_SoLuong = int.Parse(dt.Rows[0]["SoLuong"].ToString());
